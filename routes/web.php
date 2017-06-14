@@ -12,9 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data['active'] = "";
+    $data['active2'] = "";
+
+    return view('admin.pages.index',$data);
 });
 
 Route::group(['prefix' => 'products'],function () {
+  Route::get('/form', 'productController@showform');
+  Route::get('/tabel', 'productController@showtable');
+
+});
+Route::group(['prefix' => 'news'],function () {
+  Route::get('/form', 'newsController@showform');
+  Route::get('/tabel', 'newsController@showtable');
+
+});
+
+Route::group(['prefix' => 'page-editor'],function () {
+  Route::get('/homepage', 'pagesController@showhome');
+  Route::get('/customer-list', 'pagesController@showcustomer');
+  Route::get('/customer-add', 'pagesController@addcustomer');
+
 
 });
