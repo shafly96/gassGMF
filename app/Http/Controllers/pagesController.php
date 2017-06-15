@@ -12,8 +12,20 @@ class pagesController extends Controller
       return view('admin.pages.editor.homepage',$data);
     }
     public function showcustomer(){
-      $data['active'] = "contact";
+      $data['active'] = "customer";
       $data['active2'] = "tabel";
       return view('admin.pages.editor.tabelcustomer',$data);
+    }
+    public function addcustomer(){
+      $data['active'] = "customer";
+      $data['active2'] = "form";
+      return view('admin.pages.editor.formcustomer',$data);
+
+    }
+    public function contacts(){
+      $data['active'] = "contact";
+      $data['active2'] = "";
+      return view('admin.pages.editor.contactsform',$data);
+
     }
 }

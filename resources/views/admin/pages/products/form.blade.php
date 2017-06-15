@@ -11,7 +11,7 @@
 				<i class="fa fa-cog"></i><h3 class="box-title">Insert New Product</h3>
 			</div><!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="post" action="store">
+			<form role="form" method="post" action="{{url('/')}}/products/form" enctype="multipart/form-data">
 				<div class="box-body">
 
 					<div class="form-group">
@@ -20,7 +20,7 @@
 					</div>
           <div class="form-group">
 						<label for="exampleInputPassword1">Product Type</label>
-            <select class="form-control" name="type">
+            <select class="form-control" name="tipe">
                 <option value="1">Assembly and Fabrication</option>
                 <option value="2">Service</option>
                 <option value="3">Maintenance</option>
@@ -36,7 +36,7 @@
 						<label for="exampleInputPassword1">Technical Specification</label><a href="#" data-toggle="tooltip" data-placement="bottom" title="Insert the detailed technical specification"><i class="fa fa-info-circle" style="margin-left:10px;"></i></a>
 
             <div class="box-body pad">
-                <textarea class="textarea" placeholder="Insert the technical specification" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                <textarea class="textarea" name="specification" placeholder="Insert the technical specification" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
             </div>
 					</div>
           <div class="form-group">
