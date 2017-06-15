@@ -45,13 +45,13 @@
         </ul>
       </li>
       <li class="header">PAGE EDITOR</li>
-      <li class="<?php if($active=='home') echo 'active' ?>">
+      <li class="<?php if($active=='homepage') echo 'active' ?>">
         <a href="{{url('/')}}/page-editor/homepage">
           <i class="fa fa-list-ul"></i> <span>Edit Homepage</span>
         </a>
       </li>
-      <li class="<?php if($active=='history') echo 'active' ?>">
-        <a href="#">
+      <li class="<?php if($active=='contact') echo 'active' ?>">
+        <a href="{{url('/')}}/page-editor/contacts">
           <i class="fa fa-list-ul"></i> <span>Edit Contact Information</span>
         </a>
       </li>
@@ -80,11 +80,6 @@
           <li class="<?php if($active2=='form') echo 'active' ?>"><a href="#"><i class="fa fa-circle-o"></i>Edit Our Facility</a></li>
           <li class="<?php if($active2=='form') echo 'active' ?>"><a href="#"><i class="fa fa-circle-o"></i>Edit Testimony</a></li>
         </ul>
-      </li>
-      <li class="<?php if($active=='history') echo 'active' ?>">
-        <a href="#">
-          <i class="fa fa-list-ul"></i> <span>Edit Footer</span>
-        </a>
       </li>
       <li class="header">MESSAGES & AFTER SALES</li>
       <li class="<?php if($active=='history') echo 'active' ?>">

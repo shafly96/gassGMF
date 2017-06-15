@@ -1,4 +1,6 @@
     <!-- jQuery 2.1.4 -->
+    <script src="{{url('')}}/plugin/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js"></script>
+
     <script src="{{url('')}}/plugin/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>

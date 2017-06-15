@@ -4,6 +4,12 @@
 
 <div id="myModal" class="modal fade" role="dialog"></div>
 
+@if (session('success'))
+		<div class="alert alert-success">
+				{{ session('success') }}
+		</div>
+@endif
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-primary">
@@ -14,31 +20,35 @@
 				<table id="example1" class="table table-bordered table-striped dt-responsive nowrap">
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th>No</th>
 							<th>News Title</th>
 							<th>Time Posted</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Example Title</td>
-							<td>14-5-2017 10:00:00</td>
-							<td>
-								<a class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
-								<a class="btn btn-danger" id="delete">Delete</a>
-							</td>
-						</tr>
-            <tr>
-							<td>2</td>
-							<td>Example Title</td>
-							<td>15-5-2017 12:00:00</td>
-							<td>
-								<a class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
-								<a class="btn btn-danger" id="delete">Delete</a>
-							</td>
-						</tr>
+						<div style="display:none">
+								{{$counter=0}}
+						</div>
+						@if(isset($news))
+							@foreach($news as $new)
+							<div style="display:none">
+									{{$counter+=1}}
+							</div>
+							<tr>
+								<td>{{$counter}}</td>
+								<td>{{$new->berita_title}}</td>
+								<td>{{$new->berita_date}}</td>
+								<td>
+									<a href="{{url('/')}}/news/update/{{$new->berita_id}}" class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
+									<a href="{{url('/')}}/news/delete/{{$new->berita_id}}" class="btn btn-danger" id="delete">Delete</a>
+									<a href="#" class="btn btn-info" id="delete">View post</a>
+
+								</td>
+							</tr>
+							@endforeach
+
+						@endif
           </tbody>
 				</table>
 			</div><!-- /.box-body -->

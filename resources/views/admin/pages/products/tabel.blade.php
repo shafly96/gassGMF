@@ -2,8 +2,11 @@
 
 @section('content')
 
-<div id="myModal" class="modal fade" role="dialog"></div>
-
+@if (session('success'))
+		<div class="alert alert-success">
+				{{ session('success') }}
+		</div>
+@endif
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-primary">
@@ -11,25 +14,46 @@
 				<i class="fa fa-info-circle"></i><h3 class="box-title">Products List</h3>
 			</div><!-- /.box-header -->
 			<div class="box-body">
+				<div style="display:none">
+						{{$counter=0}}
+				</div>
 				<table id="example1" class="table table-bordered table-striped dt-responsive nowrap">
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th>No</th>
 							<th>Product Name</th>
 							<th>Product Type</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
+						<div style="display:none">
+									{{$counter+=1}}
+						</div>
+						@if(isset($products))
+						@foreach($products as $product)
 						<tr>
-							<td>1</td>
-							<td>Catering Truck</td>
-							<td>Assembly and Fabrication</td>
+							<td>{{$counter}}</td>
+							<td>{{$product->product_name}}</td>
+							<td>@if($product->product_tipe==1)
+										Assembly and Fabrication
+									@elseif($product->product_tipe==2)
+										Service
+									@elseif($product->product_tipe==3)
+										Maintenance
+									@else
+										Rental
+									@endif
+							</td>
 							<td>
-								<a class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
-								<a class="btn btn-danger" id="delete">Delete</a>
+								<a href="{{url('/')}}/products/update/{{$product->product_id}}" class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
+								<a href="{{url('/')}}/products/delete/{{$product->product_id}}" class="btn btn-danger" id="delete">Delete</a>
+								<a href="#" class="btn btn-info" id="view">View in Page</a>
+
 							</td>
 						</tr>
+						@endforeach
+						@endif
           </tbody>
 				</table>
 			</div><!-- /.box-body -->
