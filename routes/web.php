@@ -12,9 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['prefix' => 'products'],function () {
-
+    return view('customer/master/master');
 });
