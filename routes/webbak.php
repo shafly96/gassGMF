@@ -10,12 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/customer', function () {
-    return view('customer/pages/welcome');
-}
 
 Route::get('/', function () {
-
     $data['active'] = "";
     $data['active2'] = "";
 
