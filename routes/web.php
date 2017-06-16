@@ -44,6 +44,9 @@ Route::group(['prefix' => 'page-editor'],function () {
   Route::post('/homepage', 'pagesController@updatehome');
   Route::get('/customer-list', 'pagesController@showcustomer');
   Route::get('/customer-add', 'pagesController@addcustomer');
+  Route::post('/customer-add', 'pagesController@addcust');
+  Route::get('/del-cust/{id}', 'pagesController@deletecustomer');
+
   Route::get('/contacts', 'pagesController@contacts');
   Route::post('/contacts', 'pagesController@contactsed');
 

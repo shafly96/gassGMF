@@ -56,13 +56,35 @@ class pagesController extends Controller
     public function showcustomer(){
       $data['active'] = "customer";
       $data['active2'] = "tabel";
+      $data['customers'] = Customer::get();
       return view('admin.pages.editor.tabelcustomer',$data);
     }
     public function addcustomer(){
       $data['active'] = "customer";
       $data['active2'] = "form";
       return view('admin.pages.editor.formcustomer',$data);
+    }
+    public function deletecustomer($id){
+      $deleted = Customer::find($id);
+      $deleted->delete();
+      $thumbpath = public_path("images\\logo-cust\\");
+      File::delete($thumbpath.$deleted->customer_filename);
+      return redirect('page-editor/customer-list')->with('success','You have successfully deleted a customer data');
 
+    }
+    public function addcust(Request $request){
+      $customer = new Customer;
+      $customer->customer_name = $request->name;
+      $file = $request->file('media');
+      $customer->customer_filename = $request->name.'.'.$file->getClientOriginalExtension();
+
+      $destinationPath = public_path('images/logo-cust');
+      $img = Image::make($file->getRealPath());
+      $img->resize(200, 125, function ($constraint) {
+          $constraint->aspectRatio();
+      })->save($destinationPath.'\\'.$customer->customer_filename);
+      $customer->save();
+      return redirect('page-editor/customer-add')->with('success','You have successfully inserted a customer data');
     }
     public function contacts(){
       $data['active'] = "contact";
