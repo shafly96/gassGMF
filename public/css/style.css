@@ -22,6 +22,22 @@ div{
     /*border-style: solid;*/
 }
 
+.caption{
+    width: 100%;
+    padding-top: 10px;
+}
+
+.judul-berita{
+    font-family: bold;
+    font-size: 30px;
+}
+
+.caption .tanggal{
+    margin-top: -18px;
+    font-family: light;
+    font-size: 13px;
+}
+
 .rata{
     padding-left: 60px;
     padding-right: 60px;

@@ -43,16 +43,15 @@
 
     <!-- background -->
 
-    <div class="foto"><img class="background" src="{{url('')}}/image/bg.jpg"></div>
+    <div class="foto"><img class="background" src="{{url('')}}/images/homepage/{{$homepage[0]->homepage_gambar}}"></div>
 
     <!-- div selanjutnya -->
 
     <div class="div1">
         <div class="col-md-4"></div>
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            <p class="slogan">WE <strong>MAKE</strong> IT</p>
-            <p class="slogan">HAPPEN</p>
-            <p class="slogan-text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p class="slogan">{{$homepage[0]->homepage_slogan}}</p>
+            <p class="slogan-text">{{$homepage[0]->homepage_slogan_subtext}}</p>
         </div>
     </div>
 
@@ -129,9 +128,19 @@
                 <p class="judul-div a"><strong>LATEST</strong> NEWS</p>
                 <div class="col-md-6 berita-besar">
                     <img src="http://placehold.it/400x250" width="100%">
+                    <div class="caption">
+                        <p class="judul-berita">Judul</p>
+                        <p class="tanggal">12 Agustus 2017</p>
+                        <p class="paragraf">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
                 </div>
                 <div class="col-md-6 berita-besar">
                     <img src="http://placehold.it/400x250" width="100%">
+                    <div class="caption">
+                        <p class="judul-berita">Judul</p>
+                        <p class="tanggal">12 Agustus 2017</p>
+                        <p class="paragraf">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
                 </div>
             </div>
         </div>

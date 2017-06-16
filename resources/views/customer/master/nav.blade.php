@@ -8,7 +8,7 @@
         <div class="logo">
             <strong style="font-family:extrabold">GMF </strong>Aircraft Support Services
             <div class="topnav" id="myTopnav">
-                <a href="#home">Home</a>
+                <a href="{{url('')}}">Home</a>
                 <a href="#news">About</a>
                 <a href="#contact">After Sales & Parts Service</a>
                 <a href="#about">Products</a>
