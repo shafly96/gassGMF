@@ -29,8 +29,18 @@ div{
 
 .paragraf{
     font-family: light;
-    font-size: 15px;
+    font-size: 17px;
     margin-top: 20px;
+}
+
+.paragraf strong{
+    font-family: bold;
+    font-size: 19px;
+}
+
+li{
+    font-family: light !important;
+    font-size: 18px !important;
 }
 
 .nav{

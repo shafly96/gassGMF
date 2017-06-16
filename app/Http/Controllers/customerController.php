@@ -15,4 +15,20 @@ class customerController extends Controller
     	return view('customer/pages/aboutGMF');
     }
 
+    public function aboutGASS(){
+    	return view('customer/pages/aboutGASS');
+    }
+
+    public function testimoni(){
+    	return view('customer/pages/testimoni');
+    }
+
+    public function product(){
+    	return view('customer/pages/products');
+    }
+
+    public function news(){
+    	return view('customer/pages/news');
+    }
+
 }

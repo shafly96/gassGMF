@@ -14,7 +14,10 @@
 Route::group(['prefix' => 'customer'],function () {
   Route::get('/', 'customerController@home');
   Route::get('/aboutGMF', 'customerController@aboutGMF');
-
+  Route::get('/aboutGASS', 'customerController@aboutGASS');
+  Route::get('/testimoni', 'customerController@testimoni');
+  Route::get('/product', 'customerController@product');
+  Route::get('/news', 'customerController@news');
 });
 
 
