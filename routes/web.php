@@ -10,8 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/customer', function () {
-    return view('customer/pages/welcome');
+
+Route::group(['prefix' => 'customer'],function () {
+  Route::get('/', 'customerController@home');
+  Route::get('/aboutGMF', 'customerController@aboutGMF');
+
 });
 
 Route::group(['prefix' => 'products'],function () {
