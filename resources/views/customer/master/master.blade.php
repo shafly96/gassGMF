@@ -11,12 +11,9 @@
         <div class="col-md-2"></div>
         <div class="col-md-8 batas-atas batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-12">
-                <p class="judul-div a"><strong>LATEST</strong> NEWS</p>
-                <div class="col-md-6 berita-besar">
-                    <img src="http://placehold.it/400x250" width="100%">
-                </div>
-                <div class="col-md-6 berita-besar">
-                    <img src="http://placehold.it/400x250" width="100%">
+                <p class="judul-div a"><strong>@yield('judul1')</strong> @yield('judul2')</p>
+                <div class="col-md-12">
+                    @yield('content')
                 </div>
             </div>
         </div>
