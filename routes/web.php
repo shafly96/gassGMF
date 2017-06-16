@@ -12,15 +12,8 @@
 */
 Route::get('/customer', function () {
     return view('customer/pages/welcome');
-}
-
-Route::get('/', function () {
-
-    $data['active'] = "";
-    $data['active2'] = "";
-
-    return view('admin.pages.index',$data);
 });
+
 
 Route::group(['prefix' => 'products'],function () {
   Route::get('/form', 'productController@showform');
