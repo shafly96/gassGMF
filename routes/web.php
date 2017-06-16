@@ -17,6 +17,7 @@ Route::group(['prefix' => 'customer'],function () {
 
 });
 
+
 Route::group(['prefix' => 'products'],function () {
   Route::get('/form', 'productController@showform');
   Route::post('/form','productController@addproduct');
