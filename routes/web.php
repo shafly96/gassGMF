@@ -45,6 +45,7 @@ Route::group(['prefix' => 'page-editor'],function () {
   Route::get('/customer-list', 'pagesController@showcustomer');
   Route::get('/customer-add', 'pagesController@addcustomer');
   Route::get('/contacts', 'pagesController@contacts');
+  Route::post('/contacts', 'pagesController@contactsed');
 
 
 

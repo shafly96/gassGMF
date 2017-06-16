@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Homepage;
+use App\Contacts;
+use App\Customer;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -65,9 +67,22 @@ class pagesController extends Controller
     public function contacts(){
       $data['active'] = "contact";
       $data['active2'] = "";
+      $data['contacts']= Contacts::find(1);
       return view('admin.pages.editor.contactsform',$data);
     }
     public function contactsed(Request $request){
-      
+      $contact= Contacts::find(1);
+      if(null == $contact)
+      {
+        $contact = new Contacts;
+        $contact->fc_id = 1;
+      }
+      $contact->fc_address = $request->address;
+      $contact->fc_telp1 = $request->telp1;
+      $contact->fc_telp2 = $request->telp2;
+      $contact->fc_email = $request->email1;
+      $contact->fc_email2 = $request->email2;
+      $contact->save();
+      return redirect('page-editor/contacts')->with('success','You have successfully updated contact information');
     }
 }
