@@ -16,23 +16,23 @@
 
 					<div class="form-group">
 						<label for="exampleInputPassword1">Company Address</label>
-						<input type="text" class="form-control" name="nama" placeholder="Insert company address" required>
+						<textarea name="address" rows="3" cols="80" class="form-control"id="address" placeholder="Insert company address"></textarea>
 					</div>
           <div class="form-group">
                 <label for="media">Company Telephone number #1</label>
-                <input type="text" class="form-control" name="media" placeholder="Insert company phone number" required>
+                <input type="text" class="form-control" name="telp1" placeholder="Insert company phone number" required>
           </div>
           <div class="form-group">
-                <label for="media">Company Telephone number #2</label>
-                <input type="text" class="form-control" placeholder="Insert company phone number"name="media" >
+                <label for="media">Company Telephone number #2</label><a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no alternative phone number">  <i class="fa fa-info-circle"></i></a>
+                <input type="text" class="form-control" placeholder="Insert company phone number"name="telp2" >
           </div>
           <div class="form-group">
                 <label for="media">Company Email #1</label>
-                <input type="email" class="form-control" placeholder="Insert company email"name="media" required >
+                <input type="email" class="form-control" placeholder="Insert company email"name="email1" required >
           </div>
           <div class="form-group">
-                <label for="media">Company Email #2</label>
-                <input type="email" class="form-control" placeholder="Insert company email" name="media">
+                <label for="media">Company Email #2</label><a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no alternative email address">  <i class="fa fa-info-circle"></i></a>
+                <input type="email" class="form-control" placeholder="Insert company email" name="email2">
           </div>
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				</div><!-- /.box-body -->
@@ -50,7 +50,7 @@
     $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
       // instance, using default configuration.      //bootstrap WYSIHTML5 - text editor
-      $(".textarea").wysihtml5();
+      $("#address").wysihtml5({toolbar: false});
     });
   </script>
 
