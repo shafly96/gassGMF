@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Homepage;
+use App\Contacts;
+use App\Customer;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -54,20 +56,55 @@ class pagesController extends Controller
     public function showcustomer(){
       $data['active'] = "customer";
       $data['active2'] = "tabel";
+      $data['customers'] = Customer::get();
       return view('admin.pages.editor.tabelcustomer',$data);
     }
     public function addcustomer(){
       $data['active'] = "customer";
       $data['active2'] = "form";
       return view('admin.pages.editor.formcustomer',$data);
+    }
+    public function deletecustomer($id){
+      $deleted = Customer::find($id);
+      $deleted->delete();
+      $thumbpath = public_path("images\\logo-cust\\");
+      File::delete($thumbpath.$deleted->customer_filename);
+      return redirect('page-editor/customer-list')->with('success','You have successfully deleted a customer data');
 
+    }
+    public function addcust(Request $request){
+      $customer = new Customer;
+      $customer->customer_name = $request->name;
+      $file = $request->file('media');
+      $customer->customer_filename = $request->name.'.'.$file->getClientOriginalExtension();
+
+      $destinationPath = public_path('images/logo-cust');
+      $img = Image::make($file->getRealPath());
+      $img->resize(200, 125, function ($constraint) {
+          $constraint->aspectRatio();
+      })->save($destinationPath.'\\'.$customer->customer_filename);
+      $customer->save();
+      return redirect('page-editor/customer-add')->with('success','You have successfully inserted a customer data');
     }
     public function contacts(){
       $data['active'] = "contact";
       $data['active2'] = "";
+      $data['contacts']= Contacts::find(1);
       return view('admin.pages.editor.contactsform',$data);
     }
     public function contactsed(Request $request){
-      
+      $contact= Contacts::find(1);
+      if(null == $contact)
+      {
+        $contact = new Contacts;
+        $contact->fc_id = 1;
+      }
+      $contact->fc_address = $request->address;
+      $contact->fc_telp1 = $request->telp1;
+      $contact->fc_telp2 = $request->telp2;
+      $contact->fc_email = $request->email1;
+      $contact->fc_email2 = $request->email2;
+      $contact->save();
+      return redirect('page-editor/contacts')->with('success','You have successfully updated contact information');
     }
 }
