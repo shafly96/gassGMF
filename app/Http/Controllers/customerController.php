@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Homepage;
+use DB;
 
 class customerController extends Controller
 {
 
     public function home(){
-    	return view('customer/pages/welcome');
+        $data['homepage'] = Homepage::get();
+    	return view('customer/pages/welcome', $data);
     }
 
     public function aboutGMF(){
