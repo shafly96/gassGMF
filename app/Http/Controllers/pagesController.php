@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Homepage;
 use App\Contacts;
 use App\Customer;
+use App\About;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -109,5 +110,139 @@ class pagesController extends Controller
       $contact->fc_email2 = $request->email2;
       $contact->save();
       return redirect('page-editor/contacts')->with('success','You have successfully updated contact information');
+    }
+
+    public function showaboutgmf(){
+      $data['active'] = "about";
+      $data['active2'] = "gmf";
+      $data['about'] = About::find(1);
+      if(isset($data['about'])){
+      $data['about']->about_gmf_text = str_replace("\r",'', $data['about']->about_gmf_text);
+      $data['about']->about_gmf_text = str_replace("\n",'', $data['about']->about_gmf_text);
+      $data['about']->about_gmf_text = str_replace("\r\n",'', $data['about']->about_gmf_text);
+      }
+      return view('admin.pages.editor.form-aboutgmf',$data);
+
+    }
+    public function aboutgmf(Request $request){
+      $about = About::find(1);
+      if(null == $about){
+        $about = new About;
+        $about->about_id = 1;
+      }
+      $about->about_gmf_text = $request->aboutgmf;
+      if(null !==$request->file('media')){
+        $file = $request->file('media');
+        $about->about_gmf_gambar = 'about-gmf.'.$file->getClientOriginalExtension();
+        $destinationPath = public_path('images/about/gmf');
+        $file->move($destinationPath, $about->about_gmf_gambar);
+      }
+      $about->save();
+      return redirect('page-editor/aboutgmf')->with('success','You have successfully updated about gmf page');
+    }
+    public function showaboutgass(){
+      $data['active'] = "about";
+      $data['active2'] = "gass";
+      $data['about'] = About::find(1);
+      if(isset($data['about'])){
+      $data['about']->about_gass_text = str_replace("\r",'', $data['about']->about_gass_text);
+      $data['about']->about_gass_text = str_replace("\n",'', $data['about']->about_gass_text);
+      $data['about']->about_gass_text = str_replace("\r\n",'', $data['about']->about_gass_text);
+      }
+      return view('admin.pages.editor.form-aboutgass',$data);
+
+    }
+    public function aboutgass(Request $request){
+      $about = About::find(1);
+      if(null == $about){
+        $about = new About;
+        $about->about_id = 1;
+      }
+      $about->about_gass_text = $request->aboutgass;
+      if(null !==$request->file('media')){
+        $file = $request->file('media');
+        $about->about_gass_gambar = 'about-gass.'.$file->getClientOriginalExtension();
+        $destinationPath = public_path('images/about/gass');
+        $file->move($destinationPath, $about->about_gass_gambar);
+      }
+      $about->save();
+      return redirect('page-editor/aboutgass')->with('success','You have successfully updated about gass page');
+    }
+
+    public function showaboutfac(){
+      $data['active'] = "about";
+      $data['active2'] = "facc";
+      $data['about'] = About::find(1);
+      if(isset($data['about'])){
+      $data['about']->about_facility_text = str_replace("\r",'', $data['about']->about_facility_text);
+      $data['about']->about_facility_text = str_replace("\n",'', $data['about']->about_facility_text);
+      $data['about']->about_facility_text = str_replace("\r\n",'', $data['about']->about_facility_text);
+      }
+      return view('admin.pages.editor.form-ourfacility',$data);
+
+    }
+    public function aboutfac(Request $request){
+      $about = About::find(1);
+      if(null == $about){
+        $about = new About;
+        $about->about_id = 1;
+      }
+      $about->about_facility_text = $request->ourfaci;
+      if(null !==$request->file('media')){
+        $file = $request->file('media');
+        $about->about_facility_gambar = 'about-gass.'.$file->getClientOriginalExtension();
+        $destinationPath = public_path('images/about/facility');
+        $file->move($destinationPath, $about->about_facility_gambar);
+      }
+      $about->save();
+      return redirect('page-editor/addourfacility')->with('success','You have successfully updated about our facility page');
+    }
+
+    public function showtestimony(){
+      $data['active'] = "about";
+      $data['active2'] = "test";
+      $data['about'] = About::find(1);
+      return view('admin.pages.editor.form-testimony',$data);
+
+    }
+    public function addtestimony(Request $request){
+      $about = About::find(1);
+      if(null == $about){
+        $about = new About;
+        $about->about_id = 1;
+      }
+      $about->about_testimony_t1 = $request->test1;
+      $about->about_testimony_t2 = $request->test2;
+      $about->about_testimony_t3 = $request->test3;
+
+      $about->about_testimony_n1 = $request->nama1;
+      $about->about_testimony_n2 = $request->nama2;
+      $about->about_testimony_n3 = $request->nama3;
+
+      $about->about_testimony_title1 = $request->jabatan1;
+      $about->about_testimony_title2 = $request->jabatan2;
+      $about->about_testimony_title3 = $request->jabatan3;
+
+
+      if(null !==$request->file('media1')){
+        $file = $request->file('media1');
+        $about->about_testimony_g1 = 'test1.'.$file->getClientOriginalExtension();
+        $destinationPath = public_path('images/about/testi');
+        $file->move($destinationPath,   $about->about_testimony_g1);
+      }
+      if(null !==$request->file('media2')){
+        $file = $request->file('media2');
+        $about->about_testimony_g2 = 'test2.'.$file->getClientOriginalExtension();
+        $destinationPath = public_path('images/about/testi');
+        $file->move($destinationPath,   $about->about_testimony_g2);
+      }
+      if(null !==$request->file('media3')){
+        $file = $request->file('media3');
+        $about->about_testimony_g3 = 'test3.'.$file->getClientOriginalExtension();
+        $destinationPath = public_path('images/about/testi');
+        $file->move($destinationPath,   $about->about_testimony_g3);
+      }
+      $about->save();
+      return redirect('page-editor/addtestimony')->with('success','You have successfully updated about our testimony page');
     }
 }
