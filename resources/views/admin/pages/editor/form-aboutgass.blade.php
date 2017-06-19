@@ -16,7 +16,7 @@
 				<i class="fa fa-cog"></i><h3 class="box-title">Edit Page : About GASS</h3>
 			</div><!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="post" action="{{url('/')}}/page-editor/aboutgass" enctype="multipart/form-data">
+			<form role="form" method="post" action="{{url('/')}}/page-editor/addaboutgass" enctype="multipart/form-data">
 				<div class="box-body">
           <div style="margin-bottom:10px;">
 						<a href="#"><div class="btn btn-info">
