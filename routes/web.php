@@ -68,6 +68,8 @@ Route::group(['prefix' => 'page-editor'],function () {
 Route::group(['prefix' => 'inbox'],function () {
   Route::get('/messages', 'inboxController@messages');
   Route::get('/showmessage/{id}', 'inboxController@showmessage');
+  Route::get('/deletemessage/{id}', 'inboxController@deletemessage');
+
   Route::get('/aftersales', 'inboxController@aftersales');
   Route::get('/showaftersale/{id}', 'inboxController@showaftersale');
 });

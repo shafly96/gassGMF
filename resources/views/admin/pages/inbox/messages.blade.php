@@ -40,10 +40,10 @@
 								<td>{{$counter}}</td>
 								<td>{{$message->message_email}}</td>
 								<td>{{$message->message_telephone}}</td>
-                <td>{{$message->timestamp}}</td>
+                <td>{{$message->message_timestamp}}</td>
 								<td>
 									<a href="{{url('/')}}/inbox/deletemessage/{{$message->message_id}}" class="btn btn-danger" id="delete">Delete</a>
-									<a href="#" class="btn btn-info" id="delete">View Message</a>
+									<a onclick="viewmessage({{$message}})" class="btn btn-info" id="delete">View Message</a>
 
 								</td>
 							</tr>
@@ -61,7 +61,27 @@
 
 <script type="text/javascript">
 	$('#example1').DataTable();
+  function viewmessage(message){
+    var c = message;
+    swal({
+            title: 'Message',
+            html: true,
+            text:  '<div class="form-group"><label>Sender`s Email</label><p>'+
+            c.message_email +
+            '</p><label>Sender`s Phone Number:</label><p>'+
+            c.message_telephone+
+            '</p><label>Message Content :</label><p>'+
+            c.message_comment+
+            '</p><label>Received at:</label><p>'+
+            c.message_timestamp+
+            '</p></div>',
+            showCloseButton: true,
+            confirmButtonText:
+              'Close'
+          });
+        //document.getElementById("wek").innerHTML("haoijiojha");
 
+  };
 </script>
 
 @stop

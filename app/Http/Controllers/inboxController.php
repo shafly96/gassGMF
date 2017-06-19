@@ -18,8 +18,13 @@ class inboxController extends Controller
     public function messages(){
         $data['active'] = "messages";
         $data['active2'] = "";
-        $data['messages'] = Messages::get();
+        $data['messages'] = Messages::orderBy('message_id','desc')->get();
         return view('admin.pages.inbox.messages',$data);
+    }
+    public function deletemessage($id){
+      $deleted = Messages::find($id);
+      $deleted->delete();
+      return Redirect('inbox/messages')->with('success','You have successfully deleted a message');
     }
     public function aftersales(){
       $data['active'] = "aftersales";

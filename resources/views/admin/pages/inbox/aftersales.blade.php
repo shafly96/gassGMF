@@ -21,9 +21,10 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Sender Email</th>
-							<th>Sender Phone No</th>
-							<th>Received At</th>
+							<th>Company Name</th>
+							<th>Serial</th>
+							<th>Product Type</th>
+              <th>Received At</th>
               <th>Action</th>
 						</tr>
 					</thead>
@@ -31,19 +32,20 @@
 						<div style="display:none">
 								{{$counter=0}}
 						</div>
-						@if(isset($messages))
-							@foreach($messages as $message)
+						@if(isset($aftersales))
+							@foreach($aftersales as $aftersale)
 							<div style="display:none">
 									{{$counter+=1}}
 							</div>
 							<tr>
 								<td>{{$counter}}</td>
-								<td>{{$message->message_email}}</td>
-								<td>{{$message->message_telephone}}</td>
-                <td>{{$message->timestamp}}</td>
+								<td>{{$aftersale->as_company_name}}</td>
+								<td>{{$aftersale->as_serial}}</td>
+                <td>{{$aftersale->as_product_type}}</td>
+                <td>{{$aftersale->as_timestamp}}</td>
 								<td>
 									<a href="{{url('/')}}/inbox/deletemessage/{{$message->message_id}}" class="btn btn-danger" id="delete">Delete</a>
-									<a href="#" class="btn btn-info" id="delete">View Message</a>
+									<a href="#" class="btn btn-info" id="delete">View Details</a>
 
 								</td>
 							</tr>
