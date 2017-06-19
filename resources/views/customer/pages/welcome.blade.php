@@ -158,48 +158,50 @@
 
                         <!-- Carousel items -->
                         <div class="carousel-inner">
-                            <div class="item active">
+
+                            <?php 
+
+                                $i=0;
+                                $j=0;
+                                $k=intdiv(count($customer),4);
+                                $l=count($customer)-$k*4;
+                                $m=0;
+                                while($i<$k){
+                                $j++;
+                            ?>
+                            <div class="item <?php if($j==1) echo 'active'; ?>">
                                 <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m]->customer_filename}}" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+1]->customer_filename}}" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+2]->customer_filename}}" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+3]->customer_filename}}" alt="Image" class="img-responsive"></a>
                                     </div>
                                 </div>
                                 <!--/row-->
                             </div>
-                            <!--/item-->
+                            <?php 
+                                $m+=4;
+                                $i++;
+                                } 
+                            ?>
+                            
                             <div class="item">
                                 <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{ isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                </div>
-                                <!--/row-->
-                            </div>
-                            <!--/item-->
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="http://placehold.it/350x250" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
                                     </div>
                                 </div>
                                 <!--/row-->
                             </div>
-                            <!--/item-->
+
                         </div>
                         <!--/carousel-inner-->
                     </div>

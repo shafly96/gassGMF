@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Homepage;
+use App\Customer;
 use DB;
 
 class customerController extends Controller
@@ -11,6 +12,7 @@ class customerController extends Controller
 
     public function home(){
         $data['homepage'] = Homepage::get();
+        $data['customer'] = Customer::get();
     	return view('customer/pages/welcome', $data);
     }
 
