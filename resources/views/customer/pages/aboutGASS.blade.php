@@ -11,7 +11,6 @@ Aircraft Support Services
 @section('content')
 <div class="col-md-12 rata">
 	<img src="{{url('')}}/image/gass.jpg" style="width: 100%; height:auto " class="img-responsive">
-	
 </div>
 <div class="col-md-12 rata">
 	<p class="paragraf">

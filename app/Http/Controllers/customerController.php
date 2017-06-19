@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Homepage;
 use App\Customer;
+use App\Berita;
 use DB;
 
 class customerController extends Controller
@@ -13,6 +14,7 @@ class customerController extends Controller
     public function home(){
         $data['homepage'] = Homepage::get();
         $data['customer'] = Customer::get();
+        $data['latest_news'] = Berita::orderby('berita_date', 'desc')->take(2)->get();
     	return view('customer/pages/welcome', $data);
     }
 
@@ -33,7 +35,8 @@ class customerController extends Controller
     }
 
     public function news(){
-    	return view('customer/pages/news');
+        $data['news'] = Berita::paginate(5);
+    	return view('customer/pages/news', $data);
     }
 
 }

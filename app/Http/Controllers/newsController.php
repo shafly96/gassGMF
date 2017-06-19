@@ -11,6 +11,11 @@ use File;
 use Image;
 class newsController extends Controller
 {
+  public function showDetailNews($id){
+    $data['news'] = Berita::find($id);
+    return view('customer/pages/newsChild', $data);
+  }
+
   public function showform(){
     $data['active'] = "news";
     $data['active2'] = "form";

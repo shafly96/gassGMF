@@ -8,12 +8,12 @@
         <div class="logo">
             <strong style="font-family:extrabold">GMF </strong>Aircraft Support Services
             <div class="topnav" id="myTopnav">
-                <a href="{{url('')}}">Home</a>
-                <a href="{{url('')}}">About</a>
-                <a href="{{url('')}}">After Sales & Parts Service</a>
-                <a href="{{url('')}}/products">Products</a>
-                <a href="{{url('')}}/news">News</a>
-                <a href="{{url('')}}">Contact</a>
+                <a href="<?php echo e(url('')); ?>">Home</a>
+                <a href="<?php echo e(url('')); ?>">About</a>
+                <a href="<?php echo e(url('')); ?>">After Sales & Parts Service</a>
+                <a href="<?php echo e(url('')); ?>/products">Products</a>
+                <a href="<?php echo e(url('')); ?>/news">News</a>
+                <a href="<?php echo e(url('')); ?>">Contact</a>
             </div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>

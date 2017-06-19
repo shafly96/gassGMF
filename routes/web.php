@@ -11,17 +11,16 @@
 |
 */
 
-Route::group(['prefix' => 'customer'],function () {
-  Route::get('/', 'customerController@home');
-  Route::get('/aboutGMF', 'customerController@aboutGMF');
-  Route::get('/aboutGASS', 'customerController@aboutGASS');
-  Route::get('/testimoni', 'customerController@testimoni');
-  Route::get('/product', 'customerController@product');
-  Route::get('/news', 'customerController@news');
-});
+Route::get('/', 'customerController@home');
+Route::get('/aboutGMF', 'customerController@aboutGMF');
+Route::get('/aboutGASS', 'customerController@aboutGASS');
+Route::get('/testimoni', 'customerController@testimoni');
+Route::get('/product', 'customerController@product');
 
 
 Route::group(['prefix' => 'products'],function () {
+  Route::get('/', 'customerController@product');
+  Route::get('/type/{id}', 'productController@type');
   Route::get('/form', 'productController@showform');
   Route::post('/form','productController@addproduct');
   Route::get('/tabel', 'productController@showtable');
@@ -29,6 +28,8 @@ Route::group(['prefix' => 'products'],function () {
 
 });
 Route::group(['prefix' => 'news'],function () {
+  Route::get('/', 'customerController@news');
+  Route::get('/detail/{id}', 'newsController@showDetailNews');
   Route::get('/form', 'newsController@showform');
   Route::post('/form','newsController@addnews');
   Route::get('/tabel', 'newsController@showtable');

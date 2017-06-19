@@ -13,6 +13,17 @@ use Image;
 
 class productController extends Controller
 {
+    public function type($id){
+
+      $data['product'] = DB::table('product')
+                          ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
+                          ->where('product.product_tipe', '=', $id)
+                          ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
+                          ->paginate(9);
+      
+      return view('customer.pages.productType', $data);
+    }
+
     public function showform(){
       $data['active'] = "products";
       $data['active2'] = "form";
