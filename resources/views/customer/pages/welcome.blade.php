@@ -93,6 +93,7 @@
             <div class="col-md-12">
                 <p class="judul-div a"><strong>LATEST</strong> NEWS</p>
                 <div class="col-md-6 berita-besar">
+                    @isset($latest_news[0])
                     <img src="{{url('')}}/images/news/{{$latest_news[0]->berita_filename}}" width="400px" height="250px">
                     <div class="caption">
                         <p class="judul-berita">{{$latest_news[0]->berita_title}}</p>
@@ -109,8 +110,10 @@
                         </p>
                         <p class="paragraf"><a href="{{url('')}}/news/detail/{{$latest_news[0]->berita_id}}">Read more ..</a></p>
                     </div>
+                    @endisset
                 </div>
                 <div class="col-md-6 berita-besar">
+                    @isset($latest_news[1])
                     <img src="{{url('')}}/images/news/{{$latest_news[1]->berita_filename}}" width="400px" height="250px">
                     <div class="caption">
                         <p class="judul-berita">{{$latest_news[1]->berita_title}}</p>
@@ -127,6 +130,7 @@
                         </p>
                         <p class="paragraf"><a href="{{url('')}}/news/detail/{{$latest_news[1]->berita_id}}">Read more ..</a></p>
                     </div>
+                    @endisset
                 </div>
             </div>
         </div>
