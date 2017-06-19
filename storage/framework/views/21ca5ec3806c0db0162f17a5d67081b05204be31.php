@@ -16,8 +16,8 @@
     <div class="div1">
         <div class="col-md-4"></div>
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            <p class="slogan"><?php echo e($homepage[0]->homepage_slogan); ?></p>
-            <p class="slogan-text"><?php echo e($homepage[0]->homepage_slogan_subtext); ?></p>
+            <p class="slogan"><?php if(isset($homepage[0])): ?> <?php echo e($homepage[0]->homepage_slogan); ?> <?php endif; ?></p>
+            <p class="slogan-text"><?php if(isset($homepage[0])): ?> <?php echo e($homepage[0]->homepage_slogan_subtext); ?> <?php endif; ?></p>
         </div>
     </div>
 

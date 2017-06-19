@@ -16,8 +16,8 @@
     <div class="div1">
         <div class="col-md-4"></div>
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            <p class="slogan">{{$homepage[0]->homepage_slogan}}</p>
-            <p class="slogan-text">{{$homepage[0]->homepage_slogan_subtext}}</p>
+            <p class="slogan">@isset($homepage[0]) {{$homepage[0]->homepage_slogan}} @endisset</p>
+            <p class="slogan-text">@isset($homepage[0]) {{$homepage[0]->homepage_slogan_subtext}} @endisset</p>
         </div>
     </div>
 
