@@ -8,9 +8,9 @@
     @include('customer/master/nav')
 
     <!-- background -->
-
+    @isset($homepage[0])
     <div class="foto"><img class="background" src="{{url('')}}/images/homepage/{{$homepage[0]->homepage_gambar}}"></div>
-
+    @endisset
     <!-- div selanjutnya -->
 
     <div class="div1">
@@ -143,6 +143,7 @@
         <div class="col-md-8 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-12">
                 <p class="judul-div kanan center"><strong>OUR</strong> CUSTOMERS</p>
+                @isset($customer)
                 <div class="customer">
                     <div id="myCarousel" class="carousel slide">
 
@@ -197,6 +198,7 @@
                     </div>
                     <!--/myCarousel-->
                 </div>
+                @endisset
             </div>
         </div>
     </div>
