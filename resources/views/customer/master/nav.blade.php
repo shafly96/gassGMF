@@ -13,7 +13,7 @@
                 <a href="{{url('')}}">After Sales & Parts Service</a>
                 <a href="{{url('')}}/products">Products</a>
                 <a href="{{url('')}}/news">News</a>
-                <a href="{{url('')}}">Contact</a>
+                <a href="{{url('')}}/contact">Contact</a>
             </div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>

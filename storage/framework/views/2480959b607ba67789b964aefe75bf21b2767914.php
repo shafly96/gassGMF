@@ -13,7 +13,7 @@
                 <a href="<?php echo e(url('')); ?>">After Sales & Parts Service</a>
                 <a href="<?php echo e(url('')); ?>/products">Products</a>
                 <a href="<?php echo e(url('')); ?>/news">News</a>
-                <a href="<?php echo e(url('')); ?>">Contact</a>
+                <a href="<?php echo e(url('')); ?>/contact">Contact</a>
             </div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>

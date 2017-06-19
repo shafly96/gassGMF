@@ -18,8 +18,13 @@ class customerController extends Controller
     	return view('customer/pages/welcome', $data);
     }
 
+    
     public function aboutGMF(){
     	return view('customer/pages/aboutGMF');
+    }
+
+    public function contact(){
+        return view('customer/pages/contact');
     }
 
     public function aboutGASS(){

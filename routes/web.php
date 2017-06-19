@@ -15,6 +15,7 @@ Route::get('/', 'customerController@home');
 Route::get('/aboutGMF', 'customerController@aboutGMF');
 Route::get('/aboutGASS', 'customerController@aboutGASS');
 Route::get('/testimoni', 'customerController@testimoni');
+Route::get('/contact', 'customerController@contact');
 Route::get('/product', 'customerController@product');
 
 
