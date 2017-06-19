@@ -15,7 +15,7 @@
 			</div><!-- /.box-header -->
 			<div class="box-body">
 				<div style="display:none">
-						{{$counter=0}}
+					<?php $counter=1; ?>
 				</div>
 				<table id="example1" class="table table-bordered table-striped dt-responsive nowrap">
 					<thead>
@@ -27,13 +27,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<div style="display:none">
-									{{$counter+=1}}
-						</div>
 						@if(isset($products))
 						@foreach($products as $product)
 						<tr>
-							<td>{{$counter}}</td>
+							<td>{{$counter++}}</td>
 							<td>{{$product->product_name}}</td>
 							<td>@if($product->product_tipe==1)
 										Assembly and Fabrication

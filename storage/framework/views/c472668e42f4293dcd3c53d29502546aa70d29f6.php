@@ -1,13 +1,11 @@
-@extends('customer.master.master')
-
-@section('judul1')
+<?php $__env->startSection('judul1'); ?>
 Products
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('judul2')
-@stop
+<?php $__env->startSection('judul2'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="col-md-12 rata">
 	<select style="padding: 6px 15px" onchange="showHint(this.value)">
 		<option>Tipe Produk</option>
@@ -31,9 +29,11 @@ Products
 					document.getElementById("txtHint").innerHTML = this.responseText;
 				}
 			};
-			xmlhttp.open("GET", "{{url('')}}/products/type/" + str, true);
+			xmlhttp.open("GET", "<?php echo e(url('')); ?>/products/type/" + str, true);
 			xmlhttp.send();
 		}
 	}
 </script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.master.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

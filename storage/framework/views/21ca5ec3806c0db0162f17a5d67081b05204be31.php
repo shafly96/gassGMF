@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-@include('customer/master/head')
+<?php echo $__env->make('customer/master/head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <body>
 
     <!-- nav -->
 
-    @include('customer/master/nav')
+    <?php echo $__env->make('customer/master/nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <!-- background -->
 
-    <div class="foto"><img class="background" src="{{url('')}}/images/homepage/{{$homepage[0]->homepage_gambar}}"></div>
+    <div class="foto"><img class="background" src="<?php echo e(url('')); ?>/images/homepage/<?php echo e($homepage[0]->homepage_gambar); ?>"></div>
 
     <!-- div selanjutnya -->
 
     <div class="div1">
         <div class="col-md-4"></div>
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            <p class="slogan">{{$homepage[0]->homepage_slogan}}</p>
-            <p class="slogan-text">{{$homepage[0]->homepage_slogan_subtext}}</p>
+            <p class="slogan"><?php echo e($homepage[0]->homepage_slogan); ?></p>
+            <p class="slogan-text"><?php echo e($homepage[0]->homepage_slogan_subtext); ?></p>
         </div>
     </div>
 
@@ -33,23 +33,23 @@
             <div class="col-md-12 center">
                 <div class="col-md-1"></div>
                 <div class="col-md-2 icon-welcome">
-                    <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
                     <p class="font-welcome">Quality</p>
                 </div>
                 <div class="col-md-2 icon-welcome">
-                    <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
                     <p class="font-welcome">Quality</p>
                 </div>
                 <div class="col-md-2 icon-welcome">
-                    <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
                     <p class="font-welcome">Quality</p>
                 </div>
                 <div class="col-md-2 icon-welcome">
-                    <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
                     <p class="font-welcome">Quality</p>
                 </div>
                 <div class="col-md-2 icon-welcome">
-                    <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
                     <p class="font-welcome">Quality</p>
                 </div>
             </div>
@@ -62,7 +62,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-6">
-                <img src="{{url('')}}/image/truck.png" width="100%">
+                <img src="<?php echo e(url('')); ?>/image/truck.png" width="100%">
             </div>
             <div class="col-md-6">
                 <p class="judul-div"><strong>OUR</strong> PRODUCTS</p>
@@ -93,10 +93,10 @@
             <div class="col-md-12">
                 <p class="judul-div a"><strong>LATEST</strong> NEWS</p>
                 <div class="col-md-6 berita-besar">
-                    <img src="{{url('')}}/images/news/{{$latest_news[0]->berita_filename}}" width="400px" height="250px">
+                    <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[0]->berita_filename); ?>" width="400px" height="250px">
                     <div class="caption">
-                        <p class="judul-berita">{{$latest_news[0]->berita_title}}</p>
-                        <p class="tanggal">{{$latest_news[0]->berita_date}}</p>
+                        <p class="judul-berita"><?php echo e($latest_news[0]->berita_title); ?></p>
+                        <p class="tanggal"><?php echo e($latest_news[0]->berita_date); ?></p>
                         <p class="paragraf">
                             <?php 
                                 if (strlen($latest_news[0]->berita_text) > 170) {
@@ -107,14 +107,14 @@
                                 echo $trimstring;
                             ?>
                         </p>
-                        <p class="paragraf"><a href="{{url('')}}/news/detail/{{$latest_news[0]->berita_id}}">Read more ..</a></p>
+                        <p class="paragraf"><a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($latest_news[0]->berita_id); ?>">Read more ..</a></p>
                     </div>
                 </div>
                 <div class="col-md-6 berita-besar">
-                    <img src="{{url('')}}/images/news/{{$latest_news[1]->berita_filename}}" width="400px" height="250px">
+                    <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[1]->berita_filename); ?>" width="400px" height="250px">
                     <div class="caption">
-                        <p class="judul-berita">{{$latest_news[1]->berita_title}}</p>
-                        <p class="tanggal">{{$latest_news[1]->berita_date}}</p>
+                        <p class="judul-berita"><?php echo e($latest_news[1]->berita_title); ?></p>
+                        <p class="tanggal"><?php echo e($latest_news[1]->berita_date); ?></p>
                         <p class="paragraf">
                             <?php 
                                 if (strlen($latest_news[1]->berita_text) > 170) {
@@ -125,7 +125,7 @@
                                 echo $trimstring;
                             ?>
                         </p>
-                        <p class="paragraf"><a href="{{url('')}}/news/detail/{{$latest_news[1]->berita_id}}">Read more ..</a></p>
+                        <p class="paragraf"><a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($latest_news[1]->berita_id); ?>">Read more ..</a></p>
                     </div>
                 </div>
             </div>
@@ -157,13 +157,13 @@
                             ?>
                             <div class="item <?php if($j==1) echo 'active'; ?>">
                                 <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+1]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+2]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+3]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
                                 </div>
                                 <!--/row-->
@@ -176,13 +176,13 @@
                             
                             <div class="item">
                                 <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{ isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
                                 </div>
                                 <!--/row-->
@@ -217,7 +217,7 @@
                     <p><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 5px;">gse@aero-asia.co.id</span></p>
                 </div>
                 <div class="col-md-4">
-                    <img src="{{url('')}}/image/logo.png" width="100%" class="judul-footer">
+                    <img src="<?php echo e(url('')); ?>/image/logo.png" width="100%" class="judul-footer">
                 </div>
             </div>
         </div>
