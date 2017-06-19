@@ -29,7 +29,7 @@ class inboxController extends Controller
     public function aftersales(){
       $data['active'] = "aftersales";
       $data['active2'] = "";
-      $data['aftersales'] = Aftersales::get();
+      $data['aftersales'] = Aftersales::orderBy('as_id','desc')->get();
       return view('admin.pages.inbox.aftersales',$data);
     }
 }
