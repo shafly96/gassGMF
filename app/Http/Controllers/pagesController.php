@@ -100,6 +100,9 @@ class pagesController extends Controller
         $contact->fc_id = 1;
       }
       $contact->fc_address = $request->address;
+      $contact->fc_address = str_replace("\r",'',   $contact->fc_address);
+      $contact->fc_address = str_replace("\n",'',   $contact->fc_address);
+      $contact->fc_address = str_replace("\r\n",'',   $contact->fc_address);
       $contact->fc_telp1 = $request->telp1;
       $contact->fc_telp2 = $request->telp2;
       $contact->fc_email = $request->email1;
