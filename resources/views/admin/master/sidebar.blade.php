@@ -68,27 +68,27 @@
         </ul>
       </li>
 
-      <li class="treeview <?php if($active=='jabatan') echo 'active' ?>">
+      <li class="treeview <?php if($active=='about') echo 'active' ?>">
         <a href="#">
           <i class="fa fa-list-ul"></i>
           <span>About</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php if($active2=='tabel') echo 'active' ?>"><a href="#"><i class="fa fa-circle-o"></i>Edit About GMF</a></li>
-          <li class="<?php if($active2=='form') echo 'active' ?>"><a href="#"><i class="fa fa-circle-o"></i>Edit About GASS</a></li>
-          <li class="<?php if($active2=='form') echo 'active' ?>"><a href="#"><i class="fa fa-circle-o"></i>Edit Our Facility</a></li>
-          <li class="<?php if($active2=='form') echo 'active' ?>"><a href="#"><i class="fa fa-circle-o"></i>Edit Testimony</a></li>
+          <li class="<?php if($active2=='gmf') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addaboutgmf"><i class="fa fa-circle-o"></i>Edit About GMF</a></li>
+          <li class="<?php if($active2=='gass') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addaboutgass"><i class="fa fa-circle-o"></i>Edit About GASS</a></li>
+          <li class="<?php if($active2=='facc') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addourfacility"><i class="fa fa-circle-o"></i>Edit Our Facility</a></li>
+          <li class="<?php if($active2=='test') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addtestimony"><i class="fa fa-circle-o"></i>Edit Testimony</a></li>
         </ul>
       </li>
       <li class="header">MESSAGES & AFTER SALES</li>
-      <li class="<?php if($active=='history') echo 'active' ?>">
-        <a href="#">
+      <li class="<?php if($active=='messages') echo 'active' ?>">
+        <a href="{{url('/')}}/inbox/messages">
           <i class="fa fa-envelope"></i> <span>View message list</span>
         </a>
       </li>
-      <li class="<?php if($active=='history') echo 'active' ?>">
-        <a href="#">
+      <li class="<?php if($active=='aftersales') echo 'active' ?>">
+        <a href="{{url('/')}}/inbox/aftersales">
           <i class="fa fa-exchange"></i> <span>View after sales list</span>
         </a>
       </li>

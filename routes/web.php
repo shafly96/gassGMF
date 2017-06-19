@@ -51,6 +51,26 @@ Route::group(['prefix' => 'page-editor'],function () {
   Route::get('/contacts', 'pagesController@contacts');
   Route::post('/contacts', 'pagesController@contactsed');
 
+  Route::get('/addaboutgmf','pagesController@showaboutgmf');
+  Route::post('/addaboutgmf','pagesController@aboutgmf');
+
+  Route::get('/addaboutgass','pagesController@showaboutgass');
+  Route::post('/addaboutgass','pagesController@aboutgass');
+
+  Route::get('/addourfacility','pagesController@showaboutfac');
+  Route::post('/addourfacility','pagesController@aboutfac');
+
+  Route::get('/addtestimony','pagesController@showtestimony');
+  Route::post('/addtestimony','pagesController@addtestimony');
 
 
+});
+
+Route::group(['prefix' => 'inbox'],function () {
+  Route::get('/messages', 'inboxController@messages');
+  Route::get('/showmessage/{id}', 'inboxController@showmessage');
+  Route::get('/deletemessage/{id}', 'inboxController@deletemessage');
+
+  Route::get('/aftersales', 'inboxController@aftersales');
+  Route::get('/showaftersale/{id}', 'inboxController@showaftersale');
 });
