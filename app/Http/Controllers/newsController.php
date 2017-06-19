@@ -24,6 +24,10 @@ class newsController extends Controller
   }
   public function showupdate($id){
     $data['update'] = Berita::find($id);
+    $data['update']->berita_text = str_replace("\r",'', $data['update']->berita_text);
+    $data['update']->berita_text = str_replace("\n",'', $data['update']->berita_text);
+    $data['update']->berita_text = str_replace("\r\n",'', $data['update']->berita_text);
+    //dd($data['update']->berita_text);
     $data['active'] = "news";
     $data['active2'] = "form";
     return view('admin.pages.news.form',$data);

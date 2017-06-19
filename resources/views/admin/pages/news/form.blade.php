@@ -50,12 +50,16 @@
 	@if(isset($update))
 	<script>
 		$(document).ready(function () {
+			console.log('{{$update->berita_text}}');
+
 			$("#textarea").wysihtml5().html('{{$update->berita_text}}');
+
 		});
   </script>
 	@else
 	<script>
 		$(document).ready(function () {
+
 			$("#textarea").wysihtml5();
 		});
   </script>
