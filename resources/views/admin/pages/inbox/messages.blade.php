@@ -14,35 +14,36 @@
 	<div class="col-md-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<i class="fa fa-info-circle"></i><h3 class="box-title">News List</h3>
+				<i class="fa fa-info-circle"></i><h3 class="box-title">Messages List</h3>
 			</div><!-- /.box-header -->
 			<div class="box-body">
 				<table id="example1" class="table table-bordered table-striped dt-responsive nowrap">
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>News Title</th>
-							<th>Time Posted</th>
-							<th>Action</th>
+							<th>Sender Email</th>
+							<th>Sender Phone No</th>
+							<th>Received At</th>
+              <th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<div style="display:none">
 								{{$counter=0}}
 						</div>
-						@if(isset($news))
-							@foreach($news as $new)
+						@if(isset($messages))
+							@foreach($messages as $message)
 							<div style="display:none">
 									{{$counter+=1}}
 							</div>
 							<tr>
 								<td>{{$counter}}</td>
-								<td>{{$new->berita_title}}</td>
-								<td>{{$new->berita_date}}</td>
+								<td>{{$message->message_email}}</td>
+								<td>{{$message->message_telephone}}</td>
+                <td>{{$message->timestamp}}</td>
 								<td>
-									<a href="{{url('/')}}/news/update/{{$new->berita_id}}" class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
-									<a href="{{url('/')}}/news/delete/{{$new->berita_id}}" class="btn btn-danger" id="delete">Delete</a>
-									<a href="#" class="btn btn-info" id="delete">View post</a>
+									<a href="{{url('/')}}/inbox/deletemessage/{{$message->message_id}}" class="btn btn-danger" id="delete">Delete</a>
+									<a href="#" class="btn btn-info" id="delete">View Message</a>
 
 								</td>
 							</tr>

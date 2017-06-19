@@ -82,13 +82,13 @@
         </ul>
       </li>
       <li class="header">MESSAGES & AFTER SALES</li>
-      <li class="<?php if($active=='history') echo 'active' ?>">
-        <a href="#">
+      <li class="<?php if($active=='messages') echo 'active' ?>">
+        <a href="{{url('/')}}/inbox/messages">
           <i class="fa fa-envelope"></i> <span>View message list</span>
         </a>
       </li>
-      <li class="<?php if($active=='history') echo 'active' ?>">
-        <a href="#">
+      <li class="<?php if($active=='aftersales') echo 'active' ?>">
+        <a href="{{url('/')}}/inbox/aftersales">
           <i class="fa fa-exchange"></i> <span>View after sales list</span>
         </a>
       </li>
