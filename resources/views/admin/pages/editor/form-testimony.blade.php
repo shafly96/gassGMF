@@ -32,11 +32,17 @@
                   <label for="exampleInputPassword1">#1 Testimony</label>
                   <div class="form-group">
                         @if(isset($about->about_testimony_g1))
-                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g1}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="200" height="200">
+												<div class="text-center thumbnail" style="height:175px;">
+													<img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g1}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+
+												</div>
                         @else
-                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="200" height="200">
-                        @endif
-                      <br> <label for="media">Change Header Image</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
+												<div  class="text-center thumbnail"style="height:175px;">
+
+                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+												</div>
+											  @endif
+                      <br> <label for="media">Change Picture</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
                         <input type="file" class="form-control" name="media1" id="media1"                @if(empty($about->about_testimony_g1))required @endif>
                         <p id="p1"></p>
                   </div>
@@ -54,11 +60,17 @@
                   <label for="exampleInputPassword1">#2 Testimony</label>
                   <div class="form-group">
                         @if(isset($about->about_testimony_g2))
-                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g2}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="200" height="200">
-                        @else
-                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="200" height="200">
-                        @endif
-                      <br> <label for="media">Change Header Image</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
+												<div   class="text-center thumbnail"style="height:175px;">
+
+                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g2}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+													</div>
+											  @else
+												<div  class="text-center thumbnail"style="height:175px;">
+
+                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+												</div>
+											  @endif
+                      <br> <label for="media">Change Picture</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
                         <input type="file" class="form-control" name="media2" id="media2"                @if(empty($about->about_testimony_g2))required @endif >
                         <p id="p2"></p>
                   </div>
@@ -76,10 +88,16 @@
                   <label for="exampleInputPassword1">#3 Testimony</label>
                   <div class="form-group">
                         @if(isset($about->about_testimony_g3))
-                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g3}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="200" height="200">
-                        @else
-                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="200" height="200">
-                        @endif
+												<div  class="text-center thumbnail"style="height:175px; ">
+
+                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g3}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+													</div>
+											  @else
+												<div  class="text-center thumbnail"style="height:175px;">
+
+                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+												</div>
+											  @endif
                       <br> <label for="media">Change Picture</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
                         <input type="file" class="form-control" name="media3" id="media3"                @if(empty($about->about_testimony_g3))required @endif>
                         <p id="p3"></p>
