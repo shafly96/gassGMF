@@ -17,6 +17,8 @@ Route::get('/aboutGASS', 'customerController@aboutGASS');
 Route::get('/testimoni', 'customerController@testimoni');
 Route::get('/contact', 'customerController@contact');
 Route::get('/product', 'customerController@product');
+Route::get('/aftersales', 'customerController@aftersales');
+Route::post('/aftersales', 'customerController@addaftersales');
 
 
 Route::group(['prefix' => 'products'],function () {
