@@ -22,10 +22,6 @@ div{
     /*border-style: solid;*/
 }
 
-.review{
-    display: none;
-}
-
 .tab button:focus {
     outline: 0;
     border-bottom-color: #005F6B;

@@ -14,48 +14,43 @@ Product
 			<img src="{{url('')}}/images/product/{{$product->filename}}" style="width: 100%; height:auto " class="img-responsive">
 		</div>
 		<div class="col-md-12">
-			<div class="tab">
-				<button id="description">Description</button>
-				<button id="review">Review</button>
+			<p class="judul-berita" style="font-size: 20px">Description</p>
+			<p class="paragraf">{{$product->product_description}}</p>
+
+			<p class="judul-berita" style="margin-top: 50px; font-size: 20px">Review</p>
+			@isset($review)
+			<div class="isiReview">
+				@foreach($review as $data)
+				<div style="width: 100%; border-bottom: solid 2px; border-bottom-color: #EAEAEA" class="paragraf">
+					<p class="paragraf" style="font-size: 15px">{{$data->reviews_title}} (<strong style="font-size: 12px">{{$data->reviews_name}}</strong>)</p>
+					<p class="paragraf"  style="font-size: 15px">{{$data->reviews_description}}</p>
+				</div>
+				@endforeach
 			</div>
-			<div class="isiTab">
-				<div class="description">
-					<p class="paragraf">{{$product->product_description}}</p>
-				</div>
-				<div class="review">
-					<div class="isiReview">
-						@foreach($review as $data)
-							<div style="width: 100%; border-bottom: solid 2px; border-bottom-color: #EAEAEA" class="paragraf">
-							<p class="paragraf" style="font-size: 15px">{{$data->reviews_title}} (<strong style="font-size: 12px">{{$data->reviews_name}}</strong>)</p>
-							<p class="paragraf"  style="font-size: 15px">{{$data->reviews_description}}</p>
+			@endisset
+			<div class="kirimReview">
+				<form method="post" action="{{url('')}}/products/send">
+					<div class="form-group row">
+						<div class="col-xs-6">
+							<input class="form-control" name="nickname" type="text" placeholder="Nick Name">
 						</div>
-						@endforeach
+						<div class="col-xs-6">
+							<input class="form-control" name="title" type="text" placeholder="Title Review">
+						</div>
 					</div>
-					<div class="kirimReview">
-						<form method="post" action="{{url('')}}/products/send">
-							<div class="form-group row">
-								<div class="col-xs-6">
-									<input class="form-control" name="nickname" type="text" placeholder="Nick Name">
-								</div>
-								<div class="col-xs-6">
-									<input class="form-control" name="title" type="text" placeholder="Title Review">
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-xs-12">
-									<textarea class="form-control" name="review" placeholder="Review"></textarea>
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-xs-12">
-									<input type="hidden" name="id" value="{{$product->product_id}}">
-									{{ csrf_field() }}
-									<input type="submit" class="btn btn-primary" value="Send">
-								</div>
-							</div>
-						</form>
+					<div class="form-group row">
+						<div class="col-xs-12">
+							<textarea class="form-control" name="review" placeholder="Review"></textarea>
+						</div>
 					</div>
-				</div>
+					<div class="form-group row">
+						<div class="col-xs-12">
+							<input type="hidden" name="id" value="{{$product->product_id}}">
+							{{ csrf_field() }}
+							<input type="submit" class="btn btn-primary" value="Send">
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -67,14 +62,14 @@ Product
 	</div>
 </div>
 <script>
-	$("#description").click(function(){
-		$(".review").hide();
-		$(".description").show();
-	});
+	// $("#description").click(function(){
+	// 	$(".review").hide();
+	// 	$(".description").show();
+	// });
 
-	$("#review").click(function(){
-		$(".description").hide();
-		$(".review").show();
-	});
+	// $("#review").click(function(){
+	// 	$(".description").hide();
+	// 	$(".review").show();
+	// });
 </script>
 @stop

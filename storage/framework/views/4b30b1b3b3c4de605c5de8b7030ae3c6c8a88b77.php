@@ -12,49 +12,44 @@ Product
 			<img src="<?php echo e(url('')); ?>/images/product/<?php echo e($product->filename); ?>" style="width: 100%; height:auto " class="img-responsive">
 		</div>
 		<div class="col-md-12">
-			<div class="tab">
-				<button id="description">Description</button>
-				<button id="review">Review</button>
-			</div>
-			<div class="isiTab">
-				<div class="description">
-					<p class="paragraf"><?php echo e($product->product_description); ?></p>
-				</div>
-				<div class="review">
-					<div class="isiReview">
-						<?php $__currentLoopData = $review; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<div style="width: 100%; border-bottom: solid 2px; border-bottom-color: #EAEAEA" class="paragraf">
-							<p class="paragraf" style="font-size: 15px"><?php echo e($data->reviews_title); ?> (<strong style="font-size: 12px"><?php echo e($data->reviews_name); ?></strong>)</p>
-							<p class="paragraf"  style="font-size: 15px"><?php echo e($data->reviews_description); ?></p>
-						</div>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-					</div>
-					<div class="kirimReview">
-						<form method="post" action="<?php echo e(url('')); ?>/products/send">
-							<div class="form-group row">
-								<div class="col-xs-6">
-									<input class="form-control" name="nickname" type="text" placeholder="Nick Name">
-								</div>
-								<div class="col-xs-6">
-									<input class="form-control" name="title" type="text" placeholder="Title Review">
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-xs-12">
-									<textarea class="form-control" name="review" placeholder="Review"></textarea>
-								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-xs-12">
-									<input type="hidden" name="id" value="<?php echo e($product->product_id); ?>">
-									<?php echo e(csrf_field()); ?>
+			<p class="judul-berita" style="font-size: 20px">Description</p>
+			<p class="paragraf"><?php echo e($product->product_description); ?></p>
 
-									<input type="submit" class="btn btn-primary" value="Send">
-								</div>
-							</div>
-						</form>
-					</div>
+			<p class="judul-berita" style="margin-top: 50px; font-size: 20px">Review</p>
+			<?php if(isset($review)): ?>
+			<div class="isiReview">
+				<?php $__currentLoopData = $review; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+				<div style="width: 100%; border-bottom: solid 2px; border-bottom-color: #EAEAEA" class="paragraf">
+					<p class="paragraf" style="font-size: 15px"><?php echo e($data->reviews_title); ?> (<strong style="font-size: 12px"><?php echo e($data->reviews_name); ?></strong>)</p>
+					<p class="paragraf"  style="font-size: 15px"><?php echo e($data->reviews_description); ?></p>
 				</div>
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+			</div>
+			<?php endif; ?>
+			<div class="kirimReview">
+				<form method="post" action="<?php echo e(url('')); ?>/products/send">
+					<div class="form-group row">
+						<div class="col-xs-6">
+							<input class="form-control" name="nickname" type="text" placeholder="Nick Name">
+						</div>
+						<div class="col-xs-6">
+							<input class="form-control" name="title" type="text" placeholder="Title Review">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-12">
+							<textarea class="form-control" name="review" placeholder="Review"></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-12">
+							<input type="hidden" name="id" value="<?php echo e($product->product_id); ?>">
+							<?php echo e(csrf_field()); ?>
+
+							<input type="submit" class="btn btn-primary" value="Send">
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -66,15 +61,15 @@ Product
 	</div>
 </div>
 <script>
-	$("#description").click(function(){
-		$(".review").hide();
-		$(".description").show();
-	});
+	// $("#description").click(function(){
+	// 	$(".review").hide();
+	// 	$(".description").show();
+	// });
 
-	$("#review").click(function(){
-		$(".description").hide();
-		$(".review").show();
-	});
+	// $("#review").click(function(){
+	// 	$(".description").hide();
+	// 	$(".review").show();
+	// });
 </script>
 <?php $__env->stopSection(); ?>
 
