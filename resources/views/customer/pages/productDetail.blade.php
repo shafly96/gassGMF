@@ -18,7 +18,7 @@ Product
 			<p class="paragraf">{{$product->product_description}}</p>
 
 			<p class="judul-berita" style="margin-top: 50px; font-size: 20px">Review</p>
-			@isset($review)
+			@isset($review[0])
 			<div class="isiReview">
 				@foreach($review as $data)
 				<div style="width: 100%; border-bottom: solid 2px; border-bottom-color: #EAEAEA" class="paragraf">

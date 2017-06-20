@@ -16,7 +16,7 @@ Product
 			<p class="paragraf"><?php echo e($product->product_description); ?></p>
 
 			<p class="judul-berita" style="margin-top: 50px; font-size: 20px">Review</p>
-			<?php if(isset($review)): ?>
+			<?php if(isset($review[0])): ?>
 			<div class="isiReview">
 				<?php $__currentLoopData = $review; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 				<div style="width: 100%; border-bottom: solid 2px; border-bottom-color: #EAEAEA" class="paragraf">
