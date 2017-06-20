@@ -24,8 +24,15 @@ Route::group(['prefix' => 'products'],function () {
   Route::get('/type/{id}', 'productController@type');
   Route::get('/form', 'productController@showform');
   Route::post('/form','productController@addproduct');
+
+  Route::get('/update/{id}','productController@showupdate');
+  Route::post('/update/{id}','productController@addupdate');
+
   Route::get('/tabel', 'productController@showtable');
   Route::get('/delete/{id}', 'productController@delete');
+
+  Route::get('/deleteimp/{id}', 'productController@deletepic');
+
 
 });
 Route::group(['prefix' => 'news'],function () {

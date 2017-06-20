@@ -38,15 +38,16 @@ class productController extends Controller
 
     public function delete($id){
       $deleted = Product::find($id);
+      $arr = Product_Image::get()->where('product_id','=',$id);
       $thumbpath = public_path("images\producthumb\\");
       $realpath = public_path("images\product\\");
-      $arr = Product_Image::get()->where('product_id','=',$id);
 
-      for($i=1;$i<sizeof($arr);$i++){
-
-        File::delete($realpath.$arr[$i]->filename);
-
-        File::delete($thumbpath.$arr[$i]->filename);
+      // for($i=1;$i<sizeof($arr);$i++){
+      // }
+      foreach($arr as $key =>$value)
+      {
+          File::delete($realpath.$arr[$key]->filename);
+          File::delete($thumbpath.$arr[$key]->filename);
       }
 
       DB::table('product_image')->where('product_id','=',$id)->delete();
@@ -84,4 +85,66 @@ class productController extends Controller
 
       return redirect('products/tabel')->with('success','You have successfully inserted a new product data');
     }
+    public function showupdate($id){
+      $data['active'] = "products";
+      $data['active2'] = "form";
+      $data['update'] = Product::find($id);
+      $data['gambar'] = Product_Image::where('product_id','=',$id)->get();
+      if(isset($data['update'])){
+        $data['update']->product_specification = str_replace("\r",'', $data['update']->product_specification);
+        $data['update']->product_specification = str_replace("\n",'', $data['update']->product_specification);
+        $data['update']->product_specification = str_replace("\r\n",'', $data['update']->product_specification);
+
+        return view('admin.pages.products.formup',$data);
+      }
+      else {
+        return redirect('products/tabel');
+      }
+    }
+    public function addupdate($id,Request $request){
+      $update = Product::find($id);
+      $update->product_name = $request->nama;
+      $update->product_tipe = $request->tipe;
+      $update->product_description = $request->description;
+      $update->product_specification = $request->specification;
+      $update->save();
+      $file = $request->file('media');
+      $date= Carbon::now();
+      if( null !== $request->file('media')){
+
+          for($i=0; $i<sizeof($request->media); $i++)
+          {
+             $image = new Product_Image;
+             $image->product_id = $update->product_id;
+
+             $image->filename = hash('ripemd160',$file[$i]->getClientOriginalName().$date.$i).'.'.$file[$i]->getClientOriginalExtension();
+             $image->save();
+             $destinationPath = public_path('images/producthumb/');
+             $img = Image::make($file[$i]->getRealPath());
+             $img->resize(200, 125, function ($constraint) {
+                 $constraint->aspectRatio();
+             })->save($destinationPath.$image->filename);
+
+             $destinationPath = public_path('images/product/');
+             $file[$i]->move($destinationPath, $image->filename);
+          }
+
+        }
+        return redirect('products/update/'.$id)->with('success','You have successfully updated a product data');
+
+      }
+      public function deletepic($id){
+        $deleted = Product_Image::find($id);
+        $id = $deleted->product_id;
+        $thumbpath = public_path("images\producthumb\\");
+        $realpath = public_path("images\product\\");
+
+        File::delete($realpath.$deleted->filename);
+        File::delete($thumbpath.$deleted->filename);
+        $deleted->delete();
+
+
+        return redirect('products/update/'.$id)->with('success','You have successfully deleted a picture');
+
+      }
 }
