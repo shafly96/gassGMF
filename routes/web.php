@@ -12,15 +12,16 @@
 */
 
 Route::get('/', 'customerController@home');
-Route::get('/aboutGMF', 'customerController@aboutGMF');
-Route::get('/aboutGASS', 'customerController@aboutGASS');
+Route::get('/about', 'customerController@about');
 Route::get('/testimoni', 'customerController@testimoni');
 Route::get('/contact', 'customerController@contact');
+Route::post('/contact', 'customerController@sendMessage');
 Route::get('/product', 'customerController@product');
 
 
 Route::group(['prefix' => 'products'],function () {
   Route::get('/', 'customerController@product');
+  Route::get('/{id}', 'productController@productAjax');
   Route::get('/type/{id}', 'productController@type');
   Route::get('/detail/{id}', 'productController@detail');
   Route::get('/form', 'productController@showform');

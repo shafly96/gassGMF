@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Homepage;
 use App\Customer;
 use App\Berita;
+use App\Messages;
 use DB;
 
 class customerController extends Controller
@@ -19,16 +20,12 @@ class customerController extends Controller
     }
 
     
-    public function aboutGMF(){
-    	return view('customer/pages/aboutGMF');
+    public function about(){
+    	return view('customer/pages/about');
     }
 
     public function contact(){
         return view('customer/pages/contact');
-    }
-
-    public function aboutGASS(){
-    	return view('customer/pages/aboutGASS');
     }
 
     public function testimoni(){
@@ -42,6 +39,19 @@ class customerController extends Controller
     public function news(){
         $data['news'] = Berita::paginate(5);
     	return view('customer/pages/news', $data);
+    }
+
+    public function sendMessage(Request $request){
+        $message = new Messages;
+        $message->message_email = $request->email;
+        $message->message_telephone = $request->telp;
+        $message->message_comment = $request->message;
+
+        if($message->save()){
+            return redirect('/contact');
+        }else{
+            return redirect('/');
+        }
     }
 
 }

@@ -15,6 +15,11 @@ use Image;
 class productController extends Controller
 {
 
+    public function productAjax($id){
+      $data['active'] = $id;
+      return view('customer.pages.products', $data);
+    }
+
     public function sendReview(Request $request){
       $review = new review;
       $review->reviews_name = $request->nickname;
@@ -36,7 +41,7 @@ class productController extends Controller
                           ->where('product.product_tipe', '=', $id)
                           ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
                           ->get();
-                          
+
       return view('customer.pages.productType', $data);
     }
 

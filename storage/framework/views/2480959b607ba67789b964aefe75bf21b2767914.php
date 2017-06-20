@@ -9,7 +9,7 @@
             <strong style="font-family:extrabold">GMF </strong>Aircraft Support Services
             <div class="topnav" id="myTopnav">
                 <a href="<?php echo e(url('')); ?>">Home</a>
-                <a href="<?php echo e(url('')); ?>">About</a>
+                <a href="<?php echo e(url('')); ?>/about">About</a>
                 <a href="<?php echo e(url('')); ?>">After Sales & Parts Service</a>
                 <a href="<?php echo e(url('')); ?>/products">Products</a>
                 <a href="<?php echo e(url('')); ?>/news">News</a>

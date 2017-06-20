@@ -1,16 +1,19 @@
-@extends('customer.master.master')
+<?php $__env->startSection('judul1'); ?>
+About
+<?php $__env->stopSection(); ?>
 
-@section('judul1')
-GMF
-@stop
+<?php $__env->startSection('judul2'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('judul2')
-Aircraft Support Services
-@stop
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="col-md-12 rata">
-	<img src="{{url('')}}/image/gass.jpg" style="width: 100%; height:auto " class="img-responsive">
+	<div class="tab">
+			<button id="">GMF</button>
+			<button id="">GASS</button>
+	</div>
+</div>
+<div class="col-md-12 rata">
+	<img src="<?php echo e(url('')); ?>/image/gass.jpg" style="width: 100%; height:auto " class="img-responsive">
 </div>
 <div class="col-md-12 rata">
 	<p class="paragraf">
@@ -26,4 +29,6 @@ Aircraft Support Services
 
 	</p>
 </div>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.master.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

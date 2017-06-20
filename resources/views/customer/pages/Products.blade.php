@@ -11,10 +11,10 @@ Products
 <div class="col-md-12 rata">
 	<select style="padding: 6px 15px" onchange="showHint(this.value)">
 		<option>Tipe Produk</option>
-		<option value="2">Service</option>
-		<option value="3">Maintenance</option>
-		<option value="1">Assembly and Fabrication</option>
-		<option value="4">Rental</option>
+		<option value="2" <?php if(isset($active)){ if($active==2) echo 'selected';}?>>Service</option>
+		<option value="3" <?php if(isset($active)){ if($active==3) echo 'selected';}?>>Maintenance</option>
+		<option value="1" <?php if(isset($active)){ if($active==1) echo 'selected';}?>>Assembly and Fabrication</option>
+		<option value="4" <?php if(isset($active)){ if($active==4) echo 'selected';}?>>Rental</option>
 	</select>
 	<div class="div2 batas-bawah" id="txtHint" style="margin-top: 50px"></div>
 </div>
@@ -35,5 +35,9 @@ Products
 			xmlhttp.send();
 		}
 	}
+
+	@isset($active)
+		window.onload=showHint({{$active}});
+	@endisset
 </script>
 @stop

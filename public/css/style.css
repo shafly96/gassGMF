@@ -21,6 +21,13 @@
 div{
     /*border-style: solid;*/
 }
+.tab{
+    margin-bottom: 50px;
+}
+
+.gass{
+    display: none;
+}
 
 .tab button:focus {
     outline: 0;
