@@ -72,7 +72,7 @@
 
               <div class="col-md-4 col-xs-12">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="{{url('/')}}/images/aftersales/{{$gbr->filename}}">
+                    <a target="_blank"href="{{url('/')}}/images/aftersales/{{$gbr->filename}}"><img class="img-responsive" src="{{url('/')}}/images/aftersales/{{$gbr->filename}}"></a>
                 </div>
               </div>
               @endforeach

@@ -70,7 +70,7 @@
 
               <div class="col-md-4 col-xs-12">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>">
+                    <a target="_blank"href="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>"><img class="img-responsive" src="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>"></a>
                 </div>
               </div>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
