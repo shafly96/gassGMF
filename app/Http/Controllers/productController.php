@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product_Image;
 use App\Product;
+use App\review;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -13,15 +14,42 @@ use Image;
 
 class productController extends Controller
 {
+
+    public function sendReview(Request $request){
+      $review = new review;
+      $review->reviews_name = $request->nickname;
+      $review->reviews_title = $request->title;
+      $review->reviews_description = $request->review;
+      $review->reviews_product_id = $request->id;
+
+      if($review->save()){
+        return redirect('/products/detail/'.$request->id);
+      }else{
+        return redirect('/');
+      }
+    }
+
     public function type($id){
 
       $data['product'] = DB::table('product')
                           ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
                           ->where('product.product_tipe', '=', $id)
                           ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
-                          ->paginate(9);
+                          ->get();
       
       return view('customer.pages.productType', $data);
+    }
+
+    public function detail($id){
+      $data['product'] = DB::table('product')
+                          ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
+                          ->where('product.product_id', '=', $id)
+                          ->first();
+      $data['review'] = DB::table('reviews')
+                          ->where('reviews_product_id', '=', $id)
+                          ->get();
+      // dd($data['review']);
+      return view('customer.pages.productDetail', $data);
     }
 
     public function showform(){

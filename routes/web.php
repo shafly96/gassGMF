@@ -22,8 +22,10 @@ Route::get('/product', 'customerController@product');
 Route::group(['prefix' => 'products'],function () {
   Route::get('/', 'customerController@product');
   Route::get('/type/{id}', 'productController@type');
+  Route::get('/detail/{id}', 'productController@detail');
   Route::get('/form', 'productController@showform');
   Route::post('/form','productController@addproduct');
+  Route::post('/send','productController@sendReview');
   Route::get('/tabel', 'productController@showtable');
   Route::get('/delete/{id}', 'productController@delete');
 

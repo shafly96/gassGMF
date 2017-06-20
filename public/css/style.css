@@ -22,6 +22,41 @@ div{
     /*border-style: solid;*/
 }
 
+.review{
+    display: none;
+}
+
+.tab button:focus {
+    outline: 0;
+    border-bottom-color: #005F6B;
+}
+
+.tab button{
+    border-style: none;
+    background-color: white;
+    font-family: regular;
+    font-size: 18px;
+    color: #005F6B;
+    padding: 8px 15px;
+    border-bottom: solid;
+    border-bottom-color: transparent;
+}
+
+.tab button:hover{
+    border-bottom-color: #005F6B;
+}
+
+.description{
+    height: 200px;
+    overflow-y: auto;
+}
+
+.isiReview{
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 30px;
+}
+
 .outter-box{
     padding: 10px 10px;
     margin: 10px 10px;
