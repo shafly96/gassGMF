@@ -11,7 +11,7 @@ News
 	<?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		<div class="div2" style="margin-bottom: 50px">
 			<div class="col-md-5">
-				<img src="<?php echo e(url('')); ?>/images/news/<?php echo e($data->berita_filename); ?>" width="300px" height="150px">
+				<img src="<?php echo e(url('')); ?>/images/news/<?php echo e($data->berita_filename); ?>" class="img-responsive">
 			</div>
 			<div class="col-md-7">
 				<p class="judul-berita"><?php echo e($data->berita_title); ?></p>

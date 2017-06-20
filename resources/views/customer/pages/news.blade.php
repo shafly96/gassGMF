@@ -13,7 +13,7 @@ News
 	@foreach($news as $data)
 		<div class="div2" style="margin-bottom: 50px">
 			<div class="col-md-5">
-				<img src="{{url('')}}/images/news/{{$data->berita_filename}}" width="300px" height="150px">
+				<img src="{{url('')}}/images/news/{{$data->berita_filename}}" class="img-responsive">
 			</div>
 			<div class="col-md-7">
 				<p class="judul-berita">{{$data->berita_title}}</p>
