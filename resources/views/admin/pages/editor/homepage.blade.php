@@ -20,7 +20,7 @@
 			<form role="form" method="post" action="{{url('/')}}/page-editor/homepage" enctype="multipart/form-data">
 				<div class="box-body">
 					<div style="margin-left:35px;">
-						<a href="#"><div class="btn btn-info">
+						<a target="_blank" href="{{url('/')}}/"><div class="btn btn-info">
 							View In Page
 						</div></a>
 					</div>

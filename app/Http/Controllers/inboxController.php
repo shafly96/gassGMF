@@ -32,4 +32,13 @@ class inboxController extends Controller
       $data['aftersales'] = Aftersales::orderBy('as_id','desc')->get();
       return view('admin.pages.inbox.aftersales',$data);
     }
+
+    public function showaftersale($id){
+      $data['active'] = "aftersales";
+      $data['active2'] = "";
+      $data['aftersales'] = Aftersales::find($id);
+      $data['gambar'] = AftersalesImage::where('as_id','=',$id)->get();
+      // dd($data['gambar']);
+      return view('admin.pages.inbox.aftersale',$data);
+    }
 }

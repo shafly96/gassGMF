@@ -45,7 +45,7 @@
 							<td>
 								<a href="{{url('/')}}/products/update/{{$product->product_id}}" class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
 								<a href="{{url('/')}}/products/delete/{{$product->product_id}}" class="btn btn-danger" id="delete">Delete</a>
-								<a href="#" class="btn btn-info" id="view">View in Page</a>
+								<a target="_blank"href="{{url('/')}}/products/detail/{{$product->product_id}}" class="btn btn-info" id="view">View in Page</a>
 
 							</td>
 						</tr>

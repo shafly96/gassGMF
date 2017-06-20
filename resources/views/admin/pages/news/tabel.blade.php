@@ -42,7 +42,7 @@
 								<td>
 									<a href="{{url('/')}}/news/update/{{$new->berita_id}}" class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
 									<a href="{{url('/')}}/news/delete/{{$new->berita_id}}" class="btn btn-danger" id="delete">Delete</a>
-									<a href="#" class="btn btn-info" id="delete">View post</a>
+									<a target="_blank"href="{{url('/')}}/news/detail/{{$new->berita_id}}" class="btn btn-info" id="delete">View post</a>
 
 								</td>
 							</tr>

@@ -22,7 +22,7 @@
 						<tr>
 							<th>No</th>
 							<th>Company Name</th>
-							<th>Serial</th>
+							<th>Machine Serial No</th>
 							<th>Product Type</th>
               <th>Received At</th>
               <th>Action</th>
@@ -41,12 +41,20 @@
 								<td>{{$counter}}</td>
 								<td>{{$aftersale->as_company_name}}</td>
 								<td>{{$aftersale->as_serial}}</td>
-                <td>{{$aftersale->as_product_type}}</td>
+                <td>
+									@if($aftersale->as_product_type==1)
+											Assembly and Fabrication
+										@elseif($aftersale->as_product_type==2)
+											Service
+										@elseif($aftersale->as_product_type==3)
+											Maintenance
+										@else
+											Rental
+										@endif
+										</td>
                 <td>{{$aftersale->as_timestamp}}</td>
 								<td>
-									<a href="{{url('/')}}/inbox/deletemessage/{{$message->message_id}}" class="btn btn-danger" id="delete">Delete</a>
-									<a href="#" class="btn btn-info" id="delete">View Details</a>
-
+									<a href="{{url('/')}}/inbox/showaftersale/{{$aftersale->as_id}}" class="btn btn-info">View Details</a>
 								</td>
 							</tr>
 							@endforeach

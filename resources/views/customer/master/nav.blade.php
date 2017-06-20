@@ -10,7 +10,7 @@
             <div class="topnav" id="myTopnav">
                 <a href="{{url('')}}">Home</a>
                 <a href="{{url('')}}/about">About</a>
-                <a href="{{url('')}}">After Sales & Parts Service</a>
+                <a href="{{url('')}}/aftersales">After Sales & Parts Service</a>
                 <a href="{{url('')}}/products">Products</a>
                 <a href="{{url('')}}/news">News</a>
                 <a href="{{url('')}}/contact">Contact</a>

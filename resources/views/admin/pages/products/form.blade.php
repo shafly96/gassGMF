@@ -63,5 +63,16 @@
       $(".textarea").wysihtml5();
     });
   </script>
-
+	<script>
+			$('#media').bind('change', function(e) {
+			 var data = e.originalEvent.target.files[0];
+			 // and then ...
+			 console.log(data.size + "is my file's size");
+			 // or something more useful ...
+			 if(data.size > 2000000) {
+				 document.getElementById("p1").innerHTML= "<p style='color:red'>Please upload a file under 2MB</p>";
+				 $('#media').val('');
+			 }
+			});
+	</script>
 @stop

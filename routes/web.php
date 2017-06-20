@@ -17,6 +17,8 @@ Route::get('/testimoni', 'customerController@testimoni');
 Route::get('/contact', 'customerController@contact');
 Route::post('/contact', 'customerController@sendMessage');
 Route::get('/product', 'customerController@product');
+Route::get('/aftersales', 'customerController@aftersales');
+Route::post('/aftersales', 'customerController@addaftersales');
 
 
 Route::group(['prefix' => 'products'],function () {

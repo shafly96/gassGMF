@@ -8,7 +8,9 @@ use App\Customer;
 use App\Berita;
 use App\Messages;
 use DB;
-
+use App\Aftersales;
+use App\AftersalesImage;
+use Carbon\Carbon;
 class customerController extends Controller
 {
 
@@ -18,7 +20,6 @@ class customerController extends Controller
         $data['latest_news'] = Berita::orderby('berita_date', 'desc')->take(2)->get();
     	return view('customer/pages/welcome', $data);
     }
-
     
     public function about(){
     	return view('customer/pages/about');
@@ -52,6 +53,40 @@ class customerController extends Controller
         }else{
             return redirect('/');
         }
+    }
+
+    public function aftersales(){
+      return view('customer/pages/as_form');
+    }
+    
+    public function addaftersales(Request $request){
+        $as = new Aftersales;
+        $as->as_company_name = $request->company;
+        $as->as_contact_name = $request->contact;
+        $as->as_email = $request->email;
+        $as->as_serial = $request->serial;
+        $as->as_product_type = $request->tipe;
+        $as->as_out = $request->out;
+        $as->as_description = $request->description;
+        $as->as_timestamp = Carbon::now();
+        $as->save();
+
+        if(null!== $request->file('media')){
+          $file = $request->file('media');
+
+          for($i=0; $i<sizeof($request->media); $i++)
+          {
+            $image = new AftersalesImage;
+            $image->as_id = $as->as_id;
+            $image->filename = hash('md5',$request->contact.$i.$as->as_timestamp).'.'.$file[$i]->getClientOriginalExtension();
+            $image->save();
+            $destinationPath = public_path('images/aftersales/');
+            $file[$i]->move($destinationPath, $image->filename);
+
+
+          }
+        }
+        return Redirect('aftersales');
     }
 
 }

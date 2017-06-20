@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Auto +</title>
+    <title>GASS Admin Panel</title>
     @include('admin.master.head')
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
