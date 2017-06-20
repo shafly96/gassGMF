@@ -20,7 +20,7 @@ class productController extends Controller
                           ->where('product.product_tipe', '=', $id)
                           ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
                           ->paginate(9);
-      
+
       return view('customer.pages.productType', $data);
     }
 
@@ -42,10 +42,13 @@ class productController extends Controller
       $realpath = public_path("images\product\\");
       $arr = Product_Image::get()->where('product_id','=',$id);
 
-      for($i=0;$i<sizeof($arr);$i++){
+      for($i=1;$i<sizeof($arr);$i++){
+
         File::delete($realpath.$arr[$i]->filename);
+
         File::delete($thumbpath.$arr[$i]->filename);
       }
+
       DB::table('product_image')->where('product_id','=',$id)->delete();
       $deleted->delete();
       return redirect('products/tabel')->with('success','You have successfully deleted a post');
