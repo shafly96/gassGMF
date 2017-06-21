@@ -21,7 +21,7 @@
 
           <div class="col-md-12">
             <div style="margin-bottom:10px;">
-              <a href="#"><div class="btn btn-info">
+              <a target="_blank"href="{{url('/')}}/about"><div class="btn btn-info">
                 View In Page
               </div></a>
             </div>
