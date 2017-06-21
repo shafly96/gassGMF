@@ -42,7 +42,6 @@ class productController extends Controller
   }
 
   public function type($id){
-
     $data['product'] = DB::table('product')
     ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
     ->where('product.product_tipe', '=', $id)
@@ -111,8 +110,7 @@ class productController extends Controller
     $product->save();
     $file = $request->file('media');
 
-    for($i=0; $i<sizeof($request->media); $i++)
-    {
+    for($i=0; $i<sizeof($request->media); $i++){
      $image = new Product_Image;
      $image->product_id = $product->product_id;
      $image->filename = $request->nama.$i.'.'.$file[$i]->getClientOriginalExtension();
