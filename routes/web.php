@@ -20,6 +20,13 @@ Route::get('/product', 'customerController@product');
 Route::get('/aftersales', 'customerController@aftersales');
 Route::post('/aftersales', 'customerController@addaftersales');
 Route::get('/admin', 'userController@showlogin');
+Route::get('/adminhome', function(){
+  $data['active']="";
+  $data['active2']="";
+  if(Auth::check()==true)
+  return view('admin.pages.index',$data);
+  else return view('admin.pages.user.login');
+});
 
 
 Route::group(['prefix' => 'products'],function () {
@@ -89,7 +96,7 @@ Route::group(['prefix' => 'inbox'],function () {
 
 Route::group(['prefix' => 'user'],function () {
   Route::get('/logout', 'userController@logout');
-  Route::get('/login', 'userController@login');
+  Route::post('/login', 'userController@login');
   Route::get('/register', 'userController@showregister');
   Route::post('/register', 'userController@register');
 

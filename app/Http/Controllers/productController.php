@@ -11,9 +11,19 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use File;
 use Image;
+use Auth;
 
 class productController extends Controller
 {
+  public function checklogin(){
+    if(Auth::check()){
+      return;
+    }
+    else
+    {
+      return Redirect('/admin')->send();
+    }
+  }
 
   public function footer()
   {
@@ -69,11 +79,15 @@ class productController extends Controller
   }
 
   public function showform(){
+    $this->checklogin();
+
     $data['active'] = "products";
     $data['active2'] = "form";
     return view('admin.pages.products.form',$data);
   }
   public function showtable(){
+    $this->checklogin();
+
     $data['active'] = "products";
     $data['active2'] = "tabel";
     $data['products'] = Product::orderBy('product_tipe','desc')->get();
@@ -81,6 +95,8 @@ class productController extends Controller
   }
 
   public function delete($id){
+    $this->checklogin();
+
     $deleted = Product::find($id);
     $arr = Product_Image::get()->where('product_id','=',$id);
     $thumbpath = public_path("images\producthumb\\");
@@ -100,6 +116,8 @@ class productController extends Controller
   }
 
   public function addproduct(Request $request){
+    $this->checklogin();
+
     $data['active'] = "products";
     $data['active2'] = "form";
 
@@ -130,6 +148,8 @@ class productController extends Controller
    return redirect('products/tabel')->with('success','You have successfully inserted a new product data');
  }
  public function showupdate($id){
+   $this->checklogin();
+
   $data['active'] = "products";
   $data['active2'] = "form";
   $data['update'] = Product::find($id);
@@ -146,6 +166,8 @@ class productController extends Controller
   }
 }
 public function addupdate($id,Request $request){
+  $this->checklogin();
+
   $update = Product::find($id);
   $update->product_name = $request->nama;
   $update->product_tipe = $request->tipe;
@@ -178,6 +200,8 @@ public function addupdate($id,Request $request){
 
 }
 public function deletepic($id){
+  $this->checklogin();
+
   $deleted = Product_Image::find($id);
   $id = $deleted->product_id;
   $thumbpath = public_path("images\producthumb\\");

@@ -1,5 +1,4 @@
 @extends('admin.master.master')
-
 @section('content')
 @if (session('failed'))
     <div class="alert alert-error">

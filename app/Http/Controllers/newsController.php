@@ -9,9 +9,18 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use File;
 use Image;
+use Auth;
 class newsController extends Controller
 {
-
+  public function checklogin(){
+    if(Auth::check()){
+      return;
+    }
+    else
+    {
+      return Redirect('/admin')->send();
+    }
+  }
   public function footer()
   {
     $data['footer'] = DB::table('footer_and_contacts')->first();
@@ -28,17 +37,23 @@ class newsController extends Controller
   }
 
   public function showform(){
+    $this->checklogin();
+
     $data['active'] = "news";
     $data['active2'] = "form";
     return view('admin.pages.news.form',$data);
   }
   public function showtable(){
+    $this->checklogin();
+
     $data['active'] = "news";
     $data['active2'] = "tabel";
     $data['news'] = Berita::orderBy('berita_id', 'desc')->get();
     return view('admin.pages.news.tabel',$data);
   }
   public function showupdate($id){
+    $this->checklogin();
+
     $data['update'] = Berita::find($id);
     $data['update']->berita_text = str_replace("\r",'', $data['update']->berita_text);
     $data['update']->berita_text = str_replace("\n",'', $data['update']->berita_text);
@@ -49,6 +64,8 @@ class newsController extends Controller
     return view('admin.pages.news.form',$data);
   }
   public function test($id){
+    $this->checklogin();
+
     $data['active'] = "news";
     $data['active2'] = "tabel";
     $data['news'] = Berita::find($id);
@@ -56,6 +73,8 @@ class newsController extends Controller
   }
 
   public function delete($id){
+    $this->checklogin();
+
     $deleted = Berita::find($id);
     $thumbpath = public_path("images\\newsthumb\\");
     $realpath = public_path("images\\news\\");
@@ -65,6 +84,8 @@ class newsController extends Controller
     return redirect('news/tabel')->with('success','You have successfully deleted a post');
   }
   public function update($id,Request $request){
+    $this->checklogin();
+
     $updated = Berita::find($id);
     $updated->berita_title = $request->title;
     $updated->berita_text = $request->content;
@@ -95,6 +116,8 @@ class newsController extends Controller
   }
 
   public function addnews(Request $request){
+    $this->checklogin();
+
     $data['active'] = "news";
     $data['active'] = "tabel";
     $date = Carbon::now();
