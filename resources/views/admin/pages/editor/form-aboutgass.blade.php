@@ -19,7 +19,7 @@
 			<form role="form" method="post" action="{{url('/')}}/page-editor/addaboutgass" enctype="multipart/form-data">
 				<div class="box-body">
           <div style="margin-bottom:10px;">
-						<a href="#"><div class="btn btn-info">
+						<a target="_blank" href="{{url('/')}}/about"><div class="btn btn-info">
 							View In Page
 						</div></a>
 					</div>
