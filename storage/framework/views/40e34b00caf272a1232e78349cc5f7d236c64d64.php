@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Auto +</title>
+    <title>GASS Admin Panel</title>
     <?php echo $__env->make('admin.master.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">

@@ -10,12 +10,13 @@
                 </div>
                 <div class="col-md-4">
                     <p class="judul-footer">Contact Us</p>
-                    <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 5px;">GSE Office</span></p>
-                    <p style="margin-top: -16px;"><span class="" style="margin-left: 20px">Soekarno Hatta International Airport</span></p>
-                    <p style="margin-top: -16px;"><span class="" style="margin-left: 20px">Indonesi 19130</span></p>
-                    <p><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 5px;">+62 89 666 09 444 8</span></p>
-                    <p style="margin-top: -16px;"><span class="" style="margin-left: 20px">+62 89 666 09 444 8</span></p>
-                    <p><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 5px;">gse@aero-asia.co.id</span></p>
+                    <div class="tes">
+                        <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 10px;"><?php print $footer->fc_address; ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 10px"><p><?php echo e($footer->fc_telp1); ?></span></p></p>
+                        <p><span class=""><?php echo e($footer->fc_telp2); ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 10px;"><p><?php echo e($footer->fc_email); ?></p></span></p>
+                        <p><span class=""><?php echo e($footer->fc_email2); ?></span></p>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <img src="<?php echo e(url('')); ?>/image/logo.png" width="100%" class="judul-footer">

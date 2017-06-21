@@ -14,6 +14,12 @@ use Carbon\Carbon;
 class customerController extends Controller
 {
 
+    public function footer()
+    {
+        $footer = DB::table('footer_and_contacts')->first();
+        return $footer;
+    }
+
     public function home(){
         $data['homepage'] = Homepage::get();
         $data['customer'] = Customer::get();
@@ -22,7 +28,8 @@ class customerController extends Controller
     }
     
     public function about(){
-    	return view('customer/pages/about');
+        $data['footer'] = $this->footer();
+    	return view('customer/pages/about', $data);
     }
 
     public function contact(){

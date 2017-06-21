@@ -44,7 +44,7 @@
 							<td>
 								<a href="<?php echo e(url('/')); ?>/products/update/<?php echo e($product->product_id); ?>" class="btn btn-warning" id="edit" data-toggle="modal">Edit</a>
 								<a href="<?php echo e(url('/')); ?>/products/delete/<?php echo e($product->product_id); ?>" class="btn btn-danger" id="delete">Delete</a>
-								<a href="#" class="btn btn-info" id="view">View in Page</a>
+								<a target="_blank"href="<?php echo e(url('/')); ?>/products/detail/<?php echo e($product->product_id); ?>" class="btn btn-info" id="view">View in Page</a>
 
 							</td>
 						</tr>

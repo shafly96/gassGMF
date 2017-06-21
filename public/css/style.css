@@ -21,11 +21,24 @@
 div{
     /*border-style: solid;*/
 }
+
+.tes p{
+    margin-top: -10px;
+}
+
+.tes2{
+    padding-top: 20px;
+}
+
 .tab{
     margin-bottom: 50px;
 }
 
 .gass{
+    display: none;
+}
+
+.testimoni{
     display: none;
 }
 

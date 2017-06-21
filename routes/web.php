@@ -23,7 +23,7 @@ Route::post('/aftersales', 'customerController@addaftersales');
 
 Route::group(['prefix' => 'products'],function () {
   Route::get('/', 'customerController@product');
-  Route::get('/{id}', 'productController@productAjax');
+  Route::get('/ajax/{id}', 'productController@productAjax');
   Route::get('/type/{id}', 'productController@type');
   Route::get('/detail/{id}', 'productController@detail');
   Route::get('/form', 'productController@showform');

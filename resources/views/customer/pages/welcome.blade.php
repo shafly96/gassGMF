@@ -70,16 +70,16 @@
             </div>
             <div class="col-md-12 produk">
                 <div class="col-md-3 kotak">
-                    <button onclick="window.location.href='{{url('')}}/products/2'"><strong>Services</strong></button>
+                    <button onclick="window.location.href='{{url('')}}/products/ajax/2'"><strong>Services</strong></button>
                 </div>
                 <div class="col-md-3 kotak">
-                    <button onclick="window.location.href='{{url('')}}/products/3'"><strong>Maintenance</strong></button>
+                    <button onclick="window.location.href='{{url('')}}/products/ajax/3'"><strong>Maintenance</strong></button>
                 </div>
                 <div class="col-md-3 kotak">
-                    <button onclick="window.location.href='{{url('')}}/products/1'"><strong>Assembly and Fabrication</strong></button>
+                    <button onclick="window.location.href='{{url('')}}/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
                 </div>
                 <div class="col-md-3 kotak">
-                    <button onclick="window.location.href='{{url('')}}/products/4'"><strong>Rental</strong></button>
+                    <button onclick="window.location.href='{{url('')}}/products/ajax/4'"><strong>Rental</strong></button>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
             <div class="topnav" id="myTopnav">
                 <a href="<?php echo e(url('')); ?>">Home</a>
                 <a href="<?php echo e(url('')); ?>/about">About</a>
-                <a href="<?php echo e(url('')); ?>">After Sales & Parts Service</a>
+                <a href="<?php echo e(url('')); ?>/aftersales">After Sales & Parts Service</a>
                 <a href="<?php echo e(url('')); ?>/products">Products</a>
                 <a href="<?php echo e(url('')); ?>/news">News</a>
                 <a href="<?php echo e(url('')); ?>/contact">Contact</a>
