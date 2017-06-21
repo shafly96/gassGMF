@@ -33,13 +33,13 @@
                   <div class="form-group">
                         @if(isset($about->about_testimony_g1))
 												<div class="text-center thumbnail" style="height:175px;">
-													<img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g1}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+													<img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g1}}" class="img-responsive" alt="Cinque Terre" style="border:none;max-width:100%;max-height:100%;" >
 
 												</div>
                         @else
 												<div  class="text-center thumbnail"style="height:175px;">
 
-                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-responsive" alt="Cinque Terre" style="border:none;max-width:100%;max-height:100%;" >
 												</div>
 											  @endif
                       <br> <label for="media">Change Picture</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
@@ -62,12 +62,12 @@
                         @if(isset($about->about_testimony_g2))
 												<div   class="text-center thumbnail"style="height:175px;">
 
-                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g2}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g2}}" class="img-responsive" alt="Cinque Terre" style="border:none;max-width:100%;max-height:100%;">
 													</div>
 											  @else
 												<div  class="text-center thumbnail"style="height:175px;">
 
-                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-responsive" alt="Cinque Terre" style="border:none;max-width:100%;max-height:100%;">
 												</div>
 											  @endif
                       <br> <label for="media">Change Picture</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
@@ -90,12 +90,12 @@
                         @if(isset($about->about_testimony_g3))
 												<div  class="text-center thumbnail"style="height:175px; ">
 
-                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g3}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+                            <img src="{{url('/')}}/images/about/testi/{{$about->about_testimony_g3}}" class="img-responsive" alt="Cinque Terre" style="border:none;max-width:100%;max-height:100%;">
 													</div>
 											  @else
 												<div  class="text-center thumbnail"style="height:175px;">
 
-                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="175" height="175">
+                          <img src="{{url('/')}}/images/NoImage.jpg" class="img-responsive" alt="Cinque Terre" style="border:none;max-width:100%;max-height:100%;">
 												</div>
 											  @endif
                       <br> <label for="media">Change Picture</label> <a href="#" data-toggle="tooltip" data-placement="bottom" title="Leave this form empty if there are no changes">  <i class="fa fa-info-circle"></i></a>
