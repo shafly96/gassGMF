@@ -69,8 +69,8 @@
               <?php $__currentLoopData = $gambar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gbr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
               <div class="col-md-4 col-xs-12">
-                <div class="thumbnail" style="height:150px; overflow:hidden;">
-                    <a target="_blank"href="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>"><img class="img-thumbnail" style="border:none;" height="150"width="150" src="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>"></a>
+                <div class="thumbnail" style="height:150px;">
+                    <a target="_blank"href="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>"><img class="img-thumbnail" style="border:none;max-width:100%;max-height:100%;" src="<?php echo e(url('/')); ?>/images/aftersales/<?php echo e($gbr->filename); ?>"></a>
                 </div>
               </div>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

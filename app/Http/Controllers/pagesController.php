@@ -141,7 +141,7 @@ class pagesController extends Controller
         $file->move($destinationPath, $about->about_gmf_gambar);
       }
       $about->save();
-      return redirect('page-editor/aboutgmf')->with('success','You have successfully updated about gmf page');
+      return redirect('page-editor/addaboutgmf')->with('success','You have successfully updated about gmf page');
     }
     public function showaboutgass(){
       $data['active'] = "about";
@@ -169,7 +169,7 @@ class pagesController extends Controller
         $file->move($destinationPath, $about->about_gass_gambar);
       }
       $about->save();
-      return redirect('page-editor/aboutgass')->with('success','You have successfully updated about gass page');
+      return redirect('page-editor/addaboutgass')->with('success','You have successfully updated about gass page');
     }
 
     public function showaboutfac(){
