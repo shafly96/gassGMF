@@ -71,8 +71,8 @@
               @foreach($gambar as $gbr)
 
               <div class="col-md-4 col-xs-12">
-                <div class="thumbnail">
-                    <a target="_blank"href="{{url('/')}}/images/aftersales/{{$gbr->filename}}"><img class="img-responsive" src="{{url('/')}}/images/aftersales/{{$gbr->filename}}"></a>
+                <div class="thumbnail" style="height:150px; overflow:hidden;">
+                    <a target="_blank"href="{{url('/')}}/images/aftersales/{{$gbr->filename}}"><img class="img-thumbnail" style="border:none;" height="150"width="150" src="{{url('/')}}/images/aftersales/{{$gbr->filename}}"></a>
                 </div>
               </div>
               @endforeach
