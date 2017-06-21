@@ -56,7 +56,8 @@ class productController extends Controller
     $data['product'] = DB::table('product')
     ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
     ->where('product.product_id', '=', $id)
-    ->first();
+    ->get();
+
     $data['review'] = DB::table('reviews')
     ->where('reviews_product_id', '=', $id)
     ->get();

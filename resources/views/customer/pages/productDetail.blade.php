@@ -10,12 +10,20 @@ Product
 @section('content')
 <div class="col-md-12 rata" style="margin-top: 50px">
 	<div class="col-md-7">
-		<div class="col-md-12" style="padding-right: 60px; padding-bottom: 60px">
-			<img src="{{url('')}}/images/product/{{$product->filename}}" style="width: 100%; height:auto " class="img-responsive">
+		<div class="col-md-12" style="padding-left: 30px; padding-right: 30px; padding-bottom: 60px">
+			<div class="w3-content w3-section" style="width:100%; height: 200px; text-align:center">
+				@foreach($product as $key=>$value)
+				<img class="mySlides" src="{{url('')}}/images/product/{{$product[$key]->filename}}" style="height: 100%; margin: 0 auto">
+				@endforeach
+
+
+				<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+				<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+			</div>
 		</div>
 		<div class="col-md-12">
 			<p class="judul-berita" style="font-size: 20px">Description</p>
-			<p class="paragraf">{{$product->product_description}}</p>
+			<p class="paragraf">{{$product[0]->product_description}}</p>
 
 			<p class="judul-berita" style="margin-top: 50px; font-size: 20px">Review</p>
 			@isset($review[0])
@@ -45,7 +53,7 @@ Product
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12">
-							<input type="hidden" name="id" value="{{$product->product_id}}">
+							<input type="hidden" name="id" value="{{$product[0]->product_id}}">
 							{{ csrf_field() }}
 							<input type="submit" class="btn btn-primary" value="Send">
 						</div>
@@ -57,19 +65,42 @@ Product
 	<div class="col-md-5">
 		<p class="judul-berita">Technical Specification</p>
 		<p class="paragraf">
-			<?php print $product->product_specification; ?>
+			<?php print $product[0]->product_specification; ?>
 		</p>
 	</div>
 </div>
 <script>
-	// $("#description").click(function(){
-	// 	$(".review").hide();
-	// 	$(".description").show();
-	// });
+	var myIndex = 0;
+	carousel();
 
-	// $("#review").click(function(){
-	// 	$(".description").hide();
-	// 	$(".review").show();
-	// });
-</script>
-@stop
+	function carousel() {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";  
+		}
+		myIndex++;
+		if (myIndex > x.length) {myIndex = 1}    
+			x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 5000); // Change image every 2 seconds
+}
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+	showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+	var i;
+	var x = document.getElementsByClassName("mySlides");
+	if (n > x.length) {slideIndex = 1}    
+		if (n < 1) {slideIndex = x.length}
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";  
+			}
+			x[slideIndex-1].style.display = "block";  
+		}
+	</script>
+	@stop

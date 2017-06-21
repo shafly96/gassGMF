@@ -40,21 +40,21 @@ About
 	<div class="col-md-12 rata" style="padding-top: 50px">
 		<div class="col-md-4" style="text-align:center">
 		<div style="margin:0 auto; position: relative; border-radius: 50%; width: 150px; height: 150px; background:url('{{url('')}}/images/about/testi/{{$testi->about_testimony_g1}}'); background-size:cover"></div>
-			<p class="paragraf"><strong>{{$testi->about_testimony_n1}} {{$testi->about_testimony_title1}}</strong></p>
+			<p class="paragraf"><strong>{{$testi->about_testimony_n1}}</strong> {{$testi->about_testimony_title1}}</p>
 			<p class="paragraf">
 				{{$testi->about_testimony_t1}}
 			</p>
 		</div>
 		<div class="col-md-4" style="text-align:center">
 			<div style="margin:0 auto; position: relative; border-radius: 50%; width: 150px; height: 150px; background:url('{{url('')}}/images/about/testi/{{$testi->about_testimony_g2}}'); background-size:cover"></div>
-			<p class="paragraf"><strong>{{$testi->about_testimony_n2}} {{$testi->about_testimony_title2}}</strong></p>
+			<p class="paragraf"><strong>{{$testi->about_testimony_n2}}</strong> {{$testi->about_testimony_title2}}</p>
 			<p class="paragraf">
 				{{$testi->about_testimony_t2}} 
 			</p>
 		</div>
 		<div class="col-md-4" style="text-align:center">
 			<div style="margin:0 auto; position: relative; border-radius: 50%; width: 150px; height: 150px; background:url('{{url('')}}/images/about/testi/{{$testi->about_testimony_g3}}'); background-size:cover"></div>
-			<p class="paragraf"><strong>{{$testi->about_testimony_n3}} {{$testi->about_testimony_title3}}</strong></p>
+			<p class="paragraf"><strong>{{$testi->about_testimony_n3}}</strong> {{$testi->about_testimony_title3}}</p>
 			<p class="paragraf">
 				{{$testi->about_testimony_t3}}
 			</p>
