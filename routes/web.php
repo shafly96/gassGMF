@@ -19,6 +19,7 @@ Route::post('/contact', 'customerController@sendMessage');
 Route::get('/product', 'customerController@product');
 Route::get('/aftersales', 'customerController@aftersales');
 Route::post('/aftersales', 'customerController@addaftersales');
+Route::get('/admin', 'userController@showlogin');
 
 
 Route::group(['prefix' => 'products'],function () {
@@ -84,4 +85,15 @@ Route::group(['prefix' => 'inbox'],function () {
 
   Route::get('/aftersales', 'inboxController@aftersales');
   Route::get('/showaftersale/{id}', 'inboxController@showaftersale');
+});
+
+Route::group(['prefix' => 'user'],function () {
+  Route::get('/logout', 'userController@logout');
+  Route::get('/login', 'userController@login');
+  Route::get('/register', 'userController@showregister');
+  Route::post('/register', 'userController@register');
+
+  Route::get('/changepass', 'userController@showchangepass');
+  Route::post('/changepass', 'userController@changepass');
+
 });
