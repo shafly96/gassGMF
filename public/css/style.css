@@ -18,6 +18,8 @@
     src: url('../font/ProximaNova-Regular.otf');
 }
 
+.mySlides {display:none;}
+
 div{
     /*border-style: solid;*/
 }
