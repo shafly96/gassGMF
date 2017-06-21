@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-12">
-                            <textarea class="form-control" name="message" placeholder="Review" rows="5"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Review" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -45,12 +45,13 @@
                 </div>
                 <div class="col-md-6" style="padding-left: 30px">
                     <p class="judul-berita">Contact Details</p>
-                    <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 5px;">GSE Office</span></p>
-                    <p style="margin-top: -10px;"><span class="" style="margin-left: 20px">Soekarno Hatta International Airport</span></p>
-                    <p style="margin-top: -10px;"><span class="" style="margin-left: 20px">Indonesia 19130</span></p>
-                    <p style="margin-top: 25px"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 5px;">+62 89 666 09 444 8</span></p>
-                    <p style="margin-top: -10px;"><span class="" style="margin-left: 20px">+62 89 666 09 444 8</span></p>
-                    <p style="margin-top: 25px"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 5px;">gse@aero-asia.co.id</span></p>
+                    <div class="tes">
+                        <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 10px;"><?php print $footer->fc_address; ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 10px"><p>{{$footer->fc_telp1}}</span></p></p>
+                        <p><span class="">{{$footer->fc_telp2}}</span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 10px;"><p>{{$footer->fc_email}}</p></span></p>
+                        <p><span class="">{{$footer->fc_email2}}</span></p>
+                    </div>
                 </div>
             </div>
         </div>
