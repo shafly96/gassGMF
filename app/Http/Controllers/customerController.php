@@ -16,35 +16,54 @@ class customerController extends Controller
 
     public function footer()
     {
-        $footer = DB::table('footer_and_contacts')->first();
-        return $footer;
+        $data['footer'] = DB::table('footer_and_contacts')->first();
+        $data['berita'] = DB::table('about')->first();
+        return $data;
     }
 
     public function home(){
         $data['homepage'] = Homepage::get();
         $data['customer'] = Customer::get();
         $data['latest_news'] = Berita::orderby('berita_date', 'desc')->take(2)->get();
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
     	return view('customer/pages/welcome', $data);
     }
     
     public function about(){
-        $data['footer'] = $this->footer();
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
+        $data['testi'] = DB::table('about')->first();
     	return view('customer/pages/about', $data);
     }
 
     public function contact(){
-        return view('customer/pages/contact');
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
+        return view('customer/pages/contact', $data);
     }
 
     public function testimoni(){
-    	return view('customer/pages/testimoni');
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
+    	return view('customer/pages/testimoni', $data);
     }
 
     public function product(){
-    	return view('customer/pages/products');
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
+    	return view('customer/pages/products', $data);
     }
 
     public function news(){
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
         $data['news'] = Berita::paginate(5);
     	return view('customer/pages/news', $data);
     }
@@ -63,7 +82,10 @@ class customerController extends Controller
     }
 
     public function aftersales(){
-      return view('customer/pages/as_form');
+        $c1 = $this->footer();
+        $data['footer'] = $c1['footer'];
+        $data['berita'] = $c1['berita'];
+      return view('customer/pages/as_form', $data);
     }
     
     public function addaftersales(Request $request){

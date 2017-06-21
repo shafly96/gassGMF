@@ -85,7 +85,7 @@
         </div>
     </div>
 
-<!-- div selanjutnya (berita) -->
+    <!-- div selanjutnya (berita) -->
 
     <div class="div2">
         <div class="col-md-2"></div>
@@ -100,12 +100,12 @@
                         <p class="tanggal"><?php echo e($latest_news[0]->berita_date); ?></p>
                         <p class="paragraf">
                             <?php 
-                                if (strlen($latest_news[0]->berita_text) > 170) {
+                            if (strlen($latest_news[0]->berita_text) > 170) {
                                 $trimstring = substr($latest_news[0]->berita_text, 0, 270);
-                                } else {
+                            } else {
                                 $trimstring = $latest_news[0]->berita_text;
-                                }
-                                echo $trimstring;
+                            }
+                            echo $trimstring;
                             ?>
                         </p>
                         <p class="paragraf"><a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($latest_news[0]->berita_id); ?>">Read more ..</a></p>
@@ -120,12 +120,12 @@
                         <p class="tanggal"><?php echo e($latest_news[1]->berita_date); ?></p>
                         <p class="paragraf">
                             <?php 
-                                if (strlen($latest_news[1]->berita_text) > 170) {
+                            if (strlen($latest_news[1]->berita_text) > 170) {
                                 $trimstring = substr($latest_news[1]->berita_text, 0, 270);
-                                } else {
+                            } else {
                                 $trimstring = $latest_news[1]->berita_text;
-                                }
-                                echo $trimstring;
+                            }
+                            echo $trimstring;
                             ?>
                         </p>
                         <p class="paragraf"><a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($latest_news[1]->berita_id); ?>">Read more ..</a></p>
@@ -136,7 +136,7 @@
         </div>
     </div>
 
-<!-- div selanjutnya (customer) -->
+    <!-- div selanjutnya (customer) -->
 
     <div class="div2">
         <div class="col-md-2"></div>
@@ -152,31 +152,31 @@
 
                             <?php 
 
-                                $i=0;
-                                $j=0;
-                                $k=intdiv(count($customer),4);
-                                $l=count($customer)-$k*4;
-                                $m=0;
-                                while($i<$k){
+                            $i=0;
+                            $j=0;
+                            $k=intdiv(count($customer),4);
+                            $l=count($customer)-$k*4;
+                            $m=0;
+                            while($i<$k){
                                 $j++;
-                            ?>
-                            <div class="item <?php if($j==1) echo 'active'; ?>">
-                                <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                ?>
+                                <div class="item <?php if($j==1) echo 'active'; ?>">
+                                    <div class="row">
+                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        </div>
+                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        </div>
+                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        </div>
+                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
-                                    </div>
+                                    <!--/row-->
                                 </div>
-                                <!--/row-->
-                            </div>
-                            <?php 
+                                <?php 
                                 $m+=4;
                                 $i++;
-                                } 
+                            } 
                             ?>
                             
                             <div class="item">
@@ -203,7 +203,7 @@
         </div>
     </div>
 
-<!-- div footer -->
+    <!-- div footer -->
 
     <div style="width: 100%; float:left; background-color:#005F6B">
         <div class="col-md-12 footer">
@@ -211,16 +211,26 @@
             <div class="col-md-8">
                 <div class="col-md-4">
                     <p class="judul-footer">About</p>
-                    <p class="about-footer">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    <p class="about-footer">
+                        <?php 
+                        if (strlen($berita->about_gass_text) > 170) {
+                            $trimstring = substr($berita->about_gass_text, 0, 270);
+                        } else {
+                            $trimstring = $berita->about_gass_text;
+                        }
+                        echo $trimstring;
+                        ?>
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <p class="judul-footer">Contact Us</p>
-                    <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 5px;">GSE Office</span></p>
-                    <p style="margin-top: -16px;"><span class="" style="margin-left: 20px">Soekarno Hatta International Airport</span></p>
-                    <p style="margin-top: -16px;"><span class="" style="margin-left: 20px">Indonesi 19130</span></p>
-                    <p><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 5px;">+62 89 666 09 444 8</span></p>
-                    <p style="margin-top: -16px;"><span class="" style="margin-left: 20px">+62 89 666 09 444 8</span></p>
-                    <p><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 5px;">gse@aero-asia.co.id</span></p>
+                    <div class="tes">
+                        <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 10px;"><?php print $footer->fc_address; ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 10px"><p><?php echo e($footer->fc_telp1); ?></span></p></p>
+                        <p><span class=""><?php echo e($footer->fc_telp2); ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 10px;"><p><?php echo e($footer->fc_email); ?></p></span></p>
+                        <p><span class=""><?php echo e($footer->fc_email2); ?></span></p>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <img src="<?php echo e(url('')); ?>/image/logo.png" width="100%" class="judul-footer">

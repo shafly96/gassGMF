@@ -51,7 +51,7 @@
                   <input type="text" class="form-control"name="jabatan1"  <?php if(isset($about->about_testimony_title1)): ?>value="<?php echo e($about->about_testimony_title1); ?>" <?php endif; ?> required>
                   <label for="media">Testimony</label>
 
-                  <textarea name="test1" class="form-control" rows="8" cols="80" required><?php echo e($about->about_testimony_t1); ?></textarea>
+                  <textarea name="test1" class="form-control" rows="8" cols="80" required><?php if(isset($about->about_testimony_t1)): ?><?php echo e($about->about_testimony_t1); ?><?php endif; ?></textarea>
                 </div>
               </div>
               <div class="col-md-4 col-xs-12">
@@ -79,7 +79,7 @@
                   <input type="text" class="form-control"name="jabatan2"  <?php if(isset($about->about_testimony_title2)): ?>value="<?php echo e($about->about_testimony_title2); ?>" <?php endif; ?> required>
                   <label for="media">Testimony</label>
 
-                  <textarea name="test2" class="form-control" rows="8" cols="80" required><?php echo e($about->about_testimony_t2); ?></textarea>
+                  <textarea name="test2" class="form-control" rows="8" cols="80" required><?php if(isset($about->about_testimony_t2)): ?><?php echo e($about->about_testimony_t2); ?><?php endif; ?></textarea>
                 </div>
               </div>
               <div class="col-md-4 col-xs-12">
@@ -107,7 +107,7 @@
                   <input type="text" class="form-control"name="jabatan3"  <?php if(isset($about->about_testimony_title3)): ?>value="<?php echo e($about->about_testimony_title3); ?>" <?php endif; ?> required>
                   <label for="media">Testimony</label>
 
-                  <textarea name="test3" class="form-control" rows="8" cols="80" required><?php echo e($about->about_testimony_t3); ?></textarea>
+                  <textarea name="test3" class="form-control" rows="8" cols="80" required><?php if(isset($about->about_testimony_t3)): ?><?php echo e($about->about_testimony_t3); ?><?php endif; ?></textarea>
                 </div>
               </div>
           </div>

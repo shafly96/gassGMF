@@ -11,8 +11,19 @@ use File;
 use Image;
 class newsController extends Controller
 {
+
+  public function footer()
+  {
+    $data['footer'] = DB::table('footer_and_contacts')->first();
+    $data['berita'] = DB::table('about')->first();
+    return $data;
+  }
+
   public function showDetailNews($id){
     $data['news'] = Berita::find($id);
+    $c1 = $this->footer();
+    $data['footer'] = $c1['footer'];
+    $data['berita'] = $c1['berita'];
     return view('customer/pages/newsChild', $data);
   }
 
@@ -54,33 +65,33 @@ class newsController extends Controller
     return redirect('news/tabel')->with('success','You have successfully deleted a post');
   }
   public function update($id,Request $request){
-      $updated = Berita::find($id);
-      $updated->berita_title = $request->title;
-      $updated->berita_text = $request->content;
-      $date = Carbon::now();
-      $date = $date->toDateString();
-      if(null !==$request->file('media')){
-        $file = $request->file('media');
-        $thumbpath = public_path("images\\newsthumb\\");
-        $realpath = public_path("images\\news\\");
-        File::delete($realpath.$updated->berita_filename);
-        File::delete($thumbpath.$updated->berita_filename);
-        $updated->berita_filename = $request->title.$date.'.'.$file->getClientOriginalExtension();
+    $updated = Berita::find($id);
+    $updated->berita_title = $request->title;
+    $updated->berita_text = $request->content;
+    $date = Carbon::now();
+    $date = $date->toDateString();
+    if(null !==$request->file('media')){
+      $file = $request->file('media');
+      $thumbpath = public_path("images\\newsthumb\\");
+      $realpath = public_path("images\\news\\");
+      File::delete($realpath.$updated->berita_filename);
+      File::delete($thumbpath.$updated->berita_filename);
+      $updated->berita_filename = $request->title.$date.'.'.$file->getClientOriginalExtension();
 
-        $destinationPath = public_path('images/newsthumb');
-        $img = Image::make($file->getRealPath());
-        $img->resize(200, 125, function ($constraint) {
+      $destinationPath = public_path('images/newsthumb');
+      $img = Image::make($file->getRealPath());
+      $img->resize(200, 125, function ($constraint) {
 
-            $constraint->aspectRatio();
+        $constraint->aspectRatio();
 
-        })->save($destinationPath.'\\'.$updated->berita_filename);
+      })->save($destinationPath.'\\'.$updated->berita_filename);
 
-        $destinationPath = public_path('images/news/');
+      $destinationPath = public_path('images/news/');
 
-        $file->move($destinationPath, $updated->berita_filename);
-      }
-      $updated->save();
-      return redirect('news/tabel')->with('success','You have successfully updated a new post');
+      $file->move($destinationPath, $updated->berita_filename);
+    }
+    $updated->save();
+    return redirect('news/tabel')->with('success','You have successfully updated a new post');
   }
 
   public function addnews(Request $request){
@@ -98,7 +109,7 @@ class newsController extends Controller
     $img = Image::make($file->getRealPath());
     $img->resize(200, 125, function ($constraint) {
 
-        $constraint->aspectRatio();
+      $constraint->aspectRatio();
 
     })->save($destinationPath.'\\'.$news->berita_filename);
 

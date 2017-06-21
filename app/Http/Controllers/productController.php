@@ -15,169 +15,179 @@ use Image;
 class productController extends Controller
 {
 
-    public function productAjax($id){
-      $data['active'] = $id;
-      return view('customer.pages.products', $data);
+  public function footer()
+  {
+    $data['footer'] = DB::table('footer_and_contacts')->first();
+    $data['berita'] = DB::table('about')->first();
+    return $data;
+  }
+
+  public function productAjax($id){
+    $data['active'] = $id;
+    return view('customer.pages.products', $data);
+  }
+
+  public function sendReview(Request $request){
+    $review = new review;
+    $review->reviews_name = $request->nickname;
+    $review->reviews_title = $request->title;
+    $review->reviews_description = $request->review;
+    $review->reviews_product_id = $request->id;
+
+    if($review->save()){
+      return redirect('/products/detail/'.$request->id);
+    }else{
+      return redirect('/');
+    }
+  }
+
+  public function type($id){
+
+    $data['product'] = DB::table('product')
+    ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
+    ->where('product.product_tipe', '=', $id)
+    ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
+    ->get();
+
+    return view('customer.pages.productType', $data);
+  }
+
+  public function detail($id){
+    $data['product'] = DB::table('product')
+    ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
+    ->where('product.product_id', '=', $id)
+    ->first();
+    $data['review'] = DB::table('reviews')
+    ->where('reviews_product_id', '=', $id)
+    ->get();
+    // dd($data['review']);
+    $c1 = $this->footer();
+    $data['footer'] = $c1['footer'];
+    $data['berita'] = $c1['berita'];
+    return view('customer.pages.productDetail', $data);
+  }
+
+  public function showform(){
+    $data['active'] = "products";
+    $data['active2'] = "form";
+    return view('admin.pages.products.form',$data);
+  }
+  public function showtable(){
+    $data['active'] = "products";
+    $data['active2'] = "tabel";
+    $data['products'] = Product::orderBy('product_tipe','desc')->get();
+    return view('admin.pages.products.tabel',$data);
+  }
+
+  public function delete($id){
+    $deleted = Product::find($id);
+    $arr = Product_Image::get()->where('product_id','=',$id);
+    $thumbpath = public_path("images\producthumb\\");
+    $realpath = public_path("images\product\\");
+
+    // for($i=1;$i<sizeof($arr);$i++){
+    // }
+    foreach($arr as $key =>$value)
+    {
+      File::delete($realpath.$arr[$key]->filename);
+      File::delete($thumbpath.$arr[$key]->filename);
     }
 
-    public function sendReview(Request $request){
-      $review = new review;
-      $review->reviews_name = $request->nickname;
-      $review->reviews_title = $request->title;
-      $review->reviews_description = $request->review;
-      $review->reviews_product_id = $request->id;
+    DB::table('product_image')->where('product_id','=',$id)->delete();
+    $deleted->delete();
+    return redirect('products/tabel')->with('success','You have successfully deleted a post');
+  }
 
-      if($review->save()){
-        return redirect('/products/detail/'.$request->id);
-      }else{
-        return redirect('/');
-      }
-    }
+  public function addproduct(Request $request){
+    $data['active'] = "products";
+    $data['active2'] = "form";
 
-    public function type($id){
+    $product = new Product;
+    $product->product_name = $request->nama;
+    $product->product_tipe = $request->tipe;
+    $product->product_description = $request->description;
+    $product->product_specification = $request->specification;
+    $product->save();
+    $file = $request->file('media');
 
-      $data['product'] = DB::table('product')
-                          ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
-                          ->where('product.product_tipe', '=', $id)
-                          ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
-                          ->get();
+    for($i=0; $i<sizeof($request->media); $i++)
+    {
+     $image = new Product_Image;
+     $image->product_id = $product->product_id;
+     $image->filename = $request->nama.$i.'.'.$file[$i]->getClientOriginalExtension();
+     $image->save();
+     $destinationPath = public_path('images/producthumb/');
+     $img = Image::make($file[$i]->getRealPath());
+     $img->resize(200, 125, function ($constraint) {
+       $constraint->aspectRatio();
+     })->save($destinationPath.$image->filename);
 
-      return view('customer.pages.productType', $data);
-    }
+     $destinationPath = public_path('images/product/');
+     $file[$i]->move($destinationPath, $image->filename);
+   }
 
-    public function detail($id){
-      $data['product'] = DB::table('product')
-                          ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
-                          ->where('product.product_id', '=', $id)
-                          ->first();
-      $data['review'] = DB::table('reviews')
-                          ->where('reviews_product_id', '=', $id)
-                          ->get();
-      // dd($data['review']);
-      return view('customer.pages.productDetail', $data);
-    }
+   return redirect('products/tabel')->with('success','You have successfully inserted a new product data');
+ }
+ public function showupdate($id){
+  $data['active'] = "products";
+  $data['active2'] = "form";
+  $data['update'] = Product::find($id);
+  $data['gambar'] = Product_Image::where('product_id','=',$id)->get();
+  if(isset($data['update'])){
+    $data['update']->product_specification = str_replace("\r",'', $data['update']->product_specification);
+    $data['update']->product_specification = str_replace("\n",'', $data['update']->product_specification);
+    $data['update']->product_specification = str_replace("\r\n",'', $data['update']->product_specification);
 
-    public function showform(){
-      $data['active'] = "products";
-      $data['active2'] = "form";
-      return view('admin.pages.products.form',$data);
-    }
-    public function showtable(){
-      $data['active'] = "products";
-      $data['active2'] = "tabel";
-      $data['products'] = Product::orderBy('product_tipe','desc')->get();
-      return view('admin.pages.products.tabel',$data);
-    }
+    return view('admin.pages.products.formup',$data);
+  }
+  else {
+    return redirect('products/tabel');
+  }
+}
+public function addupdate($id,Request $request){
+  $update = Product::find($id);
+  $update->product_name = $request->nama;
+  $update->product_tipe = $request->tipe;
+  $update->product_description = $request->description;
+  $update->product_specification = $request->specification;
+  $update->save();
+  $file = $request->file('media');
+  $date= Carbon::now();
+  if( null !== $request->file('media')){
 
-    public function delete($id){
-      $deleted = Product::find($id);
-      $arr = Product_Image::get()->where('product_id','=',$id);
-      $thumbpath = public_path("images\producthumb\\");
-      $realpath = public_path("images\product\\");
+    for($i=0; $i<sizeof($request->media); $i++)
+    {
+     $image = new Product_Image;
+     $image->product_id = $update->product_id;
 
-      // for($i=1;$i<sizeof($arr);$i++){
-      // }
-      foreach($arr as $key =>$value)
-      {
-          File::delete($realpath.$arr[$key]->filename);
-          File::delete($thumbpath.$arr[$key]->filename);
-      }
+     $image->filename = hash('ripemd160',$file[$i]->getClientOriginalName().$date.$i).'.'.$file[$i]->getClientOriginalExtension();
+     $image->save();
+     $destinationPath = public_path('images/producthumb/');
+     $img = Image::make($file[$i]->getRealPath());
+     $img->resize(200, 125, function ($constraint) {
+       $constraint->aspectRatio();
+     })->save($destinationPath.$image->filename);
 
-      DB::table('product_image')->where('product_id','=',$id)->delete();
-      $deleted->delete();
-      return redirect('products/tabel')->with('success','You have successfully deleted a post');
-    }
+     $destinationPath = public_path('images/product/');
+     $file[$i]->move($destinationPath, $image->filename);
+   }
 
-    public function addproduct(Request $request){
-      $data['active'] = "products";
-      $data['active2'] = "form";
+ }
+ return redirect('products/update/'.$id)->with('success','You have successfully updated a product data');
 
-      $product = new Product;
-      $product->product_name = $request->nama;
-      $product->product_tipe = $request->tipe;
-      $product->product_description = $request->description;
-      $product->product_specification = $request->specification;
-      $product->save();
-      $file = $request->file('media');
+}
+public function deletepic($id){
+  $deleted = Product_Image::find($id);
+  $id = $deleted->product_id;
+  $thumbpath = public_path("images\producthumb\\");
+  $realpath = public_path("images\product\\");
 
-      for($i=0; $i<sizeof($request->media); $i++)
-      {
-         $image = new Product_Image;
-         $image->product_id = $product->product_id;
-         $image->filename = $request->nama.$i.'.'.$file[$i]->getClientOriginalExtension();
-         $image->save();
-         $destinationPath = public_path('images/producthumb/');
-         $img = Image::make($file[$i]->getRealPath());
-         $img->resize(200, 125, function ($constraint) {
-             $constraint->aspectRatio();
-         })->save($destinationPath.$image->filename);
-
-         $destinationPath = public_path('images/product/');
-         $file[$i]->move($destinationPath, $image->filename);
-      }
-
-      return redirect('products/tabel')->with('success','You have successfully inserted a new product data');
-    }
-    public function showupdate($id){
-      $data['active'] = "products";
-      $data['active2'] = "form";
-      $data['update'] = Product::find($id);
-      $data['gambar'] = Product_Image::where('product_id','=',$id)->get();
-      if(isset($data['update'])){
-        $data['update']->product_specification = str_replace("\r",'', $data['update']->product_specification);
-        $data['update']->product_specification = str_replace("\n",'', $data['update']->product_specification);
-        $data['update']->product_specification = str_replace("\r\n",'', $data['update']->product_specification);
-
-        return view('admin.pages.products.formup',$data);
-      }
-      else {
-        return redirect('products/tabel');
-      }
-    }
-    public function addupdate($id,Request $request){
-      $update = Product::find($id);
-      $update->product_name = $request->nama;
-      $update->product_tipe = $request->tipe;
-      $update->product_description = $request->description;
-      $update->product_specification = $request->specification;
-      $update->save();
-      $file = $request->file('media');
-      $date= Carbon::now();
-      if( null !== $request->file('media')){
-
-          for($i=0; $i<sizeof($request->media); $i++)
-          {
-             $image = new Product_Image;
-             $image->product_id = $update->product_id;
-
-             $image->filename = hash('ripemd160',$file[$i]->getClientOriginalName().$date.$i).'.'.$file[$i]->getClientOriginalExtension();
-             $image->save();
-             $destinationPath = public_path('images/producthumb/');
-             $img = Image::make($file[$i]->getRealPath());
-             $img->resize(200, 125, function ($constraint) {
-                 $constraint->aspectRatio();
-             })->save($destinationPath.$image->filename);
-
-             $destinationPath = public_path('images/product/');
-             $file[$i]->move($destinationPath, $image->filename);
-          }
-
-        }
-        return redirect('products/update/'.$id)->with('success','You have successfully updated a product data');
-
-      }
-      public function deletepic($id){
-        $deleted = Product_Image::find($id);
-        $id = $deleted->product_id;
-        $thumbpath = public_path("images\producthumb\\");
-        $realpath = public_path("images\product\\");
-
-        File::delete($realpath.$deleted->filename);
-        File::delete($thumbpath.$deleted->filename);
-        $deleted->delete();
+  File::delete($realpath.$deleted->filename);
+  File::delete($thumbpath.$deleted->filename);
+  $deleted->delete();
 
 
-        return redirect('products/update/'.$id)->with('success','You have successfully deleted a picture');
+  return redirect('products/update/'.$id)->with('success','You have successfully deleted a picture');
 
-      }
+}
 }
