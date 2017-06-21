@@ -1,17 +1,17 @@
-@extends('admin.master.master')
+<?php $__env->startSection('content'); ?>
 
-@section('content')
-
-@if (session('success'))
+<?php if(session('success')): ?>
 		<div class="alert alert-success">
-				{{ session('success') }}
+				<?php echo e(session('success')); ?>
+
 		</div>
-@endif
-@if (session('failed'))
+<?php endif; ?>
+<?php if(session('failed')): ?>
 		<div class="alert alert-danger">
-				{{ session('failed') }}
+				<?php echo e(session('failed')); ?>
+
 		</div>
-@endif
+<?php endif; ?>
 <div class="row">
 	<!-- left column -->
 	<div class="col-xs-12">
@@ -21,7 +21,7 @@
 				<i class="fa fa-cog"></i><h3 class="box-title">Change Password</h3>
 			</div><!-- /.box-header -->
 			<!-- form start -->
-			<form role="form" method="post" action="{{url('/')}}/user/changepass" enctype="multipart/form-data">
+			<form role="form" method="post" action="<?php echo e(url('/')); ?>/user/changepass" enctype="multipart/form-data">
 				<div class="box-body">
 
 					<div class="form-group">
@@ -37,7 +37,7 @@
 						<input type="password" class="form-control" name="verifypass" placeholder="Verify new password" required>
 					</div>
 
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 				</div><!-- /.box-body -->
 
 				<div class="box-footer">
@@ -48,5 +48,7 @@
 	</div>
 </div>
 
-@include('admin.master.script')
-@stop
+<?php echo $__env->make('admin.master.script', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.master.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -24,11 +24,11 @@
 			</div>
 	@endif
 	<div class="col-md-12 col-xs-12 text-center" style="height:100vh;text-align: center;background:url({{url('/')}}/image/logingbr.jpg);background-size:cover;">
-    <div style="background:white;margin:auto;margin-top:100px; border-radius:10px; width:50%; height:60%;">
+    <div style="background:white;margin:auto;margin-top:100px; border-radius:10px; width:50%;position:absolute;left:25%;">
       <p class="auto" style="margin-top:20px; font-size: 50px;">GASS Admin</p>
       <div class="col-md-12">
-        <div style="width: 30%; margin:auto; position:relative">
-          <form role="form" class="proximaLight" action="{{url('/')}}/logs" method="POST" >
+        <div style=" margin:auto;">
+          <form role="form" class="proximaLight" action="{{url('/')}}/user/login" method="POST" >
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="modal-body">
 
@@ -50,7 +50,8 @@
       </div>
 
     </div>
-	</div>
+
+  </div>
 </body>
 
 @include('admin.master.script')
