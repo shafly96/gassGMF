@@ -13,9 +13,9 @@
     <?php endif; ?>
     <!-- div selanjutnya -->
 
-    <div class="div1">
-        <div class="col-md-4"></div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
+    <div class="div1 batas-bawah">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
             <p class="slogan"><?php if(isset($homepage[0])): ?> <?php echo e($homepage[0]->homepage_slogan); ?> <?php endif; ?></p>
             <p class="slogan-text"><?php if(isset($homepage[0])): ?> <?php echo e($homepage[0]->homepage_slogan_subtext); ?> <?php endif; ?></p>
         </div>
@@ -24,10 +24,10 @@
     <!-- div selanjutnya (welcome) -->
 
     <div class="div2">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-12 center">
-                <p class="judul-div a"><strong>Welcome to</strong></p>
+                <p class="judul-div a" style="margin-top: 50px"><strong>Welcome to</strong></p>
                 <p class="judul-div b">GMF Aircraft Support Services</p>
             </div>
             <div class="col-md-12 center">
@@ -59,14 +59,20 @@
     <!-- div selanjutnya (produk) -->
 
     <div class="div2">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-6">
-                <img src="<?php echo e(url('')); ?>/image/truck.png" width="100%">
+            <div id="slideshow" style="width: 100%; height: 340px">
+                    <img src="<?php echo e(url('')); ?>/image/truck.png" style="width: 100%; height: auto; max-height: 100%; ">
+                    <img src="<?php echo e(url('')); ?>/image/gass.jpg" style="width: 100%; height: auto; max-height: 100%; ">
+                    <img src="<?php echo e(url('')); ?>/image/logingbr.jpg" style="width: 100%; height: auto; max-height: 100%; ">
+                </div>
             </div>
             <div class="col-md-6">
-                <p class="judul-div"><strong>OUR</strong> PRODUCTS</p>
-                <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+                <p class="judul-div"><strong>Our</strong> Products</p>
+                <div class="slide-product-2">
+                    <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+                </div>
             </div>
             <div class="col-md-12 produk">
                 <div class="col-md-3 kotak">
@@ -88,13 +94,15 @@
     <!-- div selanjutnya (berita) -->
 
     <div class="div2">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-12">
-                <p class="judul-div a"><strong>LATEST</strong> NEWS</p>
+                <p class="judul-div"><strong>Latest</strong> News</p>
                 <div class="col-md-6 berita-besar">
                     <?php if(isset($latest_news[0])): ?>
-                    <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[0]->berita_filename); ?>" width="400px" height="250px">
+                    <div style="height: 250px">
+                        <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[0]->berita_filename); ?>" width="80%" style="height: auto; max-height: 100%">
+                    </div>
                     <div class="caption">
                         <p class="judul-berita"><?php echo e($latest_news[0]->berita_title); ?></p>
                         <p class="tanggal"><?php echo e($latest_news[0]->berita_date); ?></p>
@@ -114,7 +122,9 @@
                 </div>
                 <div class="col-md-6 berita-besar">
                     <?php if(isset($latest_news[1])): ?>
-                    <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[1]->berita_filename); ?>" width="400px" height="250px">
+                    <div style="height: 250px">
+                        <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[1]->berita_filename); ?>" width="80%" style="height: auto; max-height: 100%">
+                    </div>
                     <div class="caption">
                         <p class="judul-berita"><?php echo e($latest_news[1]->berita_title); ?></p>
                         <p class="tanggal"><?php echo e($latest_news[1]->berita_date); ?></p>
@@ -139,10 +149,10 @@
     <!-- div selanjutnya (customer) -->
 
     <div class="div2">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-12">
-                <p class="judul-div kanan center"><strong>OUR</strong> CUSTOMERS</p>
+                <p class="judul-div kanan center"><strong>Our</strong> Customers</p>
                 <?php if(isset($customer)): ?>
                 <div class="customer">
                     <div id="myCarousel" class="carousel slide">
@@ -162,13 +172,13 @@
                                 ?>
                                 <div class="item <?php if($j==1) echo 'active'; ?>">
                                     <div class="row">
-                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                         </div>
-                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                         </div>
-                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                         </div>
-                                        <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                        <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
                                         </div>
                                     </div>
                                     <!--/row-->
@@ -181,13 +191,13 @@
                             
                             <div class="item <?php if($k==0) echo 'active'; ?>">
                                 <div class="row">
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-xs-3"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
                                     </div>
                                 </div>
                                 <!--/row-->
@@ -205,45 +215,8 @@
 
     <!-- div footer -->
 
-    <div style="width: 100%; float:left; background-color:#005F6B">
-        <div class="col-md-12 footer">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="col-md-4">
-                    <p class="judul-footer">About</p>
-                    <p class="about-footer">
-                        <?php 
-                        if (strlen($berita->about_gass_text) > 170) {
-                            $trimstring = substr($berita->about_gass_text, 0, 270);
-                        } else {
-                            $trimstring = $berita->about_gass_text;
-                        }
-                        echo $trimstring;
-                        ?>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <p class="judul-footer">Contact Us</p>
-                    <div class="tes">
-                        <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 10px;"><?php print $footer->fc_address; ?></span></p>
-                        <p class="tes2"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 10px"><p><?php echo e($footer->fc_telp1); ?></span></p></p>
-                        <p><span class=""><?php echo e($footer->fc_telp2); ?></span></p>
-                        <p class="tes2"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 10px;"><p><?php echo e($footer->fc_email); ?></p></span></p>
-                        <p><span class=""><?php echo e($footer->fc_email2); ?></span></p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="<?php echo e(url('')); ?>/image/logo.png" width="100%" class="judul-footer">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="width: 100%; float:left; background-color:#343838">
-        <div class="col-md-12">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 copyright">Copyright © 2017 - Shafly Naufal A & Hariyoso Ario B</div>
-        </div>
-    </div>
+    <?php echo $__env->make('customer/master/footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 </body>
 <script type="text/javascript">
     function myFunction() {
@@ -266,6 +239,17 @@
             interval: 500
         });
     });
+
+    $("#slideshow img:gt(0)").hide();
+
+    setInterval(function() {
+      $('#slideshow img:first')
+      .fadeOut(1000)
+      .next()
+      .fadeIn(1000)
+      .end()
+      .appendTo('#slideshow');
+  }, 2000);
 
 </script>
 </html>

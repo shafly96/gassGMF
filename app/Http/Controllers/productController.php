@@ -34,6 +34,9 @@ class productController extends Controller
 
   public function productAjax($id){
     $data['active'] = $id;
+    $c1 = $this->footer();
+    $data['footer'] = $c1['footer'];
+    $data['berita'] = $c1['berita'];
     return view('customer.pages.products', $data);
   }
 
