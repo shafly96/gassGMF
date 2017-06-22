@@ -29,20 +29,23 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Machine Serial Number</label>
-            <p><?php echo e($aftersales->as_contact_name); ?></p>
+            <p><?php echo e($aftersales->as_serial); ?></p>
 
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Product Type</label>
-            <p><?php if($aftersales->as_product_type==1): ?>
+            <p><?php if($aftersales->product_tipe==1): ?>
                 Assembly and Fabrication
-              <?php elseif($aftersales->as_product_type==2): ?>
+              <?php elseif($aftersales->product_tipe==2): ?>
                 Service
-              <?php elseif($aftersales->as_product_type==3): ?>
+              <?php elseif($aftersales->product_tipe==3): ?>
                 Maintenance
               <?php else: ?>
                 Rental
-              <?php endif; ?></p>
+              <?php endif; ?>
+							-- <?php echo e($aftersales->product_name); ?>
+
+						</p>
 
           </div>
 

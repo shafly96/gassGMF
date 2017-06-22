@@ -41,17 +41,7 @@
 								<td>{{$counter}}</td>
 								<td>{{$aftersale->as_company_name}}</td>
 								<td>{{$aftersale->as_serial}}</td>
-                <td>
-									@if($aftersale->as_product_type==1)
-											Assembly and Fabrication
-										@elseif($aftersale->as_product_type==2)
-											Service
-										@elseif($aftersale->as_product_type==3)
-											Maintenance
-										@else
-											Rental
-										@endif
-										</td>
+                <td>{{$aftersale->product_name}}</td>
                 <td>{{$aftersale->as_timestamp}}</td>
 								<td>
 									<a href="{{url('/')}}/inbox/showaftersale/{{$aftersale->as_id}}" class="btn btn-info">View Details</a>
