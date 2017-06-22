@@ -58,6 +58,7 @@ class customerController extends Controller
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
+        $data['active'] = null;
     	return view('customer/pages/products', $data);
     }
 

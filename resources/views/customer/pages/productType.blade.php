@@ -8,3 +8,9 @@
 		</div>
 	</div>
 @endforeach
+
+@if(empty($product[0]))
+	<div class="text-center" style="margin-top:50px;">
+			<i class="fa fa-2x fa-info-circle" style="color:grey"></i><p style="color:grey;">No data available at this moment</p>
+	</div>
+@endif

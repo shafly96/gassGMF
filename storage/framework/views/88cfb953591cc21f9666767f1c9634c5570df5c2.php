@@ -7,13 +7,12 @@
 
     <!-- content -->
 
-    <div class="div2">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 center" data-aos="zoom-in" data-aos-delay="100">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.967708706664!2d106.63715608074149!3d-6.135041123113239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDgnMDYuMiJTIDEwNsKwMzgnMTkuNSJF!5e0!3m2!1sid!2sbr!4v1497859879952" width="100%" height="400" frameborder="0" style="border:0"></iframe>
+    <div class="div2" >
+        <div class="col-md-12 center" style="margin:100px 0px 50px 0px;padding:0px;" >
+          <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ4XVccwUCai4RWSibboAdQMY&key=AIzaSyCNQYrYWwNM3oj8gZjzWcmeZR66ruP-7Qk" allowfullscreen></iframe>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="margin-bottom:40px;">
         <div class="col-md-2"></div>
         <div class="col-md-8 center">
             <div class="col-md-12 rata">
@@ -32,7 +31,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-12">
-                            <textarea class="form-control" name="message" placeholder="Review" rows="5"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Review" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -44,14 +43,15 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6" style="padding-left: 30px">
+                <div class="col-md-6" style="padding-left: 30px;">
                     <p class="judul-berita">Contact Details</p>
-                    <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 5px;">GSE Office</span></p>
-                    <p style="margin-top: -10px;"><span class="" style="margin-left: 20px">Soekarno Hatta International Airport</span></p>
-                    <p style="margin-top: -10px;"><span class="" style="margin-left: 20px">Indonesia 19130</span></p>
-                    <p style="margin-top: 25px"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 5px;">+62 89 666 09 444 8</span></p>
-                    <p style="margin-top: -10px;"><span class="" style="margin-left: 20px">+62 89 666 09 444 8</span></p>
-                    <p style="margin-top: 25px"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 5px;">gse@aero-asia.co.id</span></p>
+                    <div class="tes">
+                        <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 10px;"><?php print $footer->fc_address; ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 10px"><p><?php echo e($footer->fc_telp1); ?></span></p></p>
+                        <p><span class=""><?php echo e($footer->fc_telp2); ?></span></p>
+                        <p class="tes2"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 10px;"><p><?php echo e($footer->fc_email); ?></p></span></p>
+                        <p><span class=""><?php echo e($footer->fc_email2); ?></span></p>
+                    </div>
                 </div>
             </div>
         </div>
