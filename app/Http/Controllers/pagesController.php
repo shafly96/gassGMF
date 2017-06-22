@@ -10,6 +10,7 @@ use App\About;
 use App\Messages;
 use App\Aftersales;
 use App\AftersalesImage;
+use App\homepage_image;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -35,25 +36,32 @@ class pagesController extends Controller
     $data['active'] = "homepage";
     $data['active2'] = "";
     $data['homepage'] = Homepage::find(1);
+    $data['gambar'] = homepage_image::get();
+
     return view('admin.pages.editor.homepage',$data);
   }
-  
+
   public function updatehome(Request $request){
     $this->checklogin();
 
     $data['active'] = "homepage";
     $data['active2'] = "";
     $home = Homepage::find(1);
+    $date = Carbon::now();
     if(null == $home){
       $home_n = new Homepage;
       $home_n->homepage_id = 1;
       $home_n->homepage_slogan = $request->slogan;
       $home_n->homepage_slogan_subtext = $request->subtext;
       if(null !== $request->file('cover')){
-        $file = $request->file('cover');
-        $home_n->homepage_gambar = 'homepage.'.$file->getClientOriginalExtension();
-        $destinationPath = public_path('images/homepage/');
-        $file->move($destinationPath, $home_n->homepage_gambar);
+        $files = $request->file('cover');
+        foreach($files as $file => $value){
+          $homimg = new homepage_image;
+          $homimg->homepage_gambar = hash('md5', $date.$file).'.'.$files[$file]->getClientOriginalExtension();
+          $destinationPath = public_path('images/homepage/');
+          $files[$file]->move($destinationPath, $homimg->homepage_gambar);
+          $homimg->save();
+        }
       }
       $home_n->save();
     }
@@ -61,17 +69,28 @@ class pagesController extends Controller
       $home->homepage_slogan = $request->slogan;
       $home->homepage_slogan_subtext = $request->subtext;
       if(null !== $request->file('cover')){
-        $file = $request->file('cover');
-        $home->homepage_gambar = 'homepage.'.$file->getClientOriginalExtension();
-        $destinationPath = public_path('images/homepage/');
-        $file->move($destinationPath, $home->homepage_gambar);
+        $files = $request->file('cover');
+        foreach($files as $file => $value){
+          $homimg = new homepage_image;
+          $homimg->homepage_gambar = hash('md5', $date.$file).'.'.$files[$file]->getClientOriginalExtension();
+          $destinationPath = public_path('images/homepage/');
+          $files[$file]->move($destinationPath, $homimg->homepage_gambar);
+          $homimg->save();
+        }
       }
       $home->save();
     }
     return redirect('page-editor/homepage')->with('success','You have successfully updated the homepage');
   }
 
-
+  public function deletepics($id){
+    $this->checklogin();
+    $deleted = homepage_image::find($id);
+    $thumbpath = public_path("images\\homepage\\");
+    File::delete($thumbpath.$deleted->homepage_gambar);
+    $deleted->delete();
+    return redirect('page-editor/homepage')->with('success','You have successfully deleted a cover photo');
+  }
 
   public function showcustomer(){
     $this->checklogin();

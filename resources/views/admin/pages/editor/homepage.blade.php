@@ -24,28 +24,41 @@
 							View In Page
 						</div></a>
 					</div>
-          <div class="col-md-12">
-            <div class="col-md-6 col-xs-12">
+          <div class="col-md-12 col-xs-12">
               <div class="form-group">
-                <h3 class="box-header with-border"><i class="fa fa-image"></i> Homepage cover photo</h3>
+                <h3 class="box-header with-border"><i class="fa fa-image"></i> Homepage cover photos</h3>
                 <div class="box-body">
-									@if(isset($homepage))
-										<img src="{{url('/')}}/images/homepage/{{$homepage->homepage_gambar}}" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="400" height="236">
+									@if(isset($gambar[0]))
+										@foreach($gambar as $gbr)
+											<div class="col-md-3 col-xs-12 " style="margin:15px;">
+												<div class="text-center">
+													<div style="height:120px;"  class="text-center thumbnail">
+														<a target="_blank"href="{{url('/')}}/images/homepage/{{$gbr->homepage_gambar}}"><img class="img-responsive" style="max-height:100%; max-width:100%;" src="{{url('/')}}/images/homepage/{{$gbr->homepage_gambar}}"></a>
+													</div>
+													<a href="{{url('/')}}/page-editor/delhomph/{{$gbr->homepage_id}}"><div class="btn btn-danger">
+														Delete Picture
+													</div></a>
+												</div>
+											</div>
+										@endforeach
 									@else
-									<img src="{{url('/')}}/images/NoImage.jpg" class="img-thumbnail" alt="Cinque Terre" style="border:none;" width="400" height="236">
+									<div class="text-center" style="margin:20px;">
+											<i class="fa fa-info-circle" style="color:grey"></i><p style="color:grey"> No image available</p>
+									</div>
 									@endif
 								  <br>
-                  <div class="text-center">
-                    <label class="btn btn-default btn-file">
-                      <i class="fa fa-pencil"></i>  Change cover photo <input id="change" type="file" name="cover">
-                    </label>
-                    <p id="p1">
-                    </p>
-                  </div>
+									<div class="text-center col-md-12" style="margin-top:10px;">
+										<label class="btn btn-default btn-file">
+											<i class="fa fa-pencil"></i>  Add cover photo(s) <input id="change" type="file" name="cover[]" multiple>
+										</label>
+										<p id="p1" style="margin-left:15px;">
+										</p>
+									</div>
+
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-12 col-xs-12">
               <div class="form-group ">
                   <h3 class="box-header with-border"><i class="fa fa-info-circle"></i>Slogan</h3>
                   <div class="box-body">
@@ -59,8 +72,6 @@
                   </div>
               </div>
             </div>
-          </div>
-
 
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				</div><!-- /.box-body -->
@@ -86,9 +97,8 @@
 			 $('#change').val('');
 		 }
 		 else{
-		 	var filename = document.getElementById("change").value;
-		 	filename = filename.split("\\");
-		 	document.getElementById("p1").innerHTML= filename[filename.length-1];
+		 	var jumlah = e.originalEvent.target.files.length;
+		 	document.getElementById("p1").innerHTML= jumlah + " picture(s) selected";
 	 	}
 	 });
     $(function () {
