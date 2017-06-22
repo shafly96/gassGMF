@@ -8,6 +8,7 @@ use App\Customer;
 use App\Berita;
 use App\Messages;
 use DB;
+use App\Product;
 use App\Aftersales;
 use App\AftersalesImage;
 use Carbon\Carbon;
@@ -30,7 +31,7 @@ class customerController extends Controller
         $data['berita'] = $c1['berita'];
     	return view('customer/pages/welcome', $data);
     }
-    
+
     public function about(){
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
@@ -85,9 +86,10 @@ class customerController extends Controller
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
+        $data['products'] = Product::get();
       return view('customer/pages/as_form', $data);
     }
-    
+
     public function addaftersales(Request $request){
         $as = new Aftersales;
         $as->as_company_name = $request->company;

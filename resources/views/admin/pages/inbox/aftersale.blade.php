@@ -31,20 +31,22 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Machine Serial Number</label>
-            <p>{{$aftersales->as_contact_name}}</p>
+            <p>{{$aftersales->as_serial}}</p>
 
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Product Type</label>
-            <p>@if($aftersales->as_product_type==1)
+            <p>@if($aftersales->product_tipe==1)
                 Assembly and Fabrication
-              @elseif($aftersales->as_product_type==2)
+              @elseif($aftersales->product_tipe==2)
                 Service
-              @elseif($aftersales->as_product_type==3)
+              @elseif($aftersales->product_tipe==3)
                 Maintenance
               @else
                 Rental
-              @endif</p>
+              @endif
+							-- {{$aftersales->product_name}}
+						</p>
 
           </div>
 

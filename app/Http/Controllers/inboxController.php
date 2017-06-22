@@ -47,7 +47,9 @@ class inboxController extends Controller
 
       $data['active'] = "aftersales";
       $data['active2'] = "";
-      $data['aftersales'] = Aftersales::orderBy('as_id','desc')->get();
+      $data['aftersales'] = DB::table('after_sales')
+      ->join('product','after_sales.as_product_type','=','product.product_id')
+      ->orderBy('after_sales.as_id','desc')->get();
       return view('admin.pages.inbox.aftersales',$data);
     }
 
@@ -55,7 +57,10 @@ class inboxController extends Controller
       $this->checklogin();
       $data['active'] = "aftersales";
       $data['active2'] = "";
-      $data['aftersales'] = Aftersales::find($id);
+      $data['aftersales'] =  DB::table('after_sales')
+      ->join('product','after_sales.as_product_type','=','product.product_id')
+      ->where('after_sales.as_id','=',$id)
+      ->orderBy('after_sales.as_id','desc')->first();
       $data['gambar'] = AftersalesImage::where('as_id','=',$id)->get();
       // dd($data['gambar']);
       return view('admin.pages.inbox.aftersale',$data);
