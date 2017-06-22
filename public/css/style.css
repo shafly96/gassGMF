@@ -18,6 +18,23 @@
     src: url('../font/ProximaNova-Regular.otf');
 }
 
+#slideshow {
+  margin: 80px auto;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#slideshow > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}
+
 .jarak{
     width: 100px;
     height: 100px;
@@ -55,7 +72,7 @@ div{
 
 .tab button:focus {
     outline: 0;
-    border-bottom-color: #005F6B;
+    border-bottom-color: #3B5A9A;
 }
 
 .tab button{
@@ -63,14 +80,14 @@ div{
     background-color: white;
     font-family: regular;
     font-size: 18px;
-    color: #005F6B;
+    color: #3B5A9A;
     padding: 8px 15px;
     border-bottom: solid;
     border-bottom-color: transparent;
 }
 
 .tab button:hover{
-    border-bottom-color: #005F6B;
+    border-bottom-color: #3B5A9A;
 }
 
 .description{

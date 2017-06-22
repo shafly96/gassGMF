@@ -44,12 +44,27 @@
                 </div>
                 <div class="col-md-6" style="padding-left: 30px;">
                     <p class="judul-berita">Contact Details</p>
-                    <div class="tes">
-                        <p><i class="glyphicon glyphicon-home"></i><span style="margin-left: 10px;"><?php print $footer->fc_address; ?></span></p>
-                        <p class="tes2"><i class="glyphicon glyphicon-earphone"></i><span style="margin-left: 10px"><p>{{$footer->fc_telp1}}</span></p></p>
-                        <p><span class="">{{$footer->fc_telp2}}</span></p>
-                        <p class="tes2"><i class="glyphicon glyphicon-envelope"></i><span style="margin-left: 10px;"><p>{{$footer->fc_email}}</p></span></p>
-                        <p><span class="">{{$footer->fc_email2}}</span></p>
+                    <div class="tes" style="padding-top: 10px">
+                        <div class="row">
+                            <div class="col-md-1"><i class="glyphicon glyphicon-home"></i></div>
+                            <div class="col-md-10"><?php print $footer->fc_address; ?></div>
+                        </div>
+
+                        <div class="row" style="margin-top: 20px">
+                            <div class="col-md-1"><i class="glyphicon glyphicon-earphone"></i></div>
+                            <div class="col-md-10">{{$footer->fc_telp1}}</div>
+
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">{{$footer->fc_telp2}}</div>
+                        </div>
+
+                        <div class="row" style="margin-top: 20px">
+                            <div class="col-md-1"><i class="glyphicon glyphicon-envelope"></i></div>
+                            <div class="col-md-10">{{$footer->fc_email}}</div>
+
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">{{$footer->fc_email2}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
