@@ -62,11 +62,17 @@
         <div class="col-md-1"></div>
         <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-6">
-            <div id="slideshow" style="width: 100%; height: 340px">
-                    <img src="<?php echo e(url('')); ?>/image/truck.png" style="width: 100%; height: auto; max-height: 100%; ">
-                    <img src="<?php echo e(url('')); ?>/image/gass.jpg" style="width: 100%; height: auto; max-height: 100%; ">
-                    <img src="<?php echo e(url('')); ?>/image/logingbr.jpg" style="width: 100%; height: auto; max-height: 100%; ">
-                </div>
+                <div id="slideshow">
+   <div>
+     <img src="<?php echo e(url('')); ?>/image/truck.png" style="width: 100%; height:auto; max-height: 100%">
+   </div>
+   <div>
+     <img src="<?php echo e(url('')); ?>/image/gass.jpg" style="width: 100%; height:auto; max-height: 100%">
+   </div>
+   <div>
+     Pretty cool eh? This slide is proof the content can be anything.
+   </div>
+</div>
             </div>
             <div class="col-md-6">
                 <p class="judul-div"><strong>Our</strong> Products</p>
@@ -240,16 +246,16 @@
         });
     });
 
-    $("#slideshow img:gt(0)").hide();
+    $("#slideshow > div:gt(0)").hide();
 
-    setInterval(function() {
-      $('#slideshow img:first')
-      .fadeOut(1000)
-      .next()
-      .fadeIn(1000)
-      .end()
-      .appendTo('#slideshow');
-  }, 2000);
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+}, 3000);
 
 </script>
 </html>
