@@ -21,6 +21,17 @@
   <section class="sidebar" >
 
     <ul class="sidebar-menu">
+      <li class="treeview <?php if($active=='user') echo 'active' ?>">
+        <a href="#">
+          <i class="fa fa-user-plus"></i>
+          <span>User Configuration</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php if($active2=='regis') echo 'active' ?>"><a href="<?php echo e(url('/')); ?>/user/register"><i class="fa fa-circle-o"></i>Register new admin</a></li>
+          <li class="<?php if($active2=='update') echo 'active' ?>"><a href="<?php echo e(url('/')); ?>/user/changepass"><i class="fa fa-circle-o"></i>Change Password</a></li>
+        </ul>
+      </li>
       <li class="header">CONTENT EDITOR</li>
       <li class="treeview <?php if($active=='products') echo 'active' ?>">
         <a href="#">
@@ -93,6 +104,11 @@
         </a>
       </li>
 
+      <li>
+        <a href="<?php echo e(url('/')); ?>/user/logout">
+          <i class="fa fa-power-off"></i> <span>Logout</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->

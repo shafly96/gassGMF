@@ -9,10 +9,10 @@
             <strong style="font-family:extrabold">GMF </strong>Aircraft Support Services
             <div class="topnav" id="myTopnav">
                 <a href="{{url('')}}">Home</a>
-                <a href="{{url('')}}/about">About</a>
-                <a href="{{url('')}}/aftersales">After Sales & Parts Service</a>
                 <a href="{{url('')}}/products">Products</a>
                 <a href="{{url('')}}/news">News</a>
+                <a href="{{url('')}}/aftersales">After Sales & Parts Service</a>
+                <a href="{{url('')}}/about">About</a>
                 <a href="{{url('')}}/contact">Contact</a>
             </div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
