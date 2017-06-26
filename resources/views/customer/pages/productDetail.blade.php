@@ -10,15 +10,15 @@ Product
 @section('content')
 <div class="col-md-12 rata" style="margin-top: 50px">
 	<div class="col-md-7">
-		<div class="col-md-12" style="padding-left: 30px; padding-right: 30px; padding-bottom: 60px">
-			<div class="w3-content w3-section" style="width:100%; height: 200px; text-align:center">
+		<div class="col-md-12" style="padding-bottom: 30px">
+			<div class="w3-content w3-section" style="width:100%; max-height:440px; text-align:center; margin-left:0 !important;">
 				@foreach($product as $key=>$value)
-				<img class="mySlides" src="{{url('')}}/images/product/{{$product[$key]->filename}}" style="height: 100%; margin: 0 auto">
+				<img class="mySlides" src="{{url('')}}/images/product/{{$product[$key]->filename}}" style="max-height: 440px; max-width:100%; margin: 0 auto">
 				@endforeach
 
 
-				<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-				<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+				<button class="w3-display-left" style="margin-left: 20px" onclick="plusDivs(-1)">&#10094;</button>
+				<button class="w3-display-right" style="margin-right: 20px" onclick="plusDivs(1)">&#10095;</button>
 			</div>
 		</div>
 		<div class="col-md-12">

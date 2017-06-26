@@ -9,15 +9,27 @@
 
     <!-- background -->
     @isset($homepage[0])
-    <div class="foto"><img class="background" src="{{url('')}}/images/homepage/{{$homepage[0]->homepage_gambar}}"></div>
+    <div class="foto">
+        @foreach($homepage as $data)
+        <img class="background" src="{{url('')}}/images/homepage/{{$data->homepage_gambar}}">
+        @endforeach
+        <div style="margin-top: 300px">
+                <button class="w3-display-left" style="margin-left: 20px" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="w3-display-right" style="margin-right: 20px" onclick="plusDivs(1)">&#10095;</button>
+        </div>
+    </div>
     @endisset
     <!-- div selanjutnya -->
 
     <div class="div1 batas-bawah">
         <div class="col-md-3"></div>
         <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            <p class="slogan">@isset($homepage[0]) {{$homepage[0]->homepage_slogan}} @endisset</p>
-            <p class="slogan-text">@isset($homepage[0]) {{$homepage[0]->homepage_slogan_subtext}} @endisset</p>
+            @isset($homepage[0])
+            @foreach($homepage as $data)
+            <p class="slogan">{{$data->homepage_slogan}}</p>
+            <p class="slogan-text">{{$data->homepage_slogan_subtext}}</p>
+            @endforeach
+            @endisset
         </div>
     </div>
 
@@ -63,35 +75,35 @@
         <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-6">
                 <div id="slideshow">
+                   <div>
+                     <img src="{{url('')}}/image/truck.png" style="width: 100%; height:auto; max-height: 100%">
+                 </div>
                  <div>
-                   <img src="{{url('')}}/image/truck.png" style="width: 100%; height:auto; max-height: 100%">
-               </div>
-               <div>
-                   <img src="{{url('')}}/image/gass.jpg" style="width: 100%; height:auto; max-height: 100%">
-               </div>
-           </div>
-       </div>
-       <div class="col-md-6">
-        <p class="judul-div"><strong>Our</strong> Products</p>
-        <div class="slide-product-2">
-            <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+                     <img src="{{url('')}}/image/gass.jpg" style="width: 100%; height:auto; max-height: 100%">
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-6">
+            <p class="judul-div"><strong>Our</strong> Products</p>
+            <div class="slide-product-2">
+                <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+            </div>
+        </div>
+        <div class="col-md-12 produk">
+            <div class="col-md-3 kotak">
+                <button onclick="window.location.href='{{url('')}}/products/ajax/2'"><strong>Services</strong></button>
+            </div>
+            <div class="col-md-3 kotak">
+                <button onclick="window.location.href='{{url('')}}/products/ajax/3'"><strong>Maintenance</strong></button>
+            </div>
+            <div class="col-md-3 kotak">
+                <button onclick="window.location.href='{{url('')}}/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
+            </div>
+            <div class="col-md-3 kotak">
+                <button onclick="window.location.href='{{url('')}}/products/ajax/4'"><strong>Rental</strong></button>
+            </div>
         </div>
     </div>
-    <div class="col-md-12 produk">
-        <div class="col-md-3 kotak">
-            <button onclick="window.location.href='{{url('')}}/products/ajax/2'"><strong>Services</strong></button>
-        </div>
-        <div class="col-md-3 kotak">
-            <button onclick="window.location.href='{{url('')}}/products/ajax/3'"><strong>Maintenance</strong></button>
-        </div>
-        <div class="col-md-3 kotak">
-            <button onclick="window.location.href='{{url('')}}/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
-        </div>
-        <div class="col-md-3 kotak">
-            <button onclick="window.location.href='{{url('')}}/products/ajax/4'"><strong>Rental</strong></button>
-        </div>
-    </div>
-</div>
 </div>
 
 <!-- div selanjutnya (berita) -->
@@ -253,6 +265,50 @@
       .end()
       .appendTo('#slideshow');
   }, 3000);
+
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("background");
+        var y = document.getElementsByClassName("slogan");
+        var z = document.getElementsByClassName("slogan-text");
+        if (n > x.length) {slideIndex = 1} 
+            if (n < 1) {slideIndex = x.length} ;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none"; 
+            y[i].style.display = "none"; 
+            z[i].style.display = "none"; 
+        }
+        x[slideIndex-1].style.display = "block"; 
+        y[slideIndex-1].style.display = "block"; 
+        z[slideIndex-1].style.display = "block"; 
+    }
+
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("background");
+        var y = document.getElementsByClassName("slogan");
+        var z = document.getElementsByClassName("slogan-text");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+            y[i].style.display = "none"; 
+            z[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {slideIndex = 1} 
+        x[slideIndex-1].style.display = "block"; 
+        y[slideIndex-1].style.display = "block"; 
+        z[slideIndex-1].style.display = "block"; 
+        setTimeout(carousel, 4000); 
+    }
 
 </script>
 </html>

@@ -21,10 +21,10 @@
 #slideshow {
   margin: 80px auto;
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 90%;
+  float: right;
+  height: 360px;
   padding: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 #slideshow > div {
@@ -36,8 +36,8 @@
 }
 
 .jarak{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 
 .item .row{
@@ -410,7 +410,6 @@ li{
 
 .produk{
     padding-left: 70px;
-    margin-top: 50px;
 }
 
 .customer{

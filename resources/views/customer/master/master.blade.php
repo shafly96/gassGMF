@@ -8,8 +8,8 @@
 <!-- content -->
 
     <div class="div2">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 batas-atas batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 batas-atas batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-12">
                 <p class="judul-div a"><strong>@yield('judul1')</strong> @yield('judul2')</p>
                 <div class="col-md-12">

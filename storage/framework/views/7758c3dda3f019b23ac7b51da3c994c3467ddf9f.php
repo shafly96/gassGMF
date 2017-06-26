@@ -42,17 +42,7 @@
 								<td><?php echo e($counter); ?></td>
 								<td><?php echo e($aftersale->as_company_name); ?></td>
 								<td><?php echo e($aftersale->as_serial); ?></td>
-                <td>
-									<?php if($aftersale->as_product_type==1): ?>
-											Assembly and Fabrication
-										<?php elseif($aftersale->as_product_type==2): ?>
-											Service
-										<?php elseif($aftersale->as_product_type==3): ?>
-											Maintenance
-										<?php else: ?>
-											Rental
-										<?php endif; ?>
-										</td>
+                <td><?php echo e($aftersale->product_name); ?></td>
                 <td><?php echo e($aftersale->as_timestamp); ?></td>
 								<td>
 									<a href="<?php echo e(url('/')); ?>/inbox/showaftersale/<?php echo e($aftersale->as_id); ?>" class="btn btn-info">View Details</a>

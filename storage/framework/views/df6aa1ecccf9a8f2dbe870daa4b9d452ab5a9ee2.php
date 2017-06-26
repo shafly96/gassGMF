@@ -10,6 +10,7 @@
     <script src="<?php echo e(url('')); ?>/plugin/aos-master/dist/aos.js"></script>
 
     <script src="<?php echo e(url('')); ?>/plugin/jQuery/jQuery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="<?php echo e(url('')); ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
