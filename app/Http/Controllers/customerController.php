@@ -11,6 +11,7 @@ use DB;
 use App\Product;
 use App\Aftersales;
 use App\AftersalesImage;
+use App\homepage_image;
 use Carbon\Carbon;
 class customerController extends Controller
 {
@@ -23,13 +24,16 @@ class customerController extends Controller
     }
 
     public function home(){
-        $data['homepage'] = DB::table('homepage')->join('homepage_image', 'homepage_image.homepage_id', '=', 'homepage.homepage_id')->get();
-        // dd($data['homepage']);
+        $data['homepage'] = Homepage::find(1);
+        $data['homepageimg']  = homepage_image::get();
+      //  dd($data['homepageimg']);
+      //   dd($data['homepage']);
         $data['customer'] = Customer::get();
         $data['latest_news'] = Berita::orderby('berita_date', 'desc')->take(2)->get();
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
+    //    dd($data['customer']);
     	return view('customer/pages/welcome', $data);
     }
 

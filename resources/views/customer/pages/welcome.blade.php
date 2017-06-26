@@ -8,9 +8,9 @@
     @include('customer/master/nav')
 
     <!-- background -->
-    @isset($homepage[0])
+    @isset($homepageimg)
     <div class="foto">
-        @foreach($homepage as $data)
+        @foreach($homepageimg as $data)
         <img class="background" src="{{url('')}}/images/homepage/{{$data->homepage_gambar}}">
         @endforeach
         <div style="margin-top: 300px">
@@ -24,11 +24,9 @@
     <div class="div1 batas-bawah">
         <div class="col-md-3"></div>
         <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            @isset($homepage[0])
-            @foreach($homepage as $data)
-            <p class="slogan">{{$data->homepage_slogan}}</p>
-            <p class="slogan-text">{{$data->homepage_slogan_subtext}}</p>
-            @endforeach
+            @isset($homepage)
+            <p class="slogan">{{$homepage->homepage_slogan}}</p>
+            <p class="slogan-text">{{$homepage->homepage_slogan_subtext}}</p>
             @endisset
         </div>
     </div>
@@ -66,7 +64,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
     <!-- div selanjutnya (produk) -->
 
@@ -122,7 +120,7 @@
                     <p class="judul-berita">{{$latest_news[0]->berita_title}}</p>
                     <p class="tanggal">{{$latest_news[0]->berita_date}}</p>
                     <p class="paragraf">
-                        <?php 
+                        <?php
                         if (strlen($latest_news[0]->berita_text) > 170) {
                             $trimstring = substr($latest_news[0]->berita_text, 0, 270);
                         } else {
@@ -144,7 +142,7 @@
                     <p class="judul-berita">{{$latest_news[1]->berita_title}}</p>
                     <p class="tanggal">{{$latest_news[1]->berita_date}}</p>
                     <p class="paragraf">
-                        <?php 
+                        <?php
                         if (strlen($latest_news[1]->berita_text) > 170) {
                             $trimstring = substr($latest_news[1]->berita_text, 0, 270);
                         } else {
@@ -168,62 +166,7 @@
     <div class="col-md-10 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
         <div class="col-md-12">
             <p class="judul-div kanan center"><strong>Our</strong> Customers</p>
-            @isset($customer)
-            <div class="customer">
-                <div id="myCarousel" class="carousel slide">
 
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-
-                        <?php 
-
-                        $i=0;
-                        $j=0;
-                        $k=intdiv(count($customer),4);
-                        $l=count($customer)-$k*4;
-                        $m=0;
-                        while($i<$k){
-                            $j++;
-                            ?>
-                            <div class="item <?php if($j==1) echo 'active'; ?>">
-                                <div class="row">
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+3]->customer_filename}}" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+2]->customer_filename}}" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+1]->customer_filename}}" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m]->customer_filename}}" alt="Image" class="img-responsive"></a>
-                                    </div>
-                                </div>
-                                <!--/row-->
-                            </div>
-                            <?php 
-                            $m+=4;
-                            $i++;
-                        } 
-                        ?>
-                        
-                        <div class="item <?php if($k==0) echo 'active'; ?>">
-                            <div class="row">
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
-                                </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{ isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
-                                </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
-                                </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
-                                </div>
-                            </div>
-                            <!--/row-->
-                        </div>
-
-                    </div>
-                    <!--/carousel-inner-->
-                </div>
-                <!--/myCarousel-->
-            </div>
-            @endisset
         </div>
     </div>
 </div>
@@ -278,16 +221,16 @@
         var x = document.getElementsByClassName("background");
         var y = document.getElementsByClassName("slogan");
         var z = document.getElementsByClassName("slogan-text");
-        if (n > x.length) {slideIndex = 1} 
+        if (n > x.length) {slideIndex = 1}
             if (n < 1) {slideIndex = x.length} ;
         for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none"; 
-            y[i].style.display = "none"; 
-            z[i].style.display = "none"; 
+            x[i].style.display = "none";
+            y[i].style.display = "none";
+            z[i].style.display = "none";
         }
-        x[slideIndex-1].style.display = "block"; 
-        y[slideIndex-1].style.display = "block"; 
-        z[slideIndex-1].style.display = "block"; 
+        x[slideIndex-1].style.display = "block";
+        y[slideIndex-1].style.display = "block";
+        z[slideIndex-1].style.display = "block";
     }
 
     carousel();
@@ -299,15 +242,15 @@
         var z = document.getElementsByClassName("slogan-text");
         for (i = 0; i < x.length; i++) {
           x[i].style.display = "none";
-            y[i].style.display = "none"; 
-            z[i].style.display = "none";  
+            y[i].style.display = "none";
+            z[i].style.display = "none";
         }
         slideIndex++;
-        if (slideIndex > x.length) {slideIndex = 1} 
-        x[slideIndex-1].style.display = "block"; 
-        y[slideIndex-1].style.display = "block"; 
-        z[slideIndex-1].style.display = "block"; 
-        setTimeout(carousel, 4000); 
+        if (slideIndex > x.length) {slideIndex = 1}
+        x[slideIndex-1].style.display = "block";
+        y[slideIndex-1].style.display = "block";
+        z[slideIndex-1].style.display = "block";
+        setTimeout(carousel, 4000);
     }
 
 </script>
