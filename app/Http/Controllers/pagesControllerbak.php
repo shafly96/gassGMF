@@ -35,108 +35,52 @@ class pagesController extends Controller
 
     $data['active'] = "homepage";
     $data['active2'] = "";
-    $data['slides'] = Homepage::join('homepage_image','homepage.homepage_id','=','homepage_image.homepage_id')->get();
+    $data['homepage'] = Homepage::find(1);
+    $data['gambar'] = homepage_image::get();
 
     return view('admin.pages.editor.homepage',$data);
   }
-
-  public function showinsert(){
-    $this->checklogin();
-    $data['active'] = 'homepage';
-    $data['active2'] = '';
-    return view('admin/pages/editor/homepagebak',$data);
-  }
-  public function deletehomepage($id){
-    $this->checklogin();
-
-    $deleted = DB::table('homepage_image')->where('homepage_id', '=', $id)->get();
-    $thumbpath = public_path("images\homepage\\");
-    $realpath = public_path("images\homepage\\homepagethumb\\");
-
-    File::delete($realpath.$deleted[0]->homepage_gambar);
-    File::delete($thumbpath.$deleted[0]->homepage_gambar);
-
-    DB::table('homepage_image')->where('homepage_id', '=', $id)->delete();
-    DB::table('homepage')->where('homepage_id', '=', $id)->delete();
-
-
-    return redirect('page-editor/homepage')->with('success','You have successfully deleted a homepage slide');
-
-  }
-
-
 
   public function updatehome(Request $request){
     $this->checklogin();
 
     $data['active'] = "homepage";
     $data['active2'] = "";
-
+    $home = Homepage::find(1);
     $date = Carbon::now();
-    $home = new Homepage;
-    $home->homepage_slogan = $request->slogan;
-    $home->homepage_slogan_subtext = $request->subtext;
-    $home->save();
-
-    if(null !== $request->file('media')){
-      $files = $request->file('media');
-      $homimg = new homepage_image;
-      $homimg->homepage_gambar = hash('md5', $date).'.'.$files->getClientOriginalExtension();
-
-      $destinationPath = public_path('images/homepage/homepagethumb');
-      $img = Image::make($files->getRealPath());
-      $img->resize(200, 125, function ($constraint) {
-        $constraint->aspectRatio();
-      })->save($destinationPath.'\\'.$homimg->homepage_gambar);
-      $destinationPath = public_path('images/homepage/');
-      $files->move($destinationPath, $homimg->homepage_gambar);
-      $homimg->homepage_id = $home->homepage_id;
-      $homimg->save();
-    }
-    return redirect('page-editor/homepage')->with('success','You have successfully inserted a homepage slide');
-  }
-
-  public function edithomepage(Request $request,$id){
-      $updated = Homepage::find($id);
-      $date = Carbon::now();
-      $updated->homepage_slogan = $request->slogan;
-      $updated->homepage_slogan_subtext = $request->subtext;
-      $updated->save();
-
-      if(null !== $request->file('media')){
-        $files = $request->file('media');
-        $homimg = homepage_image::where('homepage_id',$id)->first();
-
-        $thumbpath = public_path("images\homepage\\");
-        $realpath = public_path("images\homepage\\homepagethumb\\");
-
-        File::delete($realpath.$homimg->homepage_gambar);
-        File::delete($thumbpath.$homimg->homepage_gambar);
-
-        $homepage_gambar = hash('md5', $date).'.'.$files->getClientOriginalExtension();
-        $destinationPath = public_path('images/homepage/homepagethumb');
-        $img = Image::make($files->getRealPath());
-        $img->resize(200, 125, function ($constraint) {
-          $constraint->aspectRatio();
-        })->save($destinationPath.'\\'.$homepage_gambar);
-        $destinationPath = public_path('images/homepage/');
-        $files->move($destinationPath, $homepage_gambar);
-        $homepage_id = $updated->homepage_id;
-        homepage_image::where('homepage_id',$id)->update(['homepage_gambar'=>$homepage_gambar]);
+    if(null == $home){
+      $home_n = new Homepage;
+      $home_n->homepage_id = 1;
+      $home_n->homepage_slogan = $request->slogan;
+      $home_n->homepage_slogan_subtext = $request->subtext;
+      if(null !== $request->file('cover')){
+        $files = $request->file('cover');
+        foreach($files as $file => $value){
+          $homimg = new homepage_image;
+          $homimg->homepage_gambar = hash('md5', $date.$file).'.'.$files[$file]->getClientOriginalExtension();
+          $destinationPath = public_path('images/homepage/');
+          $files[$file]->move($destinationPath, $homimg->homepage_gambar);
+          $homimg->save();
+        }
       }
-      return redirect('page-editor/homepage')->with('success','You have successfully updated a homepage slide');
-
-
-  }
-
-  public function showupdate($id){
-    $this->checklogin();
-    $data['active'] = 'homepage';
-    $data['active2'] = '';
-    $data['homepage'] = DB::table('homepage')->join('homepage_image','homepage.homepage_id','=','homepage_image.homepage_id')->where('homepage.homepage_id', '=', $id)->first();
-  //  dd($data['homepage']);
-    return view('admin/pages/editor/homepagebak',$data);
-
+      $home_n->save();
+    }
+    else{
+      $home->homepage_slogan = $request->slogan;
+      $home->homepage_slogan_subtext = $request->subtext;
+      if(null !== $request->file('cover')){
+        $files = $request->file('cover');
+        foreach($files as $file => $value){
+          $homimg = new homepage_image;
+          $homimg->homepage_gambar = hash('md5', $date.$file).'.'.$files[$file]->getClientOriginalExtension();
+          $destinationPath = public_path('images/homepage/');
+          $files[$file]->move($destinationPath, $homimg->homepage_gambar);
+          $homimg->save();
+        }
+      }
+      $home->save();
+    }
+    return redirect('page-editor/homepage')->with('success','You have successfully updated the homepage');
   }
 
   public function deletepics($id){

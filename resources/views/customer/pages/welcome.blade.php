@@ -8,9 +8,9 @@
     @include('customer/master/nav')
 
     <!-- background -->
-    @isset($homepageimg)
+    @isset($homepage[0])
     <div class="foto">
-        @foreach($homepageimg as $data)
+        @foreach($homepage as $data)
         <img class="background" src="{{url('')}}/images/homepage/{{$data->homepage_gambar}}">
         @endforeach
         <div style="margin-top: 300px">
@@ -24,9 +24,11 @@
     <div class="div1 batas-bawah">
         <div class="col-md-3"></div>
         <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
-            @isset($homepage)
-            <p class="slogan">{{$homepage->homepage_slogan}}</p>
-            <p class="slogan-text">{{$homepage->homepage_slogan_subtext}}</p>
+            @isset($homepage[0])
+              @foreach($homepage as $data)
+              <p class="slogan">{{$data->homepage_slogan}}</p>
+              <p class="slogan-text">{{$data->homepage_slogan_subtext}}</p>
+              @endforeach
             @endisset
         </div>
     </div>

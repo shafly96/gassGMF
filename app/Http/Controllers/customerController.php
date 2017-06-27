@@ -24,8 +24,7 @@ class customerController extends Controller
     }
 
     public function home(){
-        $data['homepage'] = Homepage::find(1);
-        $data['homepageimg']  = homepage_image::get();
+        $data['homepage'] = DB::table('homepage')->join('homepage_image','homepage.homepage_id','=','homepage_image.homepage_id')->get();
       //  dd($data['homepageimg']);
       //   dd($data['homepage']);
         $data['customer'] = Customer::get();

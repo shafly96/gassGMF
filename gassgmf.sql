@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2017 at 10:02 AM
+-- Generation Time: Jun 27, 2017 at 06:01 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -53,7 +53,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`about_id`, `about_gmf_gambar`, `about_gmf_text`, `about_gass_gambar`, `about_gass_text`, `about_facility_gambar`, `about_facility_text`, `about_testimony_g1`, `about_testimony_n1`, `about_testimony_g2`, `about_testimony_n2`, `about_testimony_g3`, `about_testimony_n3`, `about_testimony_t1`, `about_testimony_t2`, `about_testimony_t3`, `about_testimony_title1`, `about_testimony_title2`, `about_testimony_title3`) VALUES
-(1, 'about-gmf.png', '<p>ad</p>', 'about-gass.jpg', '<p>lkmdlkamdoapkaepoafapokfpakfpafa</p><p>fapokfpaofkpoakfpfapofk</p><p>afpoaekfpoakf</p>', 'about-gass.PNG', NULL, 'test1.jpg', 'john doe', 'test2.png', 'jihn doe', 'test3.png', 'jajon doe', ') method returns a collection of all elements in the document with the specified class name, as a NodeList object.\r\n\r\nThe NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.\r\n\r\nTip: You can use the length property of t', ') method returns a collection of all elements in the document with the specified class name, as a NodeList object.\r\n\r\nThe NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.\r\n\r\nTip: You can use the length property of t', ') method returns a collection of all elements in the document with the specified class name, as a NodeList object.\r\n\r\nThe NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.\r\n\r\nTip: You can use the length property of t', 'CEO', 'CFO', 'CTO');
+(1, 'about-gmf.jpg', '<p>\r\n\r\n</p><div><p>Started out in 1949, GMF AeroAsia originated as the Technical Division of Garuda Indonesia airline and transformed into independent entity in 2002, With more than 60 years of expertise as an Aircraft Maintenance Repair and Overhaul company. As the market leader in Indonesia and the global player in MRO industry, GMF AeroAsia provides its best quality services for airlines across the world that reaches more than 60 nations in 5 continents.</p><p>GMF AeroAsia provides a wide-range aircraft maintenance services, such as Line Maintenance, Base Maintenance, Component Maintenance, Engine &amp; APU Maintenance, Cabin Maintenance, Engineering Services, Material Services, Logistic &amp; Bonded Services, Learning Services for various aircraft type such as Boeing 737, Boeing 747, Boeing 777, Airbus A320, Airbus A330, Bombardier CRJ1000, and ATR 72-600 and other outside aircraft service GMF Power Services, provides comprehensive repair and overhaul of industrial gas turbine engines. Offering an aircraft maintenance solution, GMF AeroAsia is complied with many certified authorities’ regulations, including Indonesia DGCA, United States FAA, European EASA, and many others.</p></div><br>\r\n\r\n<p></p>', 'about-gass.jpg', '<p>lkmdlkamdoapkaepoafapokfpakfpafa</p><p>fapokfpaofkpoakfpfapofk</p><p>afpoaekfpoakf</p>', 'about-gass.PNG', NULL, 'test1.jpg', 'john doe', 'test2.png', 'jihn doe', 'test3.png', 'jajon doe', ') method returns a collection of all elements in the document with the specified class name, as a NodeList object.\r\n\r\nThe NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.\r\n\r\nTip: You can use the length property of t', ') method returns a collection of all elements in the document with the specified class name, as a NodeList object.\r\n\r\nThe NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.\r\n\r\nTip: You can use the length property of t', ') method returns a collection of all elements in the document with the specified class name, as a NodeList object.\r\n\r\nThe NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.\r\n\r\nTip: You can use the length property of t', 'CEO', 'CFO', 'CTO');
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,8 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_filename`) VALUES
 (2, 'sadasd', 'sadasd.PNG'),
 (3, 'aasdsad', 'aasdsad.PNG'),
-(4, 'sd', 'sd.PNG');
+(4, 'sd', 'sd.PNG'),
+(5, 'garuda', 'garuda.PNG');
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,8 @@ CREATE TABLE `homepage` (
 --
 
 INSERT INTO `homepage` (`homepage_slogan`, `homepage_id`, `homepage_slogan_subtext`) VALUES
-('asd', 1, 'asdoij');
+('Innovation for aviation', 12, 'Ground support equipment'),
+('Bendibelt', 13, 'best and innovative');
 
 -- --------------------------------------------------------
 
@@ -213,18 +215,18 @@ CREATE TABLE `homepage_customer` (
 --
 
 CREATE TABLE `homepage_image` (
-  `homepage_id` int(11) NOT NULL,
-  `homepage_gambar` varchar(300) NOT NULL
+  `homepage_image_id` int(11) NOT NULL,
+  `homepage_gambar` varchar(300) NOT NULL,
+  `homepage_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `homepage_image`
 --
 
-INSERT INTO `homepage_image` (`homepage_id`, `homepage_gambar`) VALUES
-(10, '554b3e236cc1583964aba0589ab0ab5b.jpg'),
-(12, '0824d2c0086fce608cbe692903e9df37.jpg'),
-(13, '25ede3f37771b137aacdfb64d8e84730.jpg');
+INSERT INTO `homepage_image` (`homepage_image_id`, `homepage_gambar`, `homepage_id`) VALUES
+(27, '63b7330e77b04c2b5e2faebe50286f24.jpg', 12),
+(28, 'f44c80ff7a23baa120696d4891488bcc.jpg', 13);
 
 -- --------------------------------------------------------
 
@@ -389,7 +391,8 @@ ALTER TABLE `homepage_customer`
 -- Indexes for table `homepage_image`
 --
 ALTER TABLE `homepage_image`
-  ADD PRIMARY KEY (`homepage_id`);
+  ADD PRIMARY KEY (`homepage_image_id`),
+  ADD KEY `homepage_id` (`homepage_id`);
 
 --
 -- Indexes for table `login`
@@ -446,7 +449,12 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `homepage`
+--
+ALTER TABLE `homepage`
+  MODIFY `homepage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `homepage_customer`
 --
@@ -456,7 +464,7 @@ ALTER TABLE `homepage_customer`
 -- AUTO_INCREMENT for table `homepage_image`
 --
 ALTER TABLE `homepage_image`
-  MODIFY `homepage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `homepage_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `login`
 --
@@ -491,6 +499,12 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `after_sales_image`
   ADD CONSTRAINT `after_sales_image_ibfk_1` FOREIGN KEY (`as_id`) REFERENCES `after_sales` (`as_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `homepage_image`
+--
+ALTER TABLE `homepage_image`
+  ADD CONSTRAINT `homepage_image_ibfk_1` FOREIGN KEY (`homepage_id`) REFERENCES `homepage` (`homepage_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `product_image`

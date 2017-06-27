@@ -61,8 +61,15 @@ Route::group(['prefix' => 'news'],function () {
 
 Route::group(['prefix' => 'page-editor'],function () {
   Route::get('/homepage', 'pagesController@showhome');
+
+  Route::get('/homepage/{id}', 'pagesController@showupdate');
+  Route::post('/edithomepage/{id}', 'pagesController@edithomepage');
+
+
+  Route::get('/addhomepage', 'pagesController@showinsert');
   Route::post('/homepage', 'pagesController@updatehome');
-  Route::get('/delhomph/{id}', 'pagesController@deletepics');
+  Route::get('/del-homepage/{id}', 'pagesController@deletehomepage');
+
 
   Route::get('/customer-list', 'pagesController@showcustomer');
   Route::get('/customer-add', 'pagesController@addcustomer');
