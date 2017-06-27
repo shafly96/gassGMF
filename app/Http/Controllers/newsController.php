@@ -89,6 +89,10 @@ class newsController extends Controller
     $updated = Berita::find($id);
     $updated->berita_title = $request->title;
     $updated->berita_text = $request->content;
+    $updated->berita_text= str_replace("\r",'',   $updated->berita_text);
+    $updated->berita_text = str_replace("\n",'',  $updated->berita_text);
+    $updated->berita_text= str_replace("\r\n",'', $updated->berita_text);
+    
     $date = Carbon::now();
     $date = $date->toDateString();
     if(null !==$request->file('media')){
@@ -125,6 +129,10 @@ class newsController extends Controller
     $news = new Berita;
     $news->berita_title = $request->title;
     $news->berita_text = $request->content;
+    $news->berita_text= str_replace("\r",'',   $news->berita_text);
+    $news->berita_text = str_replace("\n",'',  $news->berita_text);
+    $news->berita_text= str_replace("\r\n",'', $news->berita_text);
+
     $file = $request->file('media');
     $news->berita_filename = $request->title.$date.'.'.$file->getClientOriginalExtension();
 
