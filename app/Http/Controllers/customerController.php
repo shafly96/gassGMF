@@ -71,6 +71,14 @@ class customerController extends Controller
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
         $data['news'] = Berita::paginate(5);
+        foreach($data['news']->items() as $key => $value)
+        {
+          $data['news']->items()[$key]->berita_text = str_replace("\r",'', $data['news']->items()[$key]->berita_text);
+          $data['news']->items()[$key]->berita_text = str_replace("\n",'', $data['news']->items()[$key]->berita_text);
+          $data['news']->items()[$key]->berita_text = str_replace("\r\n",'', $data['news']->items()[$key]->berita_text);
+        //  dd($data['news']->items()[$key]->berita_text);
+        }
+
     	return view('customer/pages/news', $data);
     }
 
