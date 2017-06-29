@@ -31,7 +31,7 @@
 						<label for="exampleInputPassword1">News Content</label>
 
             <div class="box-body pad">
-                <textarea id="textarea" name="content" placeholder="News Content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                <textarea id="textarea" name="content" placeholder="News Content" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
             </div>
 					</div>
 

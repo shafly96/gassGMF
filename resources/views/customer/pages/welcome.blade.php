@@ -11,7 +11,7 @@
     @isset($homepage[0])
     <div class="foto">
         @foreach($homepage as $data)
-        <img class="background" src="{{url('')}}/images/homepage/{{$data->homepage_gambar}}">
+        <img class="background" src="{{url('')}}/images/homepage/{{$data->homepage_gambar}}" style="max-width:100%;">
         @endforeach
         <div style="margin-top: 300px">
                 <button class="w3-display-left" style="margin-left: 20px" onclick="plusDivs(-1)">&#10094;</button>
@@ -21,13 +21,17 @@
     @endisset
     <!-- div selanjutnya -->
 
-    <div class="div1 batas-bawah">
-        <div class="col-md-3"></div>
-        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
+    <div class="div1 batas-bawah" style="height:15em">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
             @isset($homepage[0])
               @foreach($homepage as $data)
-              <p class="slogan">{{$data->homepage_slogan}}</p>
-              <p class="slogan-text">{{$data->homepage_slogan_subtext}}</p>
+              <div style="background:rgba(0,0,0,0.4);">
+                <p class="slogan" >{{$data->homepage_slogan}}</p>
+              </div>
+              <div style="background:rgba(0,0,0,0.4);">
+                <p class="slogan-text" >{{$data->homepage_slogan_subtext}}</p>
+              </div>
               @endforeach
             @endisset
         </div>

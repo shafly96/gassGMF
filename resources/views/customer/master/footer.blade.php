@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-4 about-footer">
                 <img src="{{url('')}}/image/logo.png" width="100%" style="margin-top: 70px;">
-                <div class="pull-right" style="margin-top:20px;">
+                <div class="pull-right col-xs-12" style="margin-top:20px;">
                         <a target="_blank" style="text-decoration:none;color: white;" href="https://www.facebook.com/GMF-AeroAsia-1509901779321421/info?tab=overview"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
                         <a target="_blank" style="text-decoration:none;color: white;" href="https://www.youtube.com/channel/UC5mNZ5CmUyYsfKZocJv5xag"><i class="fa fa-youtube-square fa-3x" aria-hidden="true"></i></a>
                         <a target="_blank" style="text-decoration:none;color: white;" href="https://www.linkedin.com/company/gmf-aeroasia"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>

@@ -28,7 +28,7 @@ class customerController extends Controller
       //  dd($data['homepageimg']);
       //   dd($data['homepage']);
         $data['customer'] = Customer::get();
-        $data['latest_news'] = Berita::orderby('berita_date', 'desc')->take(2)->get();
+        $data['latest_news'] = Berita::orderby('berita_id', 'desc')->take(2)->get();
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
@@ -71,7 +71,7 @@ class customerController extends Controller
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
-        $data['news'] = Berita::paginate(5);
+        $data['news'] = Berita::orderBy('berita_id','desc')->paginate(5);
         foreach($data['news']->items() as $key => $value)
         {
           $data['news']->items()[$key]->berita_text = str_replace("\r",'', $data['news']->items()[$key]->berita_text);
