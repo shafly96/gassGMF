@@ -12,6 +12,48 @@
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
+    <div class="navbar-custom-menu">
+           <ul class="nav navbar-nav">
+
+             <!-- User Account: style can be found in dropdown.less -->
+             <li class="dropdown tasks-menu">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-gear"></i><span class="hidden-xs">  User Settings</span>
+               </a>
+               <ul class="dropdown-menu">
+                 <li>
+                   <!-- inner menu: contains the actual data -->
+                   <ul class="menu">
+                     <li><!-- Task item -->
+                       <a href="{{url('/')}}/user/register">
+                         <h3><i class="fa fa-users"></i>
+                            Register New Admin
+                         </h3>
+                       </a>
+                     </li><!-- end task item -->
+                     <li><!-- Task item -->
+                       <a href="{{url('/')}}/user/changepass">
+                         <h3><i class="fa fa-pencil"></i>
+                           Change Password
+                         </h3>
+                       </a>
+                     </li><!-- end task item -->
+
+                     <li><!-- Task item -->
+                       <a href="{{url('/')}}/user/logout">
+                         <h3><i class="fa fa-sign-out"></i>
+                            Logout
+                         </h3>
+                       </a>
+                     </li>
+                   </ul>
+                 </li>
+
+               </ul>
+            </li>
+             <!-- Control Sidebar Toggle Button -->
+           </ul>
+         </div>
   </nav>
 </header>
 
@@ -21,7 +63,7 @@
   <section class="sidebar" >
 
     <ul class="sidebar-menu">
-      <li class="treeview <?php if($active=='user') echo 'active' ?>">
+      <!-- <li class="treeview <?php if($active=='user') echo 'active' ?>">
         <a href="#">
           <i class="fa fa-user-plus"></i>
           <span>User Configuration</span>
@@ -31,7 +73,7 @@
           <li class="<?php if($active2=='regis') echo 'active' ?>"><a href="{{url('/')}}/user/register"><i class="fa fa-circle-o"></i>Register new admin</a></li>
           <li class="<?php if($active2=='update') echo 'active' ?>"><a href="{{url('/')}}/user/changepass"><i class="fa fa-circle-o"></i>Change Password</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="header">CONTENT EDITOR</li>
       <li class="treeview <?php if($active=='products') echo 'active' ?>">
         <a href="#">
@@ -104,11 +146,11 @@
         </a>
       </li>
 
-      <li>
+      <!-- <li>
         <a href="{{url('/')}}/user/logout">
           <i class="fa fa-power-off"></i> <span>Logout</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </section>
   <!-- /.sidebar -->

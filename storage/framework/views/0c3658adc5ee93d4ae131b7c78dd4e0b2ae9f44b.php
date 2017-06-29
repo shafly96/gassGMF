@@ -73,7 +73,7 @@ After Sales & Parts Service
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Description of Issue</label><a href="#" data-toggle="tooltip" data-placement="bottom" title="Insert the general information about the product"><i class="fa fa-info-circle" style="margin-left:10px;"></i></a>
+                      <label for="exampleInputPassword1">Description of Issue</label><a href="#" data-toggle="tooltip" data-placement="bottom" title="Insert the general information about the issue"><i class="fa fa-info-circle" style="margin-left:10px;"></i></a>
                       <textarea class="form-control" name="description" rows="8" cols="80" placeholder="Insert issue description"></textarea>
                     </div>
                     <div class="form-group">

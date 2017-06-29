@@ -44,25 +44,25 @@
             </div>
             <div class="col-md-12 center">
                 <div class="col-md-1"></div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="{{url('')}}/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Reliable and Satisfying Results</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="{{url('')}}/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Competitive Pricing</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="{{url('')}}/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Safe</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="{{url('')}}/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Experienced</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="{{url('')}}/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome text-center">Quality</p>
                 </div>
             </div>
         </div>
@@ -187,13 +187,13 @@
                             ?>
                             <div class="item <?php if($j==1) echo 'active'; ?>">
                                 <div class="row">
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+3]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+3])) {?><img src="{{url('')}}/images/logo-cust/{{$customer[$m+3]->customer_filename}}" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+2]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+2])) {?><img src="{{url('')}}/images/logo-cust/{{$customer[$m+2]->customer_filename}}" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m+1]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+1])) {?><img src="{{url('')}}/images/logo-cust/{{$customer[$m+1]->customer_filename}}" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{$customer[$m]->customer_filename}}" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m])) {?><img src="{{url('')}}/images/logo-cust/{{$customer[$m]->customer_filename}}" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
                                 </div>
                                 <!--/row-->
@@ -206,13 +206,13 @@
 
                         <div class="item <?php if($k==0) echo 'active'; ?>">
                             <div class="row">
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+3])){?><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{ isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+2])) {?><img src="{{url('')}}/images/logo-cust/{{ isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+1])) {?><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m])) {?><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
                             </div>
                             <!--/row-->

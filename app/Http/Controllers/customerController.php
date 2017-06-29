@@ -32,7 +32,8 @@ class customerController extends Controller
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
-    //    dd($data['customer']);
+      //  dd(array_key_exists(0,$data['customer']));
+      //  dd($data['customer']);
     	return view('customer/pages/welcome', $data);
     }
 
