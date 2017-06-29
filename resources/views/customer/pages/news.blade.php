@@ -16,10 +16,10 @@ News
 				<img src="{{url('')}}/images/news/{{$data->berita_filename}}" class="img-responsive">
 			</div>
 			<div class="col-md-7">
-				<p class="judul-berita">{{$data->berita_title}}</p>
+				<a href="{{url('')}}/news/detail/{{$data->berita_id}}" style="text-decoration:none"><p class="judul-berita">{{$data->berita_title}}</p></a>
 				<p class="tanggal">{{$data->berita_date}}</p>
 				<p class="paragraf">
-					<?php 
+					<?php
 					if (strlen($data->berita_text) > 170) {
 						$trimstring = substr($data->berita_text, 0, 270);
 					} else {

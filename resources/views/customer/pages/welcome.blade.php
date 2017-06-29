@@ -122,8 +122,8 @@
                 <div style="height: 250px">
                     <img src="{{url('')}}/images/news/{{$latest_news[0]->berita_filename}}" width="80%" style="height: auto; max-height: 100%">
                 </div>
-                <div class="caption">
-                    <p class="judul-berita">{{$latest_news[0]->berita_title}}</p>
+                <div class="caption"><a href="{{url('')}}/news/detail/{{$latest_news[0]->berita_id}}" style="text-decoration:none">
+                    <p class="judul-berita">{{$latest_news[0]->berita_title}}</p></a>
                     <p class="tanggal">{{$latest_news[0]->berita_date}}</p>
                     <p class="paragraf">
                         <?php
@@ -145,7 +145,8 @@
                     <img src="{{url('')}}/images/news/{{$latest_news[1]->berita_filename}}" width="80%" style="height: auto; max-height: 100%">
                 </div>
                 <div class="caption">
-                    <p class="judul-berita">{{$latest_news[1]->berita_title}}</p>
+                  <a href="{{url('')}}/news/detail/{{$latest_news[1]->berita_id}}" style="text-decoration:none">
+                    <p class="judul-berita">{{$latest_news[1]->berita_title}}</p></a>
                     <p class="tanggal">{{$latest_news[1]->berita_date}}</p>
                     <p class="paragraf">
                         <?php
