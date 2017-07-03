@@ -6,108 +6,112 @@
     <!-- nav -->
 
     <?php echo $__env->make('customer/master/nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <div >
 
-    <!-- background -->
-    <?php if(isset($homepage[0])): ?>
-    <div class="foto">
+      <!-- background -->
+      <?php if(isset($homepage[0])): ?>
+      <div class="foto">
         <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <img class="background" src="<?php echo e(url('')); ?>/images/homepage/<?php echo e($data->homepage_gambar); ?>" style="max-width:100%;">
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <div style="margin-top: 18%;">
-                <button class="w3-display-left" style="margin-left: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(-1)"><i class="fa fa-chevron-left" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
-                <button class="w3-display-right" style="margin-right: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(1)"><i class="fa fa-chevron-right" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
-        </div>
-    <!-- div selanjutnya -->
-
-    <div class="div1 batas-bawah" style="height:15em;">
-        <div class="col-md-1"></div>
-        <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
-            <?php if(isset($homepage[0])): ?>
-              <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <div style="">
-                <p class="slogan" style="text-shadow: 1px 1px 10px #000000"><?php echo e($data->homepage_slogan); ?></p>
-              </div>
-              <div style="">
-                <p class="slogan-text" style="text-shadow: 1px 1px 5px #000000"><?php echo e($data->homepage_slogan_subtext); ?></p>
-              </div>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php endif; ?>
-        </div>
-    </div>
     </div>
     <?php endif; ?>
+    <!-- div selanjutnya -->
 
-    <!-- div selanjutnya (welcome) -->
-
-    <div class="div2">
+    <div class="div1 batas-bawah" style="height:15em">
         <div class="col-md-1"></div>
-        <div class="col-md-10 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-md-12 center">
-                <p class="judul-div a" style="margin-top: 50px"><strong>Welcome to</strong></p>
-                <p class="judul-div b">GMF Aircraft Support Services</p>
+        <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
+
+
+          <?php if(isset($homepage[0])): ?>
+          <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <div style="">
+            <p class="slogan" style="text-shadow: 1px 1px 10px #000000"><?php echo e($data->homepage_slogan); ?></p>
+        </div>
+        <div style="">
+            <p class="slogan-text" style="text-shadow: 1px 1px 5px #000000"><?php echo e($data->homepage_slogan_subtext); ?></p>
+        </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endif; ?>
+    </div>
+</div>
+
+<div>
+    <button class="w3-display-left" style="margin-left: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(-1)"><i class="fa fa-chevron-left" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
+    <button class="w3-display-right" style="margin-right: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(1)"><i class="fa fa-chevron-right" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
+</div>
+<!-- div selanjutnya (welcome) -->
+</div>
+
+<div class="div2">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 batas-bawah" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-12 center">
+            <p class="judul-div a" style="margin-top: 50px"><strong>Welcome to</strong></p>
+            <p class="judul-div b">GMF Aircraft Support Services</p>
+        </div>
+        <div class="col-md-12 center" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-md-1"></div>
+            <div class="col-md-2 icon-welcome text-center">
+                <img src="<?php echo e(url('')); ?>/image/icon/reliability.png" width="65%">
+                <p class="font-welcome">Reliable and Satisfying Results</p>
             </div>
-            <div class="col-md-12 center">
-                <div class="col-md-1"></div>
-                <div class="col-md-2 icon-welcome text-center">
-                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Reliable and Satisfying Results</p>
-                </div>
-                <div class="col-md-2 icon-welcome text-center">
-                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Competitive Pricing</p>
-                </div>
-                <div class="col-md-2 icon-welcome text-center">
-                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Safe</p>
-                </div>
-                <div class="col-md-2 icon-welcome text-center">
-                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Experienced</p>
-                </div>
-                <div class="col-md-2 icon-welcome text-center">
-                    <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome text-center">Quality</p>
-                </div>
+            <div class="col-md-2 icon-welcome text-center">
+                <img src="<?php echo e(url('')); ?>/image/icon/competitive.png" width="65%">
+                <p class="font-welcome">Competitive Pricing</p>
+            </div>
+            <div class="col-md-2 icon-welcome text-center">
+                <img src="<?php echo e(url('')); ?>/image/icon/safe.png" width="65%">
+                <p class="font-welcome">Safe</p>
+            </div>
+            <div class="col-md-2 icon-welcome text-center">
+                <img src="<?php echo e(url('')); ?>/image/icon/experienced.png" width="65%">
+                <p class="font-welcome">Experienced</p>
+            </div>
+            <div class="col-md-2 icon-welcome text-center">
+                <img src="<?php echo e(url('')); ?>/image/icon/quality2.png" width="65%">
+                <p class="font-welcome text-center">Quality</p>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- div selanjutnya (produk) -->
+<!-- div selanjutnya (produk) -->
 
-    <div class="div2">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-md-6">
-                <div id="slideshow">
-                   <div>
-                     <img src="<?php echo e(url('')); ?>/image/truck.png" style="width: 100%; height:auto; max-height: 100%">
-                 </div>
-                 <div>
-                     <img src="<?php echo e(url('')); ?>/image/gass.jpg" style="width: 100%; height:auto; max-height: 100%">
-                 </div>
-             </div>
-         </div>
-         <div class="col-md-6">
-            <p class="judul-div"><strong>Our</strong> Products</p>
-            <div class="slide-product-2">
-                <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
-            </div>
-        </div>
-        <div class="col-md-12 produk">
-            <div class="col-md-3 kotak">
-                <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/2'"><strong>Services</strong></button>
-            </div>
-            <div class="col-md-3 kotak">
-                <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/3'"><strong>Maintenance</strong></button>
-            </div>
-            <div class="col-md-3 kotak">
-                <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
-            </div>
-            <div class="col-md-3 kotak">
-                <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/4'"><strong>Rental</strong></button>
-            </div>
-        </div>
+<div class="div2">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-md-6">
+            <div id="slideshow">
+             <div>
+               <img src="<?php echo e(url('')); ?>/image/truck.png" style="width: 100%; height:auto; max-height: 100%">
+           </div>
+           <div>
+               <img src="<?php echo e(url('')); ?>/image/gass.jpg" style="width: 100%; height:auto; max-height: 100%">
+           </div>
+       </div>
+   </div>
+   <div class="col-md-6">
+    <p class="judul-div"><strong>Our</strong> Products</p>
+    <div class="slide-product-2">
+        <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
     </div>
+</div>
+<div class="col-md-12 produk">
+    <div class="col-md-3 kotak">
+        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/2'"><strong>Services</strong></button>
+    </div>
+    <div class="col-md-3 kotak">
+        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/3'"><strong>Maintenance</strong></button>
+    </div>
+    <div class="col-md-3 kotak">
+        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
+    </div>
+    <div class="col-md-3 kotak">
+        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/4'"><strong>Rental</strong></button>
+    </div>
+</div>
+</div>
 </div>
 
 <!-- div selanjutnya (berita) -->
@@ -304,16 +308,16 @@
         var z = document.getElementsByClassName("slogan-text");
         for (i = 0; i < x.length; i++) {
           x[i].style.display = "none";
-            y[i].style.display = "none";
-            z[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > x.length) {slideIndex = 1}
+          y[i].style.display = "none";
+          z[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {slideIndex = 1}
         x[slideIndex-1].style.display = "block";
-        y[slideIndex-1].style.display = "block";
-        z[slideIndex-1].style.display = "block";
-        setTimeout(carousel, 4000);
-    }
+    y[slideIndex-1].style.display = "block";
+    z[slideIndex-1].style.display = "block";
+    setTimeout(carousel, 4000);
+}
 
 </script>
 </html>

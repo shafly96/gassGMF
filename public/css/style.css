@@ -277,7 +277,7 @@ li{
 
 .slogan{
     font-family:bold; 
-    font-size: 60px; 
+    font-size: 500%; 
     margin-top: -40px;
     color:white;
 }
@@ -478,6 +478,10 @@ li{
 
     .footer img{
         width: 50%
+    }
+
+    .slogan{
+        font-size: 300%;
     }
 
 }

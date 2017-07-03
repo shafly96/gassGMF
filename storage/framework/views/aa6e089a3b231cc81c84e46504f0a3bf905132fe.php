@@ -21,17 +21,17 @@
                     <form method="post" action="<?php echo e(url('')); ?>/contact">
                         <div class="form-group row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="email" type="text" placeholder="Email">
+                                <input class="form-control" name="email" type="text" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="telp" type="text" placeholder="Telp">
+                                <input class="form-control" name="telp" type="text" placeholder="Telp" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-12">
-                                <textarea class="form-control" name="message" placeholder="Review" rows="5"></textarea>
+                                <textarea class="form-control" name="message" placeholder="message" rows="5" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
