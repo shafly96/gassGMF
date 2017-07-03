@@ -39,7 +39,6 @@
 <div>
     <button class="w3-display-left" style="margin-left: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(-1)"><i class="fa fa-chevron-left" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
     <button class="w3-display-right" style="margin-right: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(1)"><i class="fa fa-chevron-right" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
-
 </div>
 <!-- div selanjutnya (welcome) -->
 </div>
@@ -51,26 +50,26 @@
             <p class="judul-div a" style="margin-top: 50px"><strong>Welcome to</strong></p>
             <p class="judul-div b">GMF Aircraft Support Services</p>
         </div>
-        <div class="col-md-12 center">
+        <div class="col-md-12 center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-md-1"></div>
             <div class="col-md-2 icon-welcome text-center">
-                <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                <img src="{{url('')}}/image/icon/reliability.png" width="65%">
                 <p class="font-welcome">Reliable and Satisfying Results</p>
             </div>
             <div class="col-md-2 icon-welcome text-center">
-                <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                <img src="{{url('')}}/image/icon/competitive.png" width="65%">
                 <p class="font-welcome">Competitive Pricing</p>
             </div>
             <div class="col-md-2 icon-welcome text-center">
-                <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                <img src="{{url('')}}/image/icon/safe.png" width="65%">
                 <p class="font-welcome">Safe</p>
             </div>
             <div class="col-md-2 icon-welcome text-center">
-                <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                <img src="{{url('')}}/image/icon/experienced.png" width="65%">
                 <p class="font-welcome">Experienced</p>
             </div>
             <div class="col-md-2 icon-welcome text-center">
-                <img src="{{url('')}}/image/icon/quality.png" width="65%">
+                <img src="{{url('')}}/image/icon/quality2.png" width="65%">
                 <p class="font-welcome text-center">Quality</p>
             </div>
         </div>
