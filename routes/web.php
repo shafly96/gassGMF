@@ -91,6 +91,15 @@ Route::group(['prefix' => 'page-editor'],function () {
   Route::get('/addtestimony','pagesController@showtestimony');
   Route::post('/addtestimony','pagesController@addtestimony');
 
+  Route::get('/tabel-manager','pagesController@tabelmanager');
+  Route::get('/form-manager','pagesController@addmanager');
+  Route::post('/form-manager','pagesController@insertmanager');
+
+  Route::get('/update-manager/{id}','pagesController@updmanager');
+  Route::post('/update-manager/{id}','pagesController@updatemanager');
+
+  Route::get('/delete-manager/{id}','pagesController@deletemanager');
+
 
 });
 

@@ -11,6 +11,7 @@ use App\Messages;
 use App\Aftersales;
 use App\AftersalesImage;
 use App\homepage_image;
+use App\manager;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -366,5 +367,81 @@ class pagesController extends Controller
     }
     $about->save();
     return redirect('page-editor/addtestimony')->with('success','You have successfully updated about our testimony page');
+  }
+
+  public function tabelmanager(){
+    $this->checklogin();
+    $data['active'] = "about";
+    $data['active2'] = "manager";
+    $data['manager'] = manager::get();
+    return view('admin.pages.editor.tabel-manager',$data);
+  }
+
+  public function addmanager(){
+    $this->checklogin();
+    $data['active'] = "about";
+    $data['active2'] = "manager";
+
+    return view('admin.pages.editor.form-manager',$data);
+  }
+  public function insertmanager(Request $request){
+    $this->checklogin();
+    $data['active'] = "about";
+    $data['active2'] = "manager";
+
+    $date = Carbon::now();
+    $date = hash('md5',$date);
+    $manager = new manager;
+    $manager->manager_nama = $request->name;
+    $manager->manager_jabatan = $request->position;
+    $file = $request->file('media');
+    $manager->manager_filename = $date .'.'. $file->getClientOriginalExtension();
+    $destinationPath = public_path('images/managers');
+    $file->move($destinationPath,   $manager->manager_filename);
+    $manager->save();
+
+    return redirect('page-editor/tabel-manager')->with('success','You have successfully inserted a new manager data');
+
+  }
+
+  public function updmanager($id){
+    $data['manager'] = manager::find($id);
+    $data['active'] = 'about';
+    $data['active2'] = 'manager';
+
+    return view('admin.pages.editor.form-manager',$data);
+  }
+  public function updatemanager(Request $request,$id){
+    $data['active'] = 'about';
+    $data['active2'] = 'manager';
+    $manager = manager::find($id);
+    $manager->manager_nama = $request->name;
+    $manager->manager_jabatan =  $request->position;
+    $date = Carbon::now();
+    $date = hash('md5',$date);
+
+    if(null !== $request->file('media')){
+      $realpath = public_path("images\managers\\");
+      File::delete($realpath.$manager->manager_filename);
+      $file = $request->file('media');
+      $manager->manager_filename = $date .'.'. $file->getClientOriginalExtension();
+      $destinationPath = public_path('images/managers');
+      $file->move($destinationPath,   $manager->manager_filename);
+    }
+
+    $manager->save();
+
+    return redirect('page-editor/tabel-manager')->with('success','You have successfully updated a manager data');
+
+  }
+  public function deletemanager($id){
+    $deleted = manager::find($id);
+
+    $realpath = public_path("images\managers\\");
+    File::delete($realpath.$deleted->manager_filename);
+    $deleted->delete();
+    return redirect('page-editor/tabel-manager')->with('success','You have successfully deleted a manager data');
+
+
   }
 }

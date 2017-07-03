@@ -9,6 +9,7 @@ use App\Customer;
 use App\About;
 use App\Messages;
 use App\Aftersales;
+use App\manager;
 use App\AftersalesImage;
 use App\homepage_image;
 use DB,Redirect;
@@ -176,6 +177,9 @@ class pagesController extends Controller
     return view('admin.pages.editor.form-aboutgmf',$data);
 
   }
+
+
+
   public function aboutgmf(Request $request){
     $this->checklogin();
 

@@ -132,6 +132,8 @@
           <li class="<?php if($active2=='gass') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addaboutgass"><i class="fa fa-circle-o"></i>Edit About GASS</a></li>
           <li class="<?php if($active2=='facc') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addourfacility"><i class="fa fa-circle-o"></i>Edit Our Facility</a></li>
           <li class="<?php if($active2=='test') echo 'active' ?>"><a href="{{url('/')}}/page-editor/addtestimony"><i class="fa fa-circle-o"></i>Edit Testimony</a></li>
+          <li class="<?php if($active2=='manager') echo 'active' ?>"><a href="{{url('/')}}/page-editor/tabel-manager"><i class="fa fa-circle-o"></i>Edit Managers</a></li>
+
         </ul>
       </li>
       <li class="header">MESSAGES & AFTER SALES</li>
