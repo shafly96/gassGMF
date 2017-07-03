@@ -16,5 +16,5 @@
     <script src="{{url('')}}/plugin/bootstrap/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{{url('')}}/css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{url('')}}/css/w3.css">
 </head>

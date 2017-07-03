@@ -16,5 +16,5 @@
     <script src="<?php echo e(url('')); ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo e(url('')); ?>/css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="<?php echo e(url('')); ?>/css/w3.css">
 </head>
