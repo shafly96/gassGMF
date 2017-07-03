@@ -6,38 +6,43 @@
     <!-- nav -->
 
     @include('customer/master/nav')
+    <div >
 
-    <!-- background -->
-    @isset($homepage[0])
-    <div class="foto">
+      <!-- background -->
+      @isset($homepage[0])
+      <div class="foto">
         @foreach($homepage as $data)
         <img class="background" src="{{url('')}}/images/homepage/{{$data->homepage_gambar}}" style="max-width:100%;">
         @endforeach
-        <div style="margin-top: 300px">
-                <button class="w3-display-left" style="margin-left: 20px" onclick="plusDivs(-1)">&#10094;</button>
-                <button class="w3-display-right" style="margin-right: 20px" onclick="plusDivs(1)">&#10095;</button>
-        </div>
-    </div>
-    @endisset
-    <!-- div selanjutnya -->
+      </div>
+      @endisset
+      <!-- div selanjutnya -->
 
-    <div class="div1 batas-bawah" style="height:15em">
+      <div class="div1 batas-bawah" style="height:15em">
         <div class="col-md-1"></div>
         <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
-            @isset($homepage[0])
-              @foreach($homepage as $data)
-              <div style="">
-                <p class="slogan" style="text-shadow: 1px 1px 10px #000000">{{$data->homepage_slogan}}</p>
-              </div>
-              <div style="">
-                <p class="slogan-text" style="text-shadow: 1px 1px 5px #000000">{{$data->homepage_slogan_subtext}}</p>
-              </div>
-              @endforeach
-            @endisset
-        </div>
-    </div>
 
-    <!-- div selanjutnya (welcome) -->
+
+          @isset($homepage[0])
+          @foreach($homepage as $data)
+          <div style="">
+            <p class="slogan" style="text-shadow: 1px 1px 10px #000000">{{$data->homepage_slogan}}</p>
+          </div>
+          <div style="">
+            <p class="slogan-text" style="text-shadow: 1px 1px 5px #000000">{{$data->homepage_slogan_subtext}}</p>
+          </div>
+          @endforeach
+          @endisset
+        </div>
+      </div>
+
+      <div>
+        <button class="w3-display-left"  style="margin-left:40px"onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-display-right" style="margin-right:40px"onclick="plusDivs(1)">&#10095;</button>
+
+      </div>
+      <!-- div selanjutnya (welcome) -->
+    </div>
 
     <div class="div2">
         <div class="col-md-1"></div>
