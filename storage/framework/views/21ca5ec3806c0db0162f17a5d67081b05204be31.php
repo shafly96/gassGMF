@@ -13,15 +13,13 @@
         <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <img class="background" src="<?php echo e(url('')); ?>/images/homepage/<?php echo e($data->homepage_gambar); ?>" style="max-width:100%;">
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <div style="margin-top: 300px">
-                <button class="w3-display-left" style="margin-left: 20px" onclick="plusDivs(-1)">&#10094;</button>
-                <button class="w3-display-right" style="margin-right: 20px" onclick="plusDivs(1)">&#10095;</button>
+        <div style="margin-top: 18%;">
+                <button class="w3-display-left" style="margin-left: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(-1)"><i class="fa fa-chevron-left" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
+                <button class="w3-display-right" style="margin-right: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(1)"><i class="fa fa-chevron-right" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
         </div>
-    </div>
-    <?php endif; ?>
     <!-- div selanjutnya -->
 
-    <div class="div1 batas-bawah" style="height:15em">
+    <div class="div1 batas-bawah" style="height:15em;">
         <div class="col-md-1"></div>
         <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
             <?php if(isset($homepage[0])): ?>
@@ -36,6 +34,8 @@
             <?php endif; ?>
         </div>
     </div>
+    </div>
+    <?php endif; ?>
 
     <!-- div selanjutnya (welcome) -->
 
