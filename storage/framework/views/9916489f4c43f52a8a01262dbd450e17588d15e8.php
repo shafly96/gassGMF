@@ -14,10 +14,10 @@ News
 				<img src="<?php echo e(url('')); ?>/images/news/<?php echo e($data->berita_filename); ?>" class="img-responsive">
 			</div>
 			<div class="col-md-7">
-				<p class="judul-berita"><?php echo e($data->berita_title); ?></p>
+				<a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($data->berita_id); ?>" style="text-decoration:none"><p class="judul-berita"><?php echo e($data->berita_title); ?></p></a>
 				<p class="tanggal"><?php echo e($data->berita_date); ?></p>
 				<p class="paragraf">
-					<?php 
+					<?php
 					if (strlen($data->berita_text) > 170) {
 						$trimstring = substr($data->berita_text, 0, 270);
 					} else {

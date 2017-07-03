@@ -26,11 +26,11 @@
         <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
             @isset($homepage[0])
               @foreach($homepage as $data)
-              <div style="background:rgba(0,0,0,0.4);">
-                <p class="slogan" >{{$data->homepage_slogan}}</p>
+              <div style="">
+                <p class="slogan" style="text-shadow: 1px 1px 10px #000000">{{$data->homepage_slogan}}</p>
               </div>
-              <div style="background:rgba(0,0,0,0.4);">
-                <p class="slogan-text" >{{$data->homepage_slogan_subtext}}</p>
+              <div style="">
+                <p class="slogan-text" style="text-shadow: 1px 1px 5px #000000">{{$data->homepage_slogan_subtext}}</p>
               </div>
               @endforeach
             @endisset
@@ -183,14 +183,12 @@
                         <?php
 
                         $i=0;
-                        $j=0;
                         $k=intdiv(count($customer),4);
                         $l=count($customer)-$k*4;
                         $m=0;
                         while($i<$k){
-                            $j++;
                             ?>
-                            <div class="item <?php if($j==1) echo 'active'; ?>">
+                            <div class="item <?php if($i==0) echo 'active'; ?>">
                                 <div class="row">
                                     <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+3])) {?><img src="{{url('')}}/images/logo-cust/{{$customer[$m+3]->customer_filename}}" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
@@ -209,6 +207,7 @@
                         }
                         ?>
 
+                        <?php if(count($customer)%4!=0){ ?>
                         <div class="item <?php if($k==0) echo 'active'; ?>">
                             <div class="row">
                                 <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+3])){?><img src="{{url('')}}/images/logo-cust/{{isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'}}" alt="Image" class="img-responsive"><?php } ?></a>
@@ -222,6 +221,7 @@
                             </div>
                             <!--/row-->
                         </div>
+                        <?php } ?>
 
                     </div>
                     <!--/carousel-inner-->

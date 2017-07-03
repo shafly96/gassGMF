@@ -11,7 +11,7 @@
     <?php if(isset($homepage[0])): ?>
     <div class="foto">
         <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <img class="background" src="<?php echo e(url('')); ?>/images/homepage/<?php echo e($data->homepage_gambar); ?>">
+        <img class="background" src="<?php echo e(url('')); ?>/images/homepage/<?php echo e($data->homepage_gambar); ?>" style="max-width:100%;">
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <div style="margin-top: 300px">
                 <button class="w3-display-left" style="margin-left: 20px" onclick="plusDivs(-1)">&#10094;</button>
@@ -21,14 +21,18 @@
     <?php endif; ?>
     <!-- div selanjutnya -->
 
-    <div class="div1 batas-bawah">
-        <div class="col-md-3"></div>
-        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100" style="text-align:center">
+    <div class="div1 batas-bawah" style="height:15em">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
             <?php if(isset($homepage[0])): ?>
-            <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <p class="slogan"><?php echo e($data->homepage_slogan); ?></p>
-            <p class="slogan-text"><?php echo e($data->homepage_slogan_subtext); ?></p>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php $__currentLoopData = $homepage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <div style="">
+                <p class="slogan" style="text-shadow: 1px 1px 10px #000000"><?php echo e($data->homepage_slogan); ?></p>
+              </div>
+              <div style="">
+                <p class="slogan-text" style="text-shadow: 1px 1px 5px #000000"><?php echo e($data->homepage_slogan_subtext); ?></p>
+              </div>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
         </div>
     </div>
@@ -44,29 +48,29 @@
             </div>
             <div class="col-md-12 center">
                 <div class="col-md-1"></div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Reliable and Satisfying Results</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Competitive Pricing</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Safe</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome">Experienced</p>
                 </div>
-                <div class="col-md-2 icon-welcome">
+                <div class="col-md-2 icon-welcome text-center">
                     <img src="<?php echo e(url('')); ?>/image/icon/quality.png" width="65%">
-                    <p class="font-welcome">Quality</p>
+                    <p class="font-welcome text-center">Quality</p>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
     <!-- div selanjutnya (produk) -->
 
@@ -118,11 +122,11 @@
                 <div style="height: 250px">
                     <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[0]->berita_filename); ?>" width="80%" style="height: auto; max-height: 100%">
                 </div>
-                <div class="caption">
-                    <p class="judul-berita"><?php echo e($latest_news[0]->berita_title); ?></p>
+                <div class="caption"><a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($latest_news[0]->berita_id); ?>" style="text-decoration:none">
+                    <p class="judul-berita"><?php echo e($latest_news[0]->berita_title); ?></p></a>
                     <p class="tanggal"><?php echo e($latest_news[0]->berita_date); ?></p>
                     <p class="paragraf">
-                        <?php 
+                        <?php
                         if (strlen($latest_news[0]->berita_text) > 170) {
                             $trimstring = substr($latest_news[0]->berita_text, 0, 270);
                         } else {
@@ -141,10 +145,11 @@
                     <img src="<?php echo e(url('')); ?>/images/news/<?php echo e($latest_news[1]->berita_filename); ?>" width="80%" style="height: auto; max-height: 100%">
                 </div>
                 <div class="caption">
-                    <p class="judul-berita"><?php echo e($latest_news[1]->berita_title); ?></p>
+                  <a href="<?php echo e(url('')); ?>/news/detail/<?php echo e($latest_news[1]->berita_id); ?>" style="text-decoration:none">
+                    <p class="judul-berita"><?php echo e($latest_news[1]->berita_title); ?></p></a>
                     <p class="tanggal"><?php echo e($latest_news[1]->berita_date); ?></p>
                     <p class="paragraf">
-                        <?php 
+                        <?php
                         if (strlen($latest_news[1]->berita_text) > 170) {
                             $trimstring = substr($latest_news[1]->berita_text, 0, 270);
                         } else {
@@ -175,48 +180,48 @@
                     <!-- Carousel items -->
                     <div class="carousel-inner">
 
-                        <?php 
+                        <?php
 
                         $i=0;
-                        $j=0;
                         $k=intdiv(count($customer),4);
                         $l=count($customer)-$k*4;
                         $m=0;
                         while($i<$k){
-                            $j++;
                             ?>
-                            <div class="item <?php if($j==1) echo 'active'; ?>">
+                            <div class="item <?php if($i==0) echo 'active'; ?>">
                                 <div class="row">
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+3])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+2])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+1])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"></a>
+                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                     </div>
                                 </div>
                                 <!--/row-->
                             </div>
-                            <?php 
+                            <?php
                             $m+=4;
                             $i++;
-                        } 
+                        }
                         ?>
-                        
+
+                        <?php if(count($customer)%4!=0){ ?>
                         <div class="item <?php if($k==0) echo 'active'; ?>">
                             <div class="row">
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+3])){?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+2])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+1])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"></a>
+                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
                                 </div>
                             </div>
                             <!--/row-->
                         </div>
+                        <?php } ?>
 
                     </div>
                     <!--/carousel-inner-->
@@ -278,16 +283,16 @@
         var x = document.getElementsByClassName("background");
         var y = document.getElementsByClassName("slogan");
         var z = document.getElementsByClassName("slogan-text");
-        if (n > x.length) {slideIndex = 1} 
+        if (n > x.length) {slideIndex = 1}
             if (n < 1) {slideIndex = x.length} ;
         for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none"; 
-            y[i].style.display = "none"; 
-            z[i].style.display = "none"; 
+            x[i].style.display = "none";
+            y[i].style.display = "none";
+            z[i].style.display = "none";
         }
-        x[slideIndex-1].style.display = "block"; 
-        y[slideIndex-1].style.display = "block"; 
-        z[slideIndex-1].style.display = "block"; 
+        x[slideIndex-1].style.display = "block";
+        y[slideIndex-1].style.display = "block";
+        z[slideIndex-1].style.display = "block";
     }
 
     carousel();
@@ -299,15 +304,15 @@
         var z = document.getElementsByClassName("slogan-text");
         for (i = 0; i < x.length; i++) {
           x[i].style.display = "none";
-            y[i].style.display = "none"; 
-            z[i].style.display = "none";  
+            y[i].style.display = "none";
+            z[i].style.display = "none";
         }
         slideIndex++;
-        if (slideIndex > x.length) {slideIndex = 1} 
-        x[slideIndex-1].style.display = "block"; 
-        y[slideIndex-1].style.display = "block"; 
-        z[slideIndex-1].style.display = "block"; 
-        setTimeout(carousel, 4000); 
+        if (slideIndex > x.length) {slideIndex = 1}
+        x[slideIndex-1].style.display = "block";
+        y[slideIndex-1].style.display = "block";
+        z[slideIndex-1].style.display = "block";
+        setTimeout(carousel, 4000);
     }
 
 </script>
