@@ -16,13 +16,14 @@
                     echo $trimstring;
                     ?>
                 </p>
+                <p class="paragraf"><a href="<?php echo e(url('')); ?>/about">Read more ..</a></p>
             </div>
             <div class="col-md-4 about-footer">
                 <p class="judul-footer">Contact Us</p>
                 <div class="tes" style="padding-top: 10px">
                     <div class="row">
                         <div class="col-md-1"><i class="glyphicon glyphicon-home"></i></div>
-                        <div class="col-md-10"><?php print $footer->fc_address; ?></div>
+                        <div class="col-md-10" style="margin-top: 10px"><?php print $footer->fc_address; ?></div>
                     </div>
 
                     <div class="row" style="margin-top: 20px">

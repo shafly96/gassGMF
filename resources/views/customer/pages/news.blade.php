@@ -11,7 +11,7 @@ News
 <div class="col-md-12 rata" style="padding-top: 50px">
 
 	@foreach($news as $data)
-		<div class="div2" style="margin-bottom: 50px">
+		<div class="div2 rata-kiri" style="margin-bottom: 50px">
 			<div class="col-md-5">
 				<img src="{{url('')}}/images/news/{{$data->berita_filename}}" class="img-responsive">
 			</div>

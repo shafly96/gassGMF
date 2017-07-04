@@ -11,7 +11,7 @@ News
     <p class="tanggal"><?php echo e($news->berita_date); ?></p>
 	<img src="<?php echo e(url('')); ?>/images/news/<?php echo e($news->berita_filename); ?>" style="width: 100%; height:auto " class="img-responsive">
 </div>
-<div class="col-md-12 rata">
+<div class="col-md-12 rata rata-kiri">
 	<p class="paragraf">
 		<?php print $news->berita_text; ?>
 	</p>

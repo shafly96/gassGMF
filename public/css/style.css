@@ -19,12 +19,13 @@
 }
 
 #slideshow {
-  margin: 80px auto;
+  margin: 0 auto;
   position: relative;
-  width: 90%;
+  width: 100%;
   float: right;
   height: 360px;
-  padding: 10px;
+  margin-bottom: 5vh;
+  text-align: center;
 }
 
 #slideshow > div {
@@ -36,7 +37,7 @@
 }
 
 .jarak{
-    width: 200px;
+    /*max-width: 200px;*/
     height: 200px;
 }
 
@@ -67,6 +68,10 @@ div{
 }
 
 .testimoni{
+    display: none;
+}
+
+.manager{
     display: none;
 }
 
@@ -269,15 +274,17 @@ li{
 }
 
 .div1{
-    margin-top: 250px; 
+    padding-top: 300px; 
     /*position:absolute; */
-    float: right;     padding-bottom: 100px;
+    float: right;     
+    padding-bottom: 200px;
+    height: 600px;
     width: 100%;
 }
 
 .slogan{
     font-family:bold; 
-    font-size: 500%; 
+    font-size: 300%; 
     margin-top: -40px;
     color:white;
 }
@@ -392,6 +399,7 @@ li{
 
 .berita-besar{
     padding-left: 70px;
+    margin-bottom: 10vh;
 }
 
 .copyright{
@@ -480,10 +488,61 @@ li{
         width: 50%
     }
 
-    .slogan{
-        font-size: 300%;
+    .rata{
+        padding: 0px;
     }
 
+    .rata-kiri{
+        text-align:left;
+    }
+
+}
+
+@media screen and (max-width: 991px) and (min-width: 473px) {
+    #slideshow{
+        height: 70vh;
+        text-align: center;
+    }
+
+    #slideshow div{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .slogan{
+        font-size: 7vw;
+    }
+}
+
+@media screen and (max-width: 473px) {
+    #slideshow{
+        height: 60vh;
+    }
+
+    .slogan{
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .jarak{
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .background{
+        height: 100%;
+    }
+
+    .chevron{
+        display: none;
+    }
+
+    .div1{
+        height: 300px;
+        padding-top: 250px;
+    }
 }
 
 #carousel-example-generic{

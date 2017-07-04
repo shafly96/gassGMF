@@ -47,7 +47,7 @@
                     <div class="tes" style="padding-top: 10px">
                         <div class="row">
                             <div class="col-md-1"><i class="glyphicon glyphicon-home"></i></div>
-                            <div class="col-md-10"><?php print $footer->fc_address; ?></div>
+                            <div class="col-md-10" style="margin-top: 10px"><?php print $footer->fc_address; ?></div>
                         </div>
 
                         <div class="row" style="margin-top: 20px">
@@ -73,4 +73,14 @@
 
     @include('customer/master/footer')
 </body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
 </html>

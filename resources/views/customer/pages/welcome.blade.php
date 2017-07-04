@@ -18,7 +18,7 @@
     @endisset
     <!-- div selanjutnya -->
 
-    <div class="div1 batas-bawah" style="height:15em">
+    <div class="div1">
         <div class="col-md-1"></div>
         <div class="col-md-10" data-aos="zoom-in" data-aos-delay="100" style="text-align:center;">
 
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<div>
+<div class="chevron">
     <button class="w3-display-left" style="margin-left: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(-1)"><i class="fa fa-chevron-left" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
     <button class="w3-display-right" style="margin-right: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(1)"><i class="fa fa-chevron-right" aria-hidden="true" style="color:white; font-size: 30px"></i></button>
 </div>
@@ -83,13 +83,12 @@
     <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
         <div class="col-md-6">
             <div id="slideshow">
-             <div>
-               <img src="{{url('')}}/image/truck.png" style="width: 100%; height:auto; max-height: 100%">
+                @foreach($produk as $data)
+                 <div>
+                   <img src="{{url('')}}/images/product/{{$data->filename}}" style="width: 90%; height:auto; max-height: 100%">
+               </div>
+               @endforeach
            </div>
-           <div>
-               <img src="{{url('')}}/image/gass.jpg" style="width: 100%; height:auto; max-height: 100%">
-           </div>
-       </div>
    </div>
    <div class="col-md-6">
     <p class="judul-div"><strong>Our</strong> Products</p>
@@ -97,7 +96,7 @@
         <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
     </div>
 </div>
-<div class="col-md-12 produk">
+<div class="col-md-12">
     <div class="col-md-3 kotak">
         <button onclick="window.location.href='{{url('')}}/products/ajax/2'"><strong>Services</strong></button>
     </div>
@@ -118,7 +117,7 @@
 
 <div class="div2">
     <div class="col-md-1"></div>
-    <div class="col-md-10 batas-bawah center" data-aos="zoom-in" data-aos-delay="100">
+    <div class="col-md-10 center" data-aos="zoom-in" data-aos-delay="100">
         <div class="col-md-12">
             <p class="judul-div"><strong>Latest</strong> News</p>
             <div class="col-md-6 berita-besar">
@@ -178,7 +177,7 @@
         <div class="col-md-12">
             <p class="judul-div kanan center"><strong>Our</strong> Customers</p>
             @isset($customer)
-            <div class="customer">
+            <div class="customer center">
                 <div id="myCarousel" class="carousel slide">
 
                     <!-- Carousel items -->

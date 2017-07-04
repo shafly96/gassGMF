@@ -9,7 +9,7 @@ News
 <div class="col-md-12 rata" style="padding-top: 50px">
 
 	<?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-		<div class="div2" style="margin-bottom: 50px">
+		<div class="div2 rata-kiri" style="margin-bottom: 50px">
 			<div class="col-md-5">
 				<img src="<?php echo e(url('')); ?>/images/news/<?php echo e($data->berita_filename); ?>" class="img-responsive">
 			</div>

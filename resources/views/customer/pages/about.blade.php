@@ -13,6 +13,7 @@ About
 		<button id="gmf" autofocus>GMF</button>
 		<button id="gass">GASS</button>
 		<button id="fac">Our Facility</button>
+		<button id="manager">Our Managers</button>
 		<button id="testimoni">Testimoni</button>
 	</div>
 </div>
@@ -75,13 +76,25 @@ About
 		</div>
 	</div>
 </div>
+
+<div class="manager">
+	<div class="col-md-12 rata" style="padding-top: 50px">
+		@foreach($manager as $data)
+		<div class="col-md-4" style="text-align:center">
+			<div style="margin:0 auto; position: relative; border-radius: 50%; width: 150px; height: 150px; background:url('{{url('')}}/images/managers/{{$data->manager_filename}}'); background-size:cover"></div>
+			<p class="paragraf"><strong>{{$data->manager_nama}}</strong></p>
+			<p class="paragraf" style="margin-top:-10px">{{$data->manager_jabatan}}</p>
+		</div>
+		@endforeach
+	</div>
+</div>
 <script>
 	$("#gmf").click(function(){
 		$(".gmf").show();
 		$(".gass").hide();
 		$(".testimoni").hide();
 		$(".fac").hide();
-
+		$(".manager").hide();
 	});
 
 	$("#gass").click(function(){
@@ -89,7 +102,7 @@ About
 		$(".gmf").hide();
 		$(".testimoni").hide();
 		$(".fac").hide();
-
+		$(".manager").hide();
 	});
 
 	$("#testimoni").click(function(){
@@ -97,13 +110,21 @@ About
 		$(".gmf").hide();
 		$(".gass").hide();
 		$(".fac").hide();
-
+		$(".manager").hide();
 	});
 	$("#fac").click(function(){
 		$(".fac").show();
 		$(".gmf").hide();
 		$(".gass").hide();
 		$(".testimoni").hide();
+		$(".manager").hide();
+	});
+	$("#manager").click(function(){
+		$(".fac").hide();
+		$(".gmf").hide();
+		$(".gass").hide();
+		$(".testimoni").hide();
+		$(".manager").show();
 	});
 </script>
 @stop

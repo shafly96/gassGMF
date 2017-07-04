@@ -1,6 +1,31 @@
 <?php $__env->startSection('content'); ?>
 
-<div id="myModal" class="modal fade" role="dialog"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Message Detail</h4>
+      </div>
+      <div class="modal-body">
+				<label>Sender Email</label>
+        <p id="email"></p>
+				<label>Sender Telephone Number</label>
+				<p id="telp"></p>
+				<label>Message Content</label>
+				<p id="content"></p>
+				<label>Received At</label>
+				<p id="received"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <?php if(session('success')): ?>
 		<div class="alert alert-success">
@@ -44,7 +69,7 @@
                 <td><?php echo e($message->message_timestamp); ?></td>
 								<td>
 									<a href="<?php echo e(url('/')); ?>/inbox/deletemessage/<?php echo e($message->message_id); ?>" class="btn btn-danger" id="delete">Delete</a>
-									<a onclick="viewmessage(<?php echo e($message); ?>)" class="btn btn-info" id="delete">View Message</a>
+									<a onclick="viewmessage(<?php echo e($message); ?>)" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="delete">View Message</a>
 
 								</td>
 							</tr>
@@ -64,24 +89,10 @@
 	$('#example1').DataTable();
   function viewmessage(message){
     var c = message;
-    swal({
-            title: 'Message',
-            html: true,
-            text:  '<div class="form-group"><label>Sender`s Email</label><p>'+
-            c.message_email +
-            '</p><label>Sender`s Phone Number:</label><p>'+
-            c.message_telephone+
-            '</p><label>Message Content :</label><p>'+
-            c.message_comment+
-            '</p><label>Received at:</label><p>'+
-            c.message_timestamp+
-            '</p></div>',
-            showCloseButton: true,
-            confirmButtonText:
-              'Close'
-          });
-        //document.getElementById("wek").innerHTML("haoijiojha");
-
+		$( "#email" ).html(c.message_email);
+		$( "#telp" ).html(c.message_telephone);
+		$( "#content" ).html(c.message_comment);
+		$( "#received" ).html(c.message_timestamp);
   };
 </script>
 

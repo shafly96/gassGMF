@@ -13,7 +13,7 @@ News
     <p class="tanggal">{{$news->berita_date}}</p>
 	<img src="{{url('')}}/images/news/{{$news->berita_filename}}" style="width: 100%; height:auto " class="img-responsive">
 </div>
-<div class="col-md-12 rata">
+<div class="col-md-12 rata rata-kiri">
 	<p class="paragraf">
 		<?php print $news->berita_text; ?>
 	</p>

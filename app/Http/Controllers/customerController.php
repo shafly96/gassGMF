@@ -7,9 +7,11 @@ use App\Homepage;
 use App\Customer;
 use App\Berita;
 use App\Messages;
+use App\manager;
 use DB;
 use App\Product;
 use App\Aftersales;
+use App\Product_Image;
 use App\AftersalesImage;
 use App\homepage_image;
 use Carbon\Carbon;
@@ -27,6 +29,7 @@ class customerController extends Controller
         $data['homepage'] = DB::table('homepage')->join('homepage_image','homepage.homepage_id','=','homepage_image.homepage_id')->get();
       //  dd($data['homepageimg']);
       //   dd($data['homepage']);
+        $data['produk'] = Product_Image::orderby('filename','desc')->take(3)->get();
         $data['customer'] = Customer::get();
         $data['latest_news'] = Berita::orderby('berita_id', 'desc')->take(2)->get();
         $c1 = $this->footer();
@@ -42,6 +45,7 @@ class customerController extends Controller
         $data['footer'] = $c1['footer'];
         $data['berita'] = $c1['berita'];
         $data['testi'] = DB::table('about')->first();
+        $data['manager'] = DB::table('manager')->get();
     	return view('customer/pages/about', $data);
     }
 
