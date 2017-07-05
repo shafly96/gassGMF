@@ -77,7 +77,7 @@ About
 	</div>
 </div>
 
-<div class="manager">
+<div class="manager" style="display:none;">
 	<div class="col-md-12 rata" style="padding-top: 50px">
 		@foreach($manager as $data)
 		<div class="col-md-4" style="text-align:center">
