@@ -7,17 +7,9 @@ use Auth;
 use Redirect;
 use App\user;
 use Illuminate\Support\Facades\Hash;
-use App\Aftersales;
-use App\Messages;
+
 class userController extends Controller
 {
-  public $data;
-  public function __construct()
-   {
-     $this->data['unread_as'] = Aftersales::where('as_read',0)->count();
-     $this->data['unread_message'] = Messages::where('message_read',0)->count();
-   }
-
   public function checklogin(){
     if(Auth::check()){
       return;
@@ -48,21 +40,21 @@ class userController extends Controller
     Auth::logout();
     return Redirect::to('/admin');
   }
-
+  
   public function showregister(){
     $this->checklogin();
 
-    $this->data['active'] = "user";
-    $this->data['active2'] = "regis";
-    return view('admin.pages.user.register',$this->data);
+    $data['active'] = "user";
+    $data['active2'] = "regis";
+    return view('admin.pages.user.register',$data);
   }
 
   public function showchangepass(){
     $this->checklogin();
 
-    $this->data['active'] = "user";
-    $this->data['active2'] = "update";
-    return view('admin.pages.user.changepass', $this->data);
+    $data['active'] = "user";
+    $data['active2'] = "update";
+    return view('admin.pages.user.changepass', $data);
   }
 
   public function register(Request $request){

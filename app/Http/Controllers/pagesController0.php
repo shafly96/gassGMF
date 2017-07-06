@@ -9,9 +9,9 @@ use App\Customer;
 use App\About;
 use App\Messages;
 use App\Aftersales;
-use App\manager;
 use App\AftersalesImage;
 use App\homepage_image;
+use App\manager;
 use DB,Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +21,12 @@ use Auth;
 
 class pagesController extends Controller
 {
+  public $data;
+  public function __construct()
+   {
+     $this->data['tes'] ="a";
+   }
+
   public function checklogin(){
     if(Auth::check()){
       return;
@@ -36,52 +42,108 @@ class pagesController extends Controller
 
     $data['active'] = "homepage";
     $data['active2'] = "";
-    $data['homepage'] = Homepage::find(1);
-    $data['gambar'] = homepage_image::get();
+    $data['slides'] = Homepage::join('homepage_image','homepage.homepage_id','=','homepage_image.homepage_id')->get();
 
     return view('admin.pages.editor.homepage',$data);
   }
+
+  public function showinsert(){
+    $this->checklogin();
+    $data['active'] = 'homepage';
+    $data['active2'] = '';
+    return view('admin/pages/editor/homepagebak',$data);
+  }
+  public function deletehomepage($id){
+    $this->checklogin();
+
+    $deleted = DB::table('homepage_image')->where('homepage_id', '=', $id)->get();
+    $thumbpath = public_path("images\homepage\\");
+    $realpath = public_path("images\homepage\\homepagethumb\\");
+
+    File::delete($realpath.$deleted[0]->homepage_gambar);
+    File::delete($thumbpath.$deleted[0]->homepage_gambar);
+
+    DB::table('homepage_image')->where('homepage_id', '=', $id)->delete();
+    DB::table('homepage')->where('homepage_id', '=', $id)->delete();
+
+
+    return redirect('page-editor/homepage')->with('success','You have successfully deleted a homepage slide');
+
+  }
+
+
 
   public function updatehome(Request $request){
     $this->checklogin();
 
     $data['active'] = "homepage";
     $data['active2'] = "";
-    $home = Homepage::find(1);
+
     $date = Carbon::now();
-    if(null == $home){
-      $home_n = new Homepage;
-      $home_n->homepage_id = 1;
-      $home_n->homepage_slogan = $request->slogan;
-      $home_n->homepage_slogan_subtext = $request->subtext;
-      if(null !== $request->file('cover')){
-        $files = $request->file('cover');
-        foreach($files as $file => $value){
-          $homimg = new homepage_image;
-          $homimg->homepage_gambar = hash('md5', $date.$file).'.'.$files[$file]->getClientOriginalExtension();
-          $destinationPath = public_path('images/homepage/');
-          $files[$file]->move($destinationPath, $homimg->homepage_gambar);
-          $homimg->save();
-        }
-      }
-      $home_n->save();
+    $home = new Homepage;
+    $home->homepage_slogan = $request->slogan;
+    $home->homepage_slogan_subtext = $request->subtext;
+    $home->save();
+
+    if(null !== $request->file('media')){
+      $files = $request->file('media');
+      $homimg = new homepage_image;
+      $homimg->homepage_gambar = hash('md5', $date).'.'.$files->getClientOriginalExtension();
+
+      $destinationPath = public_path('images/homepage/homepagethumb');
+      $img = Image::make($files->getRealPath());
+      $img->resize(200, 125, function ($constraint) {
+        $constraint->aspectRatio();
+      })->save($destinationPath.'\\'.$homimg->homepage_gambar);
+      $destinationPath = public_path('images/homepage/');
+      $files->move($destinationPath, $homimg->homepage_gambar);
+      $homimg->homepage_id = $home->homepage_id;
+      $homimg->save();
     }
-    else{
-      $home->homepage_slogan = $request->slogan;
-      $home->homepage_slogan_subtext = $request->subtext;
-      if(null !== $request->file('cover')){
-        $files = $request->file('cover');
-        foreach($files as $file => $value){
-          $homimg = new homepage_image;
-          $homimg->homepage_gambar = hash('md5', $date.$file).'.'.$files[$file]->getClientOriginalExtension();
-          $destinationPath = public_path('images/homepage/');
-          $files[$file]->move($destinationPath, $homimg->homepage_gambar);
-          $homimg->save();
-        }
+    return redirect('page-editor/homepage')->with('success','You have successfully inserted a homepage slide');
+  }
+
+  public function edithomepage(Request $request,$id){
+      $updated = Homepage::find($id);
+      $date = Carbon::now();
+      $updated->homepage_slogan = $request->slogan;
+      $updated->homepage_slogan_subtext = $request->subtext;
+      $updated->save();
+
+      if(null !== $request->file('media')){
+        $files = $request->file('media');
+        $homimg = homepage_image::where('homepage_id',$id)->first();
+
+        $thumbpath = public_path("images\homepage\\");
+        $realpath = public_path("images\homepage\\homepagethumb\\");
+
+        File::delete($realpath.$homimg->homepage_gambar);
+        File::delete($thumbpath.$homimg->homepage_gambar);
+
+        $homepage_gambar = hash('md5', $date).'.'.$files->getClientOriginalExtension();
+        $destinationPath = public_path('images/homepage/homepagethumb');
+        $img = Image::make($files->getRealPath());
+        $img->resize(200, 125, function ($constraint) {
+          $constraint->aspectRatio();
+        })->save($destinationPath.'\\'.$homepage_gambar);
+        $destinationPath = public_path('images/homepage/');
+        $files->move($destinationPath, $homepage_gambar);
+        $homepage_id = $updated->homepage_id;
+        homepage_image::where('homepage_id',$id)->update(['homepage_gambar'=>$homepage_gambar]);
       }
-      $home->save();
-    }
-    return redirect('page-editor/homepage')->with('success','You have successfully updated the homepage');
+      return redirect('page-editor/homepage')->with('success','You have successfully updated a homepage slide');
+
+
+  }
+
+  public function showupdate($id){
+    $this->checklogin();
+    $data['active'] = 'homepage';
+    $data['active2'] = '';
+    $data['homepage'] = DB::table('homepage')->join('homepage_image','homepage.homepage_id','=','homepage_image.homepage_id')->where('homepage.homepage_id', '=', $id)->first();
+  //  dd($data['homepage']);
+    return view('admin/pages/editor/homepagebak',$data);
+
   }
 
   public function deletepics($id){
@@ -177,9 +239,6 @@ class pagesController extends Controller
     return view('admin.pages.editor.form-aboutgmf',$data);
 
   }
-
-
-
   public function aboutgmf(Request $request){
     $this->checklogin();
 
@@ -314,5 +373,84 @@ class pagesController extends Controller
     }
     $about->save();
     return redirect('page-editor/addtestimony')->with('success','You have successfully updated about our testimony page');
+  }
+
+  public function tabelmanager(){
+    $this->checklogin();
+    $data['active'] = "about";
+    $data['active2'] = "manager";
+    $data['manager'] = manager::get();
+    return view('admin.pages.editor.tabel-manager',$data);
+  }
+
+  public function addmanager(){
+    $this->checklogin();
+    $data['active'] = "about";
+    $data['active2'] = "manager";
+
+    return view('admin.pages.editor.form-manager',$data);
+  }
+  public function insertmanager(Request $request){
+    $this->checklogin();
+    $data['active'] = "about";
+    $data['active2'] = "manager";
+
+    $date = Carbon::now();
+    $date = hash('md5',$date);
+    $manager = new manager;
+    $manager->manager_nama = $request->name;
+    $manager->manager_jabatan = $request->position;
+    $manager->manager_bio = $request->bio;
+
+    $file = $request->file('media');
+    $manager->manager_filename = $date .'.'. $file->getClientOriginalExtension();
+    $destinationPath = public_path('images/managers');
+    $file->move($destinationPath,   $manager->manager_filename);
+    $manager->save();
+
+    return redirect('page-editor/tabel-manager')->with('success','You have successfully inserted a new manager data');
+
+  }
+
+  public function updmanager($id){
+    $data['manager'] = manager::find($id);
+    $data['active'] = 'about';
+    $data['active2'] = 'manager';
+
+    return view('admin.pages.editor.form-manager',$data);
+  }
+  public function updatemanager(Request $request,$id){
+    $data['active'] = 'about';
+    $data['active2'] = 'manager';
+    $manager = manager::find($id);
+    $manager->manager_nama = $request->name;
+    $manager->manager_jabatan =  $request->position;
+    $manager->manager_bio = $request->bio;
+    $date = Carbon::now();
+    $date = hash('md5',$date);
+
+    if(null !== $request->file('media')){
+      $realpath = public_path("images\managers\\");
+      File::delete($realpath.$manager->manager_filename);
+      $file = $request->file('media');
+      $manager->manager_filename = $date .'.'. $file->getClientOriginalExtension();
+      $destinationPath = public_path('images/managers');
+      $file->move($destinationPath,   $manager->manager_filename);
+    }
+
+    $manager->save();
+
+    return redirect('page-editor/tabel-manager')->with('success','You have successfully updated a manager data');
+
+  }
+  public function deletemanager($id){
+    $deleted = manager::find($id);
+
+    $realpath = public_path("images\managers\\");
+    File::delete($realpath.$deleted->manager_filename);
+    $deleted->delete();
+    return redirect('page-editor/tabel-manager')->with('success','You have successfully deleted a manager data');
+
+
   }
 }

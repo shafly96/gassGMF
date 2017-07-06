@@ -11,6 +11,7 @@ About
 		<button id="gmf" autofocus>GMF</button>
 		<button id="gass">GASS</button>
 		<button id="fac">Our Facility</button>
+		<button id="manager">Our Management</button>
 		<button id="testimoni">Testimoni</button>
 	</div>
 </div>
@@ -26,11 +27,10 @@ About
 </div>
 
 
-
 <div class="gmf">
 	<div class="col-md-12 rata">
 		<img src="<?php echo e(url('')); ?>/images/about/gmf/<?php echo e($testi->about_gmf_gambar); ?>" style="width: 100%; height:auto ">
-
+		<iframe style="margin-top:10px;"width="100%" height="360" src="https://www.youtube.com/embed/0NtIgHkdm9E?ecver=1" frameborder="0" allowfullscreen> </iframe>
 	</div>
 	<div class="col-md-12 rata">
 		<p class="paragraf">
@@ -76,13 +76,27 @@ About
 		</div>
 	</div>
 </div>
+
+<div class="manager" style="display:none;">
+	<div class="col-md-12 rata" style="padding-top: 50px">
+		<?php $__currentLoopData = $manager; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		<div class="col-md-4" style="text-align:center">
+			<div style="margin:0 auto; position: relative; border-radius: 50%; width: 150px; height: 150px; background:url('<?php echo e(url('')); ?>/images/managers/<?php echo e($data->manager_filename); ?>'); background-size:cover"></div>
+			<p class="paragraf"><strong><?php echo e($data->manager_nama); ?></strong></p>
+			<p class="paragraf" style="margin-top:-10px"><strong><?php echo e($data->manager_jabatan); ?></strong></p>
+			<p class="paragraf" style="margin-top:-10px"><?php echo e($data->manager_bio); ?></p>
+
+		</div>
+		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+	</div>
+</div>
 <script>
 	$("#gmf").click(function(){
 		$(".gmf").show();
 		$(".gass").hide();
 		$(".testimoni").hide();
 		$(".fac").hide();
-
+		$(".manager").hide();
 	});
 
 	$("#gass").click(function(){
@@ -90,7 +104,7 @@ About
 		$(".gmf").hide();
 		$(".testimoni").hide();
 		$(".fac").hide();
-
+		$(".manager").hide();
 	});
 
 	$("#testimoni").click(function(){
@@ -98,13 +112,21 @@ About
 		$(".gmf").hide();
 		$(".gass").hide();
 		$(".fac").hide();
-
+		$(".manager").hide();
 	});
 	$("#fac").click(function(){
 		$(".fac").show();
 		$(".gmf").hide();
 		$(".gass").hide();
 		$(".testimoni").hide();
+		$(".manager").hide();
+	});
+	$("#manager").click(function(){
+		$(".fac").hide();
+		$(".gmf").hide();
+		$(".gass").hide();
+		$(".testimoni").hide();
+		$(".manager").show();
 	});
 </script>
 <?php $__env->stopSection(); ?>

@@ -24,11 +24,17 @@
 						<input type="text" class="form-control" name="name" placeholder="Insert Manager Name here" @if(isset($manager)) value="{{$manager->manager_nama}}"@endif required>
 					</div>
           <div class="form-group">
-						<label for="exampleInputPassword1">Manager Poisition</label>
+						<label for="exampleInputPassword1">Manager Position</label>
 						<input type="text" class="form-control" name="position" placeholder="Insert Manager Position here" @if(isset($manager)) value="{{$manager->manager_jabatan}}"@endif required>
 					</div>
+
+					<div class="form-group">
+						<label for="exampleInputPassword1">Manager Bio</label>
+						<input type="text" class="form-control" name="bio" placeholder="Insert Manager Short Biography here" @if(isset($manager)) value="{{$manager->manager_bio}}"@endif required>
+					</div>
+
           <div class="form-group">
-                <label for="media">Manager Picture</label> <small style="color:grey">leave this form empty if there are no changes</small>
+                <label for="media"> @if(isset($manager)) Change @endif Manager Picture</label> <small style="color:grey">leave this form empty if there are no changes</small>
                 <input type="file" class="form-control" name="media" id="media" @if(empty($manager)) required @endif  >
 								<p id="p1"></p>
           </div>

@@ -21,17 +21,17 @@
                     <form method="post" action="<?php echo e(url('')); ?>/contact">
                         <div class="form-group row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="email" type="text" placeholder="Email">
+                                <input class="form-control" name="email" type="text" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="telp" type="text" placeholder="Telp">
+                                <input class="form-control" name="telp" type="text" placeholder="Telp" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-12">
-                                <textarea class="form-control" name="message" placeholder="Review" rows="5"></textarea>
+                                <textarea class="form-control" name="message" placeholder="message" rows="5" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -48,7 +48,7 @@
                     <div class="tes" style="padding-top: 10px">
                         <div class="row">
                             <div class="col-md-1"><i class="glyphicon glyphicon-home"></i></div>
-                            <div class="col-md-10"><?php print $footer->fc_address; ?></div>
+                            <div class="col-md-10" style="margin-top: 10px"><?php print $footer->fc_address; ?></div>
                         </div>
 
                         <div class="row" style="margin-top: 20px">
@@ -74,4 +74,14 @@
 
     <?php echo $__env->make('customer/master/footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 </body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
 </html>

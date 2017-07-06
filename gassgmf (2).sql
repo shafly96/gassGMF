@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2017 at 04:16 AM
+-- Generation Time: Jul 06, 2017 at 10:19 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -70,19 +70,18 @@ CREATE TABLE `after_sales` (
   `as_product_type` int(11) NOT NULL,
   `as_out` int(11) NOT NULL,
   `as_description` varchar(50000) NOT NULL,
-  `as_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `as_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `as_read` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `after_sales`
 --
 
-INSERT INTO `after_sales` (`as_id`, `as_company_name`, `as_contact_name`, `as_email`, `as_serial`, `as_product_type`, `as_out`, `as_description`, `as_timestamp`) VALUES
-(3, 'Garuda Indonesia', 'Ario Bimo', 'masgondi234@gmail.com', '123129faiojfea', 1, 1, 'rusak gabisa jalan', '2017-06-20 00:36:29'),
-(4, 'Araaifaiofj', 'ajfeoiefjo', 'masgondi234@gmail.com', 'aiofoaiwfj2112', 2, 1, 'langsung rusak', '2017-06-20 00:54:11'),
-(5, 'Garuda Indonesia', 'Safli noval', 'wongkalang@gmail.com', 'OJOIDA1123OI', 1, 0, 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', '2017-06-20 17:46:33'),
-(6, 'Garuda Indonesia', 'mamma', 'anna@majujaya.co.id', 'afmkame3', 22, 0, 'bunyi', '2017-06-21 21:05:41'),
-(7, 'Mallaghan GSE', 'John Doe', 'JohnDoe@yahoo.com', 'aiofa323nsjfkfa', 24, 0, 'Deicer not working', '2017-06-21 21:23:13');
+INSERT INTO `after_sales` (`as_id`, `as_company_name`, `as_contact_name`, `as_email`, `as_serial`, `as_product_type`, `as_out`, `as_description`, `as_timestamp`, `as_read`) VALUES
+(6, 'Garuda Indonesia', 'mamma', 'anna@majujaya.co.id', 'afmkame3', 22, 0, 'bunyi', '2017-07-06 02:33:56', 1),
+(7, 'Mallaghan GSE', 'John Doe', 'JohnDoe@yahoo.com', 'aiofa323nsjfkfa', 24, 0, 'Deicer not working', '2017-07-06 02:03:06', 1),
+(8, 'Garuda Indonesia', 'Aria Bima', 'hariyosoariobimo@gmail.com', '123129faiojfea', 25, 1, 'Lift cage broken', '2017-07-06 02:08:33', 1);
 
 -- --------------------------------------------------------
 
@@ -101,13 +100,9 @@ CREATE TABLE `after_sales_image` (
 --
 
 INSERT INTO `after_sales_image` (`asi_id`, `filename`, `as_id`) VALUES
-(4, '14380854412f3f326f341db2ef644c3e.jpg', 3),
-(5, '478a28e9bf096ca11be411a14be9ec9a.jpg', 4),
-(6, 'e105d5ff2a99522cfb9a244a13bdc2d4.jpg', 4),
-(7, '769b35f25050fffc023eceba46c3e68a.jpg', 5),
-(8, '77eb1fe5d93b521966544bfa93eb4d28.jpg', 5),
 (9, 'eaf74edddc1b81eea0e563e1d643aac6.jpg', 6),
-(10, '5f9caeffeac6ebb218c577f8309f4152.jpg', 7);
+(10, '5f9caeffeac6ebb218c577f8309f4152.jpg', 7),
+(11, '93a03c9c6bd565e3522b05bc0419fccc.jpg', 8);
 
 -- --------------------------------------------------------
 
@@ -131,7 +126,6 @@ INSERT INTO `berita` (`berita_id`, `berita_title`, `berita_date`, `berita_text`,
 (43, 'GMF Become IATP Active Member', '2017-06-27', '<p>oiajfeioajofijaeofijai</p>', 'GMF Become IATP Active Member2017-06-27.jpg'),
 (44, 'berita baru', '2017-06-29', '<p></p><p>Dari desain di atas:</p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Main Menu: Pilihan</p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Sub Menu: Dengan Mouse dan DenganKeybpard</p><p>1. &nbsp; &nbsp; &nbsp;Menentukan nilai identifier darimasing-masing menu</p><p>Misal:</p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Pilihan, tidak punya identifierkarena dia adalah parent menu dari sub menu</p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Dengan Mouse, nilai identifiernya1</p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Dengan Keyboard, nilaiidentifiernya 2</p><p>2. &nbsp; &nbsp; &nbsp;Menentukan action darimasing-masing submenu</p><p>Misal: </p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Action dari menu Dengan Mouseadalah Mousenya aktif, keyboard tidak aktif</p><p>- &nbsp; &nbsp; &nbsp; &nbsp; Action dari menu Dengan Keyboardadalah Keyboard aktif, Mouse tidak Aktif</p><p>3. &nbsp; &nbsp; &nbsp;Membuat codenya</p><p>a. &nbsp; &nbsp; &nbsp;Inisialisasi menu dimasukkan difungsi main</p><br><p></p>', 'berita baru2017-06-29.jpg'),
 (45, 'Writing Software Requirements Specifications', '2017-06-29', '<p></p><h2><i>by Donn LeVie, Jr.</i><br></h2><p>Here''s thescenario: You''re finishing up your latest HTML Help project...no more latenights or weekends...back to a "normal" 50-hour work week. That''swhen the development team lead strolls into your office and says she just gotyour manager''s okay for you to help the development team "put together thefunctional requirements specification template for the next majorproject." </p><p>"Awhat?" you ask with a look of semi-shock. Panic sets in. "What did Ido to deserve this? I don''t even know where to start! Maybe someone on theTECHWR-L list can help...." </p><p>For technicalwriters who haven''t had the experience of designing <i>software requirementsspecifications</i> (SRSs, also known as software functional specifications orsystem specifications) templates or even writing SRSs, they might assume thatbeing given the opportunity to do so is either a reward or punishment forsomething they did (or failed to do) on a previous project. Actually, SRSs areideal projects for technical writers to be involved with because they lay outthe foundation for the development of a new product and for the types of userdocumentation and media that will be required later in the project developmentlife cycle. It also doesn''t hurt that you''d be playing a visible role incontributing to the success of the project. </p><p>This articlewill describe what an SRS is and why it''s important, discuss how and whytechnical writers should be involved with them, and discuss the critical elementsfor writing an SRS. Although this article does not attempt to address allaspects of developing SRSs, it aims to help you determine the scope for such aproject, to provide some guidelines for writing SRSs, and to provide additionalresources. Hopefully with this information, you''ll not be asking, "Whyme?" but proclaiming "Why not me?" </p><h3>Whatis a Software Requirements Specification?</h3><p>An SRS isbasically an organization''s understanding (in writing) of a customer orpotential client''s system requirements and dependencies <i>at a particularpoint in time</i> (usually) prior to any actual design or development work.It''s a two-way insurance policy that assures that both the client and theorganization understand the other''s requirements from that perspective at a givenpoint in time. </p><p>The SRSdocument itself states in precise and explicit language those functions andcapabilities a software system (i.e., a software application, an eCommerce Website, and so on) must provide, as well as states any required constraints bywhich the system must abide. The SRS also functions as a blueprint forcompleting a project with as little cost growth as possible. The SRS is oftenreferred to as the "parent" document because all subsequent projectmanagement documents, such as design specifications, statements of work,software architecture specifications, testing and validation plans, anddocumentation plans, are related to it. </p><p>It''s importantto note that an SRS contains functional and nonfunctional requirements only; itdoesn''t offer design suggestions, possible solutions to technology or businessissues, or any other information other than what the development teamunderstands the customer''s system requirements to be. </p><p>Awell-designed, well-written SRS accomplishes four major goals: </p><ul> <li>It provides feedback to the customer. An     SRS is the customer''s assurance that the development organization     understands the issues or problems to be solved and the software behavior     necessary to address those problems. Therefore, the SRS should be written     in natural language (versus a formal language, explained later in this     article), in an unambiguous manner that may also include charts, tables,     data flow diagrams, decision tables, and so on. </li> <li>It decomposes the problem into component     parts. The simple act of writing down software requirements in a     well-designed format organizes information, places borders around the     problem, solidifies ideas, and helps break down the problem into its     component parts in an orderly fashion. </li> <li>It serves as an input to the design     specification. As mentioned previously, the SRS serves as the parent     document to subsequent documents, such as the software design     specification and statement of work. Therefore, the SRS must contain     sufficient detail in the functional system requirements so that a design     solution can be devised. </li> <li>It serves as a product validation check.     The SRS also serves as the parent document for testing and validation     strategies that will be applied to the requirements for verification. </li></ul><p>SRSs aretypically developed during the first stages of "RequirementsDevelopment," which is the initial product development phase in whichinformation is gathered about what requirements are needed--and not. Thisinformation-gathering stage can include onsite visits, questionnaires, surveys,interviews, and perhaps a return-on-investment (ROI) analysis or needs analysisof the customer or client''s current business environment. The actualspecification, then, is written after the requirements have been gathered andanalyzed. </p><br><p></p>', 'Writing Software Requirements Specifications2017-06-29.PNG'),
-(46, 'news #1', '2017-06-29', '<p></p><p>You''re finishing up your latest HTML Help project...no more latenights or weekends...back to a "normal" 50-hour work week. That''swhen the development team lead strolls into your office and says she just gotyour manager''s okay for you to help the development team "put together thefunctional requirements specification template for the next majorproject."</p><p>"Awhat?" you ask with a look of semi-shock. Panic sets in. "What did Ido to deserve this? I don''t even know where to start! Maybe someone on theTECHWR-L list can help...."</p><p>For technicalwriters who haven''t had the experience of designing <i>software requirementsspecifications</i>&nbsp;(SRSs, also known as software functional specifications orsystem specifications) templates or even writing SRSs, they might assume thatbeing given the opportunity to do so is either a reward or punishment forsomething they did (or failed to do) on a previous project. Actually, SRSs areideal projects for technical writers to be involved with because they lay outthe foundation for the development of a new product and for the types of userdocumentation and media that will be required later in the project developmentlife cycle. It also doesn''t hurt that you''d be playing a visible role incontributing to the success of the project.</p><p>This articlewill describe what an SRS is and why it''s important, discuss how and whytechnical writers should be involved with them, and discuss the critical elementsfor writing an SRS. Although this article does not attempt to address allaspects of developing SRSs, it aims to help you determine the scope for such aproject, to provide some guidelines for writing SRSs, and to provide additionalresources. Hopefully with this information, you''ll not be asking, "Whyme?" but proclaiming "Why not me?"</p><h3>Whatis a Software Requirements Specification?</h3><p>An SRS isbasically an organization''s understanding (in writing) of a customer orpotential client''s system requirements and dependencies <i>at a particularpoint in time</i>&nbsp;(usually) prior to any actual design or development work.It''s a two-way insurance policy that assures that both the client and theorganization understand the other''s requirements from that perspective at a givenpoint in time.</p><p>The SRSdocument itself states in precise and explicit language those functions andcapabilities a software system (i.e., a software application, an eCommerce Website, and so on) must provide, as well as states any required constraints bywhich the system must abide. The SRS also functions as a blueprint forcompleting a project with as little cost growth as possible. The SRS is oftenreferred to as the "parent" document because all subsequent projectmanagement documents, such as design specifications, statements of work,software architecture specifications, testing and validation plans, anddocumentation plans, are related to it.</p><p>It''s importantto note that an SRS contains functional and nonfunctional requirements only; itdoesn''t offer design suggestions, possible solutions to technology or businessissues, or any other information other than what the development teamunderstands the customer''s system requirements to be.</p><p>Awell-designed, well-written SRS accomplishes four major goals:</p><ul><li>It provides feedback to the customer. An SRS is the customer''s assurance that the development organization understands the issues or problems to be solved and the software behavior necessary to address those problems. Therefore, the SRS should be written in natural language (versus a formal language, explained later in this article), in an unambiguous manner that may also include charts, tables, data flow diagrams, decision tables, and so on.</li><li>It decomposes the problem into component parts. The simple act of writing down software requirements in a well-designed format organizes information, places borders around the problem, solidifies ideas, and helps break down the problem into its component parts in an orderly fashion.</li><li>It serves as an input to the design specification. As mentioned previously, the SRS serves as the parent document to subsequent documents, such as the software design specification and statement of work. Therefore, the SRS must contain sufficient detail in the functional system requirements so that a design solution can be devised.</li><li>It serves as a product validation check. The SRS also serves as the parent document for testing and validation strategies that will be applied to the requirements for verification.</li></ul><p>SRSs aretypically developed during the first stages of "RequirementsDevelopment," which is the initial product development phase in whichinformation is gathered about what requirements are needed--and not. Thisinformation-gathering stage can include onsite visits, questionnaires, surveys,interviews, and perhaps a return-on-investment (ROI) analysis or needs analysisof the customer or client''s current business environment. The actualspecification, then, is written after the requirements have been gathered andanalyzed.</p><br><br><p></p>', 'news #12017-06-29.png'),
 (47, 'Lorem Ipsum', '2017-06-29', '<p></p><h3>he standard Lorem Ipsum passage, used since the 1500s</h3><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p><h3>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3><p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p><h3>1914 translation by H. Rackham</h3><p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p><h3>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3><p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p><h3>1914 translation by H. Rackham</h3><p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."</p><br><p></p>', 'Lorem Ipsum2017-06-29.PNG'),
 (48, 'GMF Become IATP Active Member', '2017-06-29', '<p></p><p>To expanding its network, GMF AeroAsia was applied to International Airlines Technical Pooling (IATP)as Associate Member. GMF become an active member on 1st of November 2016. IATP is a non-profit organization whose provides airlines across the world in spare parts, tools &amp; equipment sharing. Moreover, IATP connects airlines to shares their experts in AOG condition.</p><p>According to GMF’s GM Component Management, Iqbal Faraz Dasril, becoming member of IATP, GMF could get a privilege to access airlines resources at the International Station if it was an AOG condition.Furthermore, GMF expected to gain revenue from provides resources to IATP’s member at the Line Maintenance Station. “If GMF gives access, it will be periodically receiving fees,” he said.</p><p>According to Iqbal, becoming a member of IATP also open up opportunities for potential customer. Through IATP, GMF’s capabilities and capacities can be exposed among airlines across the world. yha benar</p><p></p>', 'GMF Become IATP Active Member2017-06-29.jpg');
 
@@ -260,6 +254,29 @@ INSERT INTO `login` (`login_id`, `user_id`, `password`, `remember_token`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `id` int(11) NOT NULL,
+  `manager_nama` varchar(100) NOT NULL,
+  `manager_jabatan` varchar(100) NOT NULL,
+  `manager_filename` varchar(200) NOT NULL,
+  `manager_bio` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`id`, `manager_nama`, `manager_jabatan`, `manager_filename`, `manager_bio`) VALUES
+(2, 'Ario Bimo', 'General Manager GASS', '38999a79e93f63abe01b7c0ac7d11947.png', 'Specialized in Assembly and fabrication Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s'),
+(3, 'Shufly Novul Aduantu', 'General Manager GASS', '8fd488f49f49711e274c2e9ba0215447.jpg', '"Lorem ipsum dolor sit amet, exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum'),
+(4, 'John Doe', 'General Manager GASS', 'be89e025c949a7ee61ead062f0f527b2.jpg', 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `message`
 --
 
@@ -268,15 +285,20 @@ CREATE TABLE `message` (
   `message_email` varchar(1000) NOT NULL,
   `message_telephone` varchar(20) NOT NULL,
   `message_comment` varchar(50000) NOT NULL,
-  `message_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `message_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `message_read` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`message_id`, `message_email`, `message_telephone`, `message_comment`, `message_timestamp`) VALUES
-(3, 'masfiaoifj', '1092312', 'anfaewnfoanf', '2017-06-21 08:15:55');
+INSERT INTO `message` (`message_id`, `message_email`, `message_telephone`, `message_comment`, `message_timestamp`, `message_read`) VALUES
+(3, 'masfiaoifj', '1092312', 'anfaewnfoanf', '2017-07-06 04:02:34', 1),
+(5, 'masgondi234@gmail.com', '08129394839', 'Saya mau beli onoan dimana aaaaa', '2017-07-06 03:56:14', 1),
+(6, 'hariyosoariobimo@gmail.com', '08122239292', 'lagi ngantuk nih', '2017-07-06 06:19:34', 1),
+(7, 'masgondi234@gmail.com', '08129392039', 'kjanfanfejk', '2017-07-06 06:20:04', 1),
+(11, 'masgondi234@gmail.com', '08123039211', 'Bagus juga webnya', '2017-07-06 06:31:06', 1);
 
 -- --------------------------------------------------------
 
@@ -412,6 +434,12 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`login_id`);
 
 --
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
@@ -445,12 +473,12 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `after_sales`
 --
 ALTER TABLE `after_sales`
-  MODIFY `as_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `as_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `after_sales_image`
 --
 ALTER TABLE `after_sales_image`
-  MODIFY `asi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `asi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `berita`
 --
@@ -465,7 +493,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `homepage`
 --
 ALTER TABLE `homepage`
-  MODIFY `homepage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `homepage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `homepage_customer`
 --
@@ -475,17 +503,22 @@ ALTER TABLE `homepage_customer`
 -- AUTO_INCREMENT for table `homepage_image`
 --
 ALTER TABLE `homepage_image`
-  MODIFY `homepage_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `homepage_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `product`
 --
