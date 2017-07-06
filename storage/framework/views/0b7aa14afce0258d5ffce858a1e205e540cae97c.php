@@ -23,7 +23,7 @@
 						<input type="text" class="form-control" name="name" placeholder="Insert Manager Name here" <?php if(isset($manager)): ?> value="<?php echo e($manager->manager_nama); ?>"<?php endif; ?> required>
 					</div>
           <div class="form-group">
-						<label for="exampleInputPassword1">Manager Poisition</label>
+						<label for="exampleInputPassword1">Manager Position</label>
 						<input type="text" class="form-control" name="position" placeholder="Insert Manager Position here" <?php if(isset($manager)): ?> value="<?php echo e($manager->manager_jabatan); ?>"<?php endif; ?> required>
 					</div>
 
@@ -33,7 +33,7 @@
 					</div>
 
           <div class="form-group">
-                <label for="media">Manager Picture</label> <small style="color:grey">leave this form empty if there are no changes</small>
+                <label for="media"> <?php if(isset($manager)): ?> Change <?php endif; ?> Manager Picture</label> <small style="color:grey">leave this form empty if there are no changes</small>
                 <input type="file" class="form-control" name="media" id="media" <?php if(empty($manager)): ?> required <?php endif; ?>  >
 								<p id="p1"></p>
           </div>
