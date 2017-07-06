@@ -11,6 +11,6 @@ class manager extends Model
   public $timestamps = false;
   protected $primaryKey = 'id';
   protected $fillable = [
-    'manager_nama','manager_jabatan','manager_filename'
+    'manager_nama','manager_jabatan','manager_filename','manager_bio'
   ];
 }

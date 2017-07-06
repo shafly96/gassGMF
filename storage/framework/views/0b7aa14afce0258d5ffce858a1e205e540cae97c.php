@@ -26,6 +26,12 @@
 						<label for="exampleInputPassword1">Manager Poisition</label>
 						<input type="text" class="form-control" name="position" placeholder="Insert Manager Position here" <?php if(isset($manager)): ?> value="<?php echo e($manager->manager_jabatan); ?>"<?php endif; ?> required>
 					</div>
+
+					<div class="form-group">
+						<label for="exampleInputPassword1">Manager Bio</label>
+						<input type="text" class="form-control" name="bio" placeholder="Insert Manager Short Biography here" <?php if(isset($manager)): ?> value="<?php echo e($manager->manager_bio); ?>"<?php endif; ?> required>
+					</div>
+
           <div class="form-group">
                 <label for="media">Manager Picture</label> <small style="color:grey">leave this form empty if there are no changes</small>
                 <input type="file" class="form-control" name="media" id="media" <?php if(empty($manager)): ?> required <?php endif; ?>  >

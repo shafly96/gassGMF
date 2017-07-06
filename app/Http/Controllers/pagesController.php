@@ -394,6 +394,8 @@ class pagesController extends Controller
     $manager = new manager;
     $manager->manager_nama = $request->name;
     $manager->manager_jabatan = $request->position;
+    $manager->manager_bio = $request->bio;
+
     $file = $request->file('media');
     $manager->manager_filename = $date .'.'. $file->getClientOriginalExtension();
     $destinationPath = public_path('images/managers');
@@ -417,6 +419,7 @@ class pagesController extends Controller
     $manager = manager::find($id);
     $manager->manager_nama = $request->name;
     $manager->manager_jabatan =  $request->position;
+    $manager->manager_bio = $request->bio;
     $date = Carbon::now();
     $date = hash('md5',$date);
 
