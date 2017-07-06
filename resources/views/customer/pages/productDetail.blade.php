@@ -66,8 +66,7 @@ Product
 				<button class="w3-display-right" style="margin-right: 20px; background:rgba(0,0,0,0.6); border-style: none; padding: 10px" onclick="plusDivs(1)"><i class="fa fa-chevron-right" aria-hidden="true" style="color:white; font-size: 15px"></i></button>
 			</div>
 
-			<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&mobile_iframe=true&width=87&height=28&appId" width="87" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-
+			<a class="btn btn-md" style="background-color:#3B5A9A; color: white" href="https://www.facebook.com/sharer/sharer.php?u={{url('')}}/products/detail/{{$product[0]->product_id}}" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true" style="font-size: 15px"></i> Share</a>
 		</div>
 		<div class="col-md-12">
 			<p class="judul-berita" style="font-size: 20px">Description</p>
