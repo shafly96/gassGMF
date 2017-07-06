@@ -112,6 +112,7 @@ Route::group(['prefix' => 'inbox'],function () {
   Route::get('/showaftersale/{id}', 'inboxController@showaftersale');
 
   Route::get('/readmessage/{id}','inboxController@readmessage');
+  Route::get('/deleteafter/{id}','inboxController@deleteafter');
 });
 
 Route::group(['prefix' => 'user'],function () {

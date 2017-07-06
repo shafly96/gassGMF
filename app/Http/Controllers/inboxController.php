@@ -49,6 +49,23 @@ class inboxController extends Controller
 
     }
 
+    public function deleteafter($id){
+      $this->checklogin();
+
+      $deleted = Aftersales::find($id);
+      $arr = AftersalesImage::get()->where('as_id','=',$id);
+      $thumbpath = public_path("images\aftersales\\");
+
+      foreach($arr as $key =>$value)
+      {
+        File::delete($thumbpath.$arr[$key]->filename);
+      }
+
+      DB::table('after_sales_image')->where('as_id','=',$id)->delete();
+      $deleted->delete();
+      return redirect('inbox/aftersales')->with('success','You have successfully deleted aftersales data');
+    }
+
     public function messages(){
         $this->checklogin();
         $this->data['active'] = "messages";

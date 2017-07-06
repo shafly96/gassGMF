@@ -46,7 +46,8 @@
                 <td>{{$aftersale->as_timestamp}}</td>
 								<td>
 									<a href="{{url('/')}}/inbox/showaftersale/{{$aftersale->as_id}}" class="btn btn-info">View Details</a>
-								</td>
+									<a href="{{url('/')}}/inbox/deleteafter/{{$aftersale->as_id}}" class="btn btn-danger">Delete</a>
+
 								<td>
 									@if($aftersale->as_read == 0)
 										<i class="fa fa-circle" style="margin-left:10px; color:green;"></i>
