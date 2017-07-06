@@ -26,6 +26,7 @@
 							<th>Product Type</th>
               <th>Received At</th>
               <th>Action</th>
+							<th><i class="fa fa-inbox"></i></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -46,6 +47,11 @@
 								<td>
 									<a href="{{url('/')}}/inbox/showaftersale/{{$aftersale->as_id}}" class="btn btn-info">View Details</a>
 								</td>
+								<td>
+									@if($aftersale->as_read == 0)
+										<i class="fa fa-circle" style="margin-left:10px; color:green;"></i>
+									@endif
+							</td>
 							</tr>
 							@endforeach
 

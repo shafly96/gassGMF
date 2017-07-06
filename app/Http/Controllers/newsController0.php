@@ -10,17 +10,8 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use Image;
 use Auth;
-use App\Aftersales;
-use App\Messages;
 class newsController extends Controller
 {
-  public $data;
-  public function __construct()
-   {
-     $this->data['unread_as'] = Aftersales::where('as_read',0)->count();
-     $this->data['unread_message'] = Messages::where('message_read',0)->count();
-   }
-
   public function checklogin(){
     if(Auth::check()){
       return;
@@ -32,53 +23,53 @@ class newsController extends Controller
   }
   public function footer()
   {
-    $this->data['footer'] = DB::table('footer_and_contacts')->first();
-    $this->data['berita'] = DB::table('about')->first();
-    return $this->data;
+    $data['footer'] = DB::table('footer_and_contacts')->first();
+    $data['berita'] = DB::table('about')->first();
+    return $data;
   }
 
   public function showDetailNews($id){
-    $this->data['news'] = Berita::find($id);
+    $data['news'] = Berita::find($id);
     $c1 = $this->footer();
-    $this->data['footer'] = $c1['footer'];
-    $this->data['berita'] = $c1['berita'];
-    return view('customer/pages/newsChild', $this->data);
+    $data['footer'] = $c1['footer'];
+    $data['berita'] = $c1['berita'];
+    return view('customer/pages/newsChild', $data);
   }
 
   public function showform(){
     $this->checklogin();
 
-    $this->data['active'] = "news";
-    $this->data['active2'] = "form";
-    return view('admin.pages.news.form',$this->data);
+    $data['active'] = "news";
+    $data['active2'] = "form";
+    return view('admin.pages.news.form',$data);
   }
   public function showtable(){
     $this->checklogin();
 
-    $this->data['active'] = "news";
-    $this->data['active2'] = "tabel";
-    $this->data['news'] = Berita::orderBy('berita_id', 'desc')->get();
-    return view('admin.pages.news.tabel',$this->data);
+    $data['active'] = "news";
+    $data['active2'] = "tabel";
+    $data['news'] = Berita::orderBy('berita_id', 'desc')->get();
+    return view('admin.pages.news.tabel',$data);
   }
   public function showupdate($id){
     $this->checklogin();
 
-    $this->data['update'] = Berita::find($id);
-    $this->data['update']->berita_text = str_replace("\r",'', $this->data['update']->berita_text);
-    $this->data['update']->berita_text = str_replace("\n",'', $this->data['update']->berita_text);
-    $this->data['update']->berita_text = str_replace("\r\n",'', $this->data['update']->berita_text);
-    //dd($this->data['update']->berita_text);
-    $this->data['active'] = "news";
-    $this->data['active2'] = "form";
-    return view('admin.pages.news.form',$this->data);
+    $data['update'] = Berita::find($id);
+    $data['update']->berita_text = str_replace("\r",'', $data['update']->berita_text);
+    $data['update']->berita_text = str_replace("\n",'', $data['update']->berita_text);
+    $data['update']->berita_text = str_replace("\r\n",'', $data['update']->berita_text);
+    //dd($data['update']->berita_text);
+    $data['active'] = "news";
+    $data['active2'] = "form";
+    return view('admin.pages.news.form',$data);
   }
   public function test($id){
     $this->checklogin();
 
-    $this->data['active'] = "news";
-    $this->data['active2'] = "tabel";
-    $this->data['news'] = Berita::find($id);
-    return view('admin.pages.news.test',$this->data);
+    $data['active'] = "news";
+    $data['active2'] = "tabel";
+    $data['news'] = Berita::find($id);
+    return view('admin.pages.news.test',$data);
   }
 
   public function delete($id){
@@ -101,7 +92,7 @@ class newsController extends Controller
     $updated->berita_text= str_replace("\r",'',   $updated->berita_text);
     $updated->berita_text = str_replace("\n",'',  $updated->berita_text);
     $updated->berita_text= str_replace("\r\n",'', $updated->berita_text);
-
+    
     $date = Carbon::now();
     $date = $date->toDateString();
     if(null !==$request->file('media')){
@@ -131,8 +122,8 @@ class newsController extends Controller
   public function addnews(Request $request){
     $this->checklogin();
 
-    $this->data['active'] = "news";
-    $this->data['active'] = "tabel";
+    $data['active'] = "news";
+    $data['active'] = "tabel";
     $date = Carbon::now();
     $date = $date->toDateString();
     $news = new Berita;

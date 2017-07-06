@@ -50,6 +50,7 @@
 							<th>Sender Phone No</th>
 							<th>Received At</th>
               <th>Action</th>
+              <th><i class="fa fa-inbox"></i></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -71,6 +72,11 @@
 									<a onclick="viewmessage({{$message}})" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="delete">View Message</a>
 
 								</td>
+                <td id="test{{$message->message_id}}">
+                  @if($message->message_read == 0)
+                    <i class="fa fa-circle" style="margin-left:10px; color:green;"></i>
+                  @endif
+                </td>
 							</tr>
 							@endforeach
 
@@ -92,6 +98,21 @@
 		$( "#telp" ).html(c.message_telephone);
 		$( "#content" ).html(c.message_comment);
 		$( "#received" ).html(c.message_timestamp);
+
+    $.ajax({
+        type: 'GET',
+        // make sure you respect the same origin policy with this url:
+        // http://en.wikipedia.org/wiki/Same_origin_policy
+        url: '{{url('/')}}/inbox/readmessage/' + c.message_id,
+        success: function(data){
+          console.log(data);
+          $('#test'+c.message_id).html("");
+          $('#notif').html(data);
+          if(data == 0){
+            $('#notif').hide();
+          }
+        }
+    });
   };
 </script>
 

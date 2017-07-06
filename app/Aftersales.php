@@ -11,6 +11,6 @@ class Aftersales extends Model
   public $timestamps = false;
   protected $primaryKey = 'as_id';
   protected $fillable = [
-    'as_company_name','as_contact_name','as_email','as_serial','as_product_type','as_out','as_description','as_timestamp'
+    'as_company_name','as_contact_name','as_email','as_serial','as_product_type','as_out','as_description','as_timestamp','as_read'
   ];
 }

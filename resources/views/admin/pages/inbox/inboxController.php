@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB,Redirect;
 use Carbon\Carbon;
-use Response;
 use Illuminate\Support\Facades\Storage;
 use File;
 use Image;
@@ -43,10 +42,6 @@ class inboxController extends Controller
         $read = Messages::find($id);
         $read->message_read = 1;
         $read->save();
-
-        $counts = Messages::where('message_read',0)->count();
-        return Response::json($counts);
-
     }
 
     public function messages(){

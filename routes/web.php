@@ -110,6 +110,8 @@ Route::group(['prefix' => 'inbox'],function () {
 
   Route::get('/aftersales', 'inboxController@aftersales');
   Route::get('/showaftersale/{id}', 'inboxController@showaftersale');
+
+  Route::get('/readmessage/{id}','inboxController@readmessage');
 });
 
 Route::group(['prefix' => 'user'],function () {
