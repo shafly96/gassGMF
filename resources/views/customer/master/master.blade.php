@@ -6,6 +6,7 @@
     @include('customer/master/nav')
 
 <!-- content -->
+    @yield('modal')
 
     <div class="div2">
         <div class="col-md-1"></div>

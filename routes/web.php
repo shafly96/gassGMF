@@ -16,6 +16,7 @@ Route::get('/about', 'customerController@about');
 Route::get('/testimoni', 'customerController@testimoni');
 Route::get('/contact', 'customerController@contact');
 Route::post('/contact', 'customerController@sendMessage');
+Route::post('/quotation', 'customerController@sendQuotation');
 Route::get('/product', 'customerController@product');
 Route::get('/aftersales', 'customerController@aftersales');
 Route::post('/aftersales', 'customerController@addaftersales');
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'products'],function () {
   Route::get('/ajax/{id}', 'productController@productAjax');
   Route::get('/type/{id}', 'productController@type');
   Route::get('/detail/{id}', 'productController@detail');
+  Route::get('/print/{id}', 'productController@print');
   Route::get('/form', 'productController@showform');
   Route::post('/form','productController@addproduct');
   Route::post('/send','productController@sendReview');

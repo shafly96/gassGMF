@@ -6,6 +6,7 @@
     <?php echo $__env->make('customer/master/nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <!-- content -->
+    <?php echo $__env->yieldContent('modal'); ?>
 
     <div class="div2">
         <div class="col-md-1"></div>

@@ -100,6 +100,19 @@ class customerController extends Controller
         }
     }
 
+    public function sendQuotation(Request $request){
+        $message = new Messages;
+        $message->message_email = $request->email;
+        $message->message_telephone = $request->telp;
+        $message->message_comment = $request->message;
+
+        if($message->save()){
+            return redirect('/products/detail/'.$request->id);
+        }else{
+            return redirect('/');
+        }
+    }
+
     public function aftersales(){
         $c1 = $this->footer();
         $data['footer'] = $c1['footer'];

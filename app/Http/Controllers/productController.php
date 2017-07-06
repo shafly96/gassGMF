@@ -73,11 +73,32 @@ class productController extends Controller
     $data['review'] = DB::table('reviews')
     ->where('reviews_product_id', '=', $id)
     ->get();
-    // dd($data['review']);
+
+    $data['sugestion'] = DB::table('product')
+    ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
+    ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
+    ->wherein('product.product_tipe', DB::table('product')->where('product_id', '=', $id)->select('product_tipe'))
+    ->where('product.product_id', '!=', $id)
+    ->inRandomOrder()
+    ->limit(3)
+    ->get();
+
+    // dd($data['sugestion']);
+
     $c1 = $this->footer();
     $data['footer'] = $c1['footer'];
     $data['berita'] = $c1['berita'];
     return view('customer.pages.productDetail', $data);
+  }
+
+  public function print($id){
+    $data['product'] = DB::table('product')
+    ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
+    ->where('product.product_id', '=', $id)
+    ->get();
+
+    return view('customer.pages.productPrint', $data);
+
   }
 
   public function showform(){
