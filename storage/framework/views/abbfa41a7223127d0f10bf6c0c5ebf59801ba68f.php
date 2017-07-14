@@ -136,15 +136,15 @@
 
         </ul>
       </li>
-      <li class="header">MESSAGES & AFTER SALES</li>
+      <li class="header">INBOX</li>
       <li class="<?php if($active=='messages') echo 'active' ?>">
         <a href="<?php echo e(url('/')); ?>/inbox/messages">
-          <i class="fa fa-envelope"></i> <span>View message list</span>
+          <i class="fa fa-envelope"></i> <span>View message list <?php if(isset($unread_message)): ?><?php if($unread_message > 0): ?><span id="notif" style="margin-left:10px"class="label label-primary"><?php echo e($unread_message); ?></span><?php endif; ?> <?php endif; ?></span>
         </a>
       </li>
       <li class="<?php if($active=='aftersales') echo 'active' ?>">
         <a href="<?php echo e(url('/')); ?>/inbox/aftersales">
-          <i class="fa fa-exchange"></i> <span>View after sales list</span>
+          <i class="fa fa-exchange"></i> <span>View after sales list <?php if(isset($unread_as)): ?><?php if($unread_as > 0): ?><span style="margin-left:10px"class="label label-primary"><?php echo e($unread_as); ?></span><?php endif; ?> <?php endif; ?> </span>
         </a>
       </li>
 

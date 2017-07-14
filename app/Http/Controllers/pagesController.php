@@ -38,6 +38,13 @@ class pagesController extends Controller
     }
   }
 
+    public function adminhome(){
+      $this->data['active']="";
+      $this->data['active2']="";
+       if(Auth::check()==true)
+        return view('admin.pages.index',$this->data);
+        else return view('admin.pages.user.login');
+    }
   public function showhome(){
     $this->checklogin();
 

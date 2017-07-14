@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product_Image;
 use App\Product;
+use App\Messages;
+use App\Aftersales;
 use App\review;
 use DB,Redirect;
 use Carbon\Carbon;
@@ -15,6 +17,13 @@ use Auth;
 
 class productController extends Controller
 {
+   public $data;
+  public function __construct()
+   {
+     $this->data['unread_as'] = Aftersales::where('as_read',0)->count();
+     $this->data['unread_message'] = Messages::where('message_read',0)->count();
+   }
+
   public function checklogin(){
     if(Auth::check()){
       return;
@@ -27,17 +36,17 @@ class productController extends Controller
 
   public function footer()
   {
-    $data['footer'] = DB::table('footer_and_contacts')->first();
-    $data['berita'] = DB::table('about')->first();
-    return $data;
+    $this->data['footer'] = DB::table('footer_and_contacts')->first();
+    $this->data['berita'] = DB::table('about')->first();
+    return $this->data;
   }
 
   public function productAjax($id){
-    $data['active'] = $id;
+    $this->data['active'] = $id;
     $c1 = $this->footer();
-    $data['footer'] = $c1['footer'];
-    $data['berita'] = $c1['berita'];
-    return view('customer.pages.products', $data);
+    $this->data['footer'] = $c1['footer'];
+    $this->data['berita'] = $c1['berita'];
+    return view('customer.pages.products', $this->data);
   }
 
   public function sendReview(Request $request){
@@ -55,26 +64,26 @@ class productController extends Controller
   }
 
   public function type($id){
-    $data['product'] = DB::table('product')
+    $this->data['product'] = DB::table('product')
     ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
     ->where('product.product_tipe', '=', $id)
     ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
     ->get();
 
-    return view('customer.pages.productType', $data);
+    return view('customer.pages.productType', $this->data);
   }
 
   public function detail($id){
-    $data['product'] = DB::table('product')
+    $this->data['product'] = DB::table('product')
     ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
     ->where('product.product_id', '=', $id)
     ->get();
 
-    $data['review'] = DB::table('reviews')
+    $this->data['review'] = DB::table('reviews')
     ->where('reviews_product_id', '=', $id)
     ->get();
 
-    $data['sugestion'] = DB::table('product')
+    $this->data['sugestion'] = DB::table('product')
     ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
     ->wherein('product_image.pi_id', DB::table('product_image')->select(DB::raw('max(pi_id)', 'filename'))->groupby('product_id'))
     ->wherein('product.product_tipe', DB::table('product')->where('product_id', '=', $id)->select('product_tipe'))
@@ -83,38 +92,38 @@ class productController extends Controller
     ->limit(3)
     ->get();
 
-    // dd($data['sugestion']);
+    // dd($this->data['sugestion']);
 
     $c1 = $this->footer();
-    $data['footer'] = $c1['footer'];
-    $data['berita'] = $c1['berita'];
-    return view('customer.pages.productDetail', $data);
+    $this->data['footer'] = $c1['footer'];
+    $this->data['berita'] = $c1['berita'];
+    return view('customer.pages.productDetail', $this->data);
   }
 
   public function print($id){
-    $data['product'] = DB::table('product')
+    $this->data['product'] = DB::table('product')
     ->join('product_image', 'product_image.product_id', '=', 'product.product_id')
     ->where('product.product_id', '=', $id)
     ->get();
 
-    return view('customer.pages.productPrint', $data);
+    return view('customer.pages.productPrint', $this->data);
 
   }
 
   public function showform(){
     $this->checklogin();
 
-    $data['active'] = "products";
-    $data['active2'] = "form";
-    return view('admin.pages.products.form',$data);
+    $this->data['active'] = "products";
+    $this->data['active2'] = "form";
+    return view('admin.pages.products.form',$this->data);
   }
   public function showtable(){
     $this->checklogin();
 
-    $data['active'] = "products";
-    $data['active2'] = "tabel";
-    $data['products'] = Product::orderBy('product_tipe','desc')->get();
-    return view('admin.pages.products.tabel',$data);
+    $this->data['active'] = "products";
+    $this->data['active2'] = "tabel";
+    $this->data['products'] = Product::orderBy('product_tipe','desc')->get();
+    return view('admin.pages.products.tabel',$this->data);
   }
 
   public function delete($id){
@@ -141,8 +150,8 @@ class productController extends Controller
   public function addproduct(Request $request){
     $this->checklogin();
 
-    $data['active'] = "products";
-    $data['active2'] = "form";
+    $this->data['active'] = "products";
+    $this->data['active2'] = "form";
 
     $product = new Product;
     $product->product_name = $request->nama;
@@ -172,16 +181,16 @@ class productController extends Controller
  public function showupdate($id){
    $this->checklogin();
 
-  $data['active'] = "products";
-  $data['active2'] = "form";
-  $data['update'] = Product::find($id);
-  $data['gambar'] = Product_Image::where('product_id','=',$id)->get();
-  if(isset($data['update'])){
-    $data['update']->product_specification = str_replace("\r",'', $data['update']->product_specification);
-    $data['update']->product_specification = str_replace("\n",'', $data['update']->product_specification);
-    $data['update']->product_specification = str_replace("\r\n",'', $data['update']->product_specification);
+  $this->data['active'] = "products";
+  $this->data['active2'] = "form";
+  $this->data['update'] = Product::find($id);
+  $this->data['gambar'] = Product_Image::where('product_id','=',$id)->get();
+  if(isset($this->data['update'])){
+    $this->data['update']->product_specification = str_replace("\r",'', $this->data['update']->product_specification);
+    $this->data['update']->product_specification = str_replace("\n",'', $this->data['update']->product_specification);
+    $this->data['update']->product_specification = str_replace("\r\n",'', $this->data['update']->product_specification);
 
-    return view('admin.pages.products.formup',$data);
+    return view('admin.pages.products.formup',$this->data);
   }
   else {
     return redirect('products/tabel');

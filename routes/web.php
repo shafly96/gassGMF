@@ -21,13 +21,7 @@ Route::get('/product', 'customerController@product');
 Route::get('/aftersales', 'customerController@aftersales');
 Route::post('/aftersales', 'customerController@addaftersales');
 Route::get('/admin', 'userController@showlogin');
-Route::get('/adminhome', function(){
-  $data['active']="";
-  $data['active2']="";
-  if(Auth::check()==true)
-  return view('admin.pages.index',$data);
-  else return view('admin.pages.user.login');
-});
+Route::get('/adminhome', 'pagesController@adminhome');
 
 
 Route::group(['prefix' => 'products'],function () {

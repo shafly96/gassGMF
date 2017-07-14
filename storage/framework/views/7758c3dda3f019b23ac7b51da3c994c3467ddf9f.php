@@ -25,6 +25,7 @@
 							<th>Product Type</th>
               <th>Received At</th>
               <th>Action</th>
+							<th><i class="fa fa-inbox"></i></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -46,7 +47,13 @@
                 <td><?php echo e($aftersale->as_timestamp); ?></td>
 								<td>
 									<a href="<?php echo e(url('/')); ?>/inbox/showaftersale/<?php echo e($aftersale->as_id); ?>" class="btn btn-info">View Details</a>
-								</td>
+									<a href="<?php echo e(url('/')); ?>/inbox/deleteafter/<?php echo e($aftersale->as_id); ?>" class="btn btn-danger">Delete</a>
+
+								<td>
+									<?php if($aftersale->as_read == 0): ?>
+										<i class="fa fa-circle" style="margin-left:10px; color:green;"></i>
+									<?php endif; ?>
+							</td>
 							</tr>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

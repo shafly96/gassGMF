@@ -84,32 +84,32 @@
         <div class="col-md-6">
             <div id="slideshow">
                 <?php $__currentLoopData = $produk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                 <div>
-                   <img src="<?php echo e(url('')); ?>/images/product/<?php echo e($data->filename); ?>" style="width: 90%; height:auto; max-height: 100%">
-               </div>
-               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-           </div>
-   </div>
-   <div class="col-md-6">
-    <p class="judul-div"><strong>Our</strong> Products</p>
-    <div class="slide-product-2">
-        <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+                <div>
+                 <img src="<?php echo e(url('')); ?>/images/product/<?php echo e($data->filename); ?>" style="width: 90%; height:auto; max-height: 100%">
+             </div>
+             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+         </div>
+     </div>
+     <div class="col-md-6">
+        <p class="judul-div"><strong>Our</strong> Products</p>
+        <div class="slide-product-2">
+            <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+        </div>
     </div>
-</div>
-<div class="col-md-12">
-    <div class="col-md-3 kotak">
-        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/2'"><strong>Services</strong></button>
+    <div class="col-md-12">
+        <div class="col-md-3 kotak">
+            <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/2'"><strong>Services</strong></button>
+        </div>
+        <div class="col-md-3 kotak">
+            <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/3'"><strong>Maintenance</strong></button>
+        </div>
+        <div class="col-md-3 kotak">
+            <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
+        </div>
+        <div class="col-md-3 kotak">
+            <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/4'"><strong>Rental</strong></button>
+        </div>
     </div>
-    <div class="col-md-3 kotak">
-        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/3'"><strong>Maintenance</strong></button>
-    </div>
-    <div class="col-md-3 kotak">
-        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/1'"><strong>Assembly and Fabrication</strong></button>
-    </div>
-    <div class="col-md-3 kotak">
-        <button onclick="window.location.href='<?php echo e(url('')); ?>/products/ajax/4'"><strong>Rental</strong></button>
-    </div>
-</div>
 </div>
 </div>
 
@@ -178,62 +178,22 @@
             <p class="judul-div kanan center"><strong>Our</strong> Customers</p>
             <?php if(isset($customer)): ?>
             <div class="customer center">
-                <div id="myCarousel" class="carousel slide">
-
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-
-                        <?php
-
-                        $i=0;
-                        $k=intdiv(count($customer),4);
-                        $l=count($customer)-$k*4;
-                        $m=0;
-                        while($i<$k){
-                            ?>
-                            <div class="item <?php if($i==0) echo 'active'; ?>">
-                                <div class="row">
-                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+3])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+3]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                    </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+2])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+2]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                    </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m+1])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m+1]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                    </div>
-                                    <div class="col-xs-3 jarak"><a href="#x"><?php if(isset($customer[$m])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($customer[$m]->customer_filename); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                    </div>
-                                </div>
-                                <!--/row-->
-                            </div>
-                            <?php
-                            $m+=4;
-                            $i++;
-                        }
-                        ?>
-
-                        <?php if(count($customer)%4!=0){ ?>
-                        <div class="item <?php if($k==0) echo 'active'; ?>">
-                            <div class="row">
-                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+3])){?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+3]->customer_filename) ? $customer[$m+3]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+2])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+2]->customer_filename) ? $customer[$m+2]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m+1])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m+1]->customer_filename) ? $customer[$m+1]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                </div>
-                                <div class="col-xs-3 jarak"><a href="#x"><?php  if(isset($customer[$m])) {?><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e(isset($customer[$m]->customer_filename) ? $customer[$m]->customer_filename : 'kosong.jpg'); ?>" alt="Image" class="img-responsive"><?php } ?></a>
-                                </div>
-                            </div>
-                            <!--/row-->
+                <div class="col-md-12 col-md-offset-1">
+                    <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
+                      <div class="carousel-inner">
+                        <?php $__currentLoopData = $customer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="item <?php if($key==0): ?> active <?php endif; ?>">
+                          <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="<?php echo e(url('')); ?>/images/logo-cust/<?php echo e($value->customer_filename); ?>" class="img-responsive" style="margin: 0 auto;"></a></div>
                         </div>
-                        <?php } ?>
-
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    <!--/carousel-inner-->
                 </div>
-                <!--/myCarousel-->
-            </div>
-            <?php endif; ?>
-        </div>
-    </div>
+          </div>
+          <!--/myCarousel-->
+      </div>
+      <?php endif; ?>
+  </div>
+</div>
 </div>
 
 <!-- div footer -->
@@ -252,16 +212,6 @@
     }
 
     AOS.init();
-
-    $(document).ready(function() {
-        $('#myCarousel').carousel({
-            interval: 3000
-        });
-
-        $('#carousel-example-generic').carousel({
-            interval: 500
-        });
-    });
 
     $("#slideshow > div:gt(0)").hide();
 
@@ -317,6 +267,23 @@
     z[slideIndex-1].style.display = "block";
     setTimeout(carousel, 4000);
 }
+
+$('.carousel[data-type="multi"] .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+
+  for (var i=0;i<4;i++) {
+    next=next.next();
+    if (!next.length) {
+        next = $(this).siblings(':first');
+    }
+    
+    next.children(':first-child').clone().appendTo($(this));
+  }
+});
 
 </script>
 </html>
