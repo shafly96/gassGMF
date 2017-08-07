@@ -492,6 +492,10 @@ li{
         text-align:left;
     }
 
+    .slide-product-2{
+        margin-left: 0px !important;
+    }
+
 }
 
 @media screen and (max-width: 991px) and (min-width: 473px) {

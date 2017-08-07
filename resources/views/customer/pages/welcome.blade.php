@@ -92,8 +92,16 @@
      </div>
      <div class="col-md-6">
         <p class="judul-div"><strong>Our</strong> Products</p>
-        <div class="slide-product-2">
-            <p class="slogan-text product">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. .</p>
+        <div class="slide-product-2" style="margin-left:70px">
+            <?php
+            if (strlen($berita->about_gass_text) > 293) {
+                $trimstring = substr($berita->about_gass_text, 0, 293);
+            } else {
+                $trimstring = $berita->about_gass_text;
+            }
+            echo $trimstring."...";
+            ?>
+            <p><a href="{{url('')}}/about">Read more</a></p>
         </div>
     </div>
     <div class="col-md-12">
@@ -179,15 +187,15 @@
             @isset($customer)
             <div class="customer center">
                 <div class="col-md-12 col-md-offset-1">
-                    <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
+                    <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2000" id="myCarousel">
                       <div class="carousel-inner">
                         @foreach($customer as $key=>$value)
                         <div class="item @if($key==0) active @endif">
                           <div class="col-md-2 col-sm-6 col-xs-12"><a href="#"><img src="{{url('')}}/images/logo-cust/{{$value->customer_filename}}" class="img-responsive" style="margin: 0 auto;"></a></div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+                      </div>
+                      @endforeach
+                  </div>
+              </div>
           </div>
           <!--/myCarousel-->
       </div>
@@ -272,17 +280,17 @@ $('.carousel[data-type="multi"] .item').each(function(){
   var next = $(this).next();
   if (!next.length) {
     next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
+}
+next.children(':first-child').clone().appendTo($(this));
 
-  for (var i=0;i<4;i++) {
+for (var i=0;i<4;i++) {
     next=next.next();
     if (!next.length) {
         next = $(this).siblings(':first');
     }
     
     next.children(':first-child').clone().appendTo($(this));
-  }
+}
 });
 
 </script>
